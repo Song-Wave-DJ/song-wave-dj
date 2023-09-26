@@ -1,0 +1,61 @@
+/* phone number input style */
+.react-tel-input .form-control {
+  font-family: var(--mainFont);
+  margin-left: 48px;
+  z-index: 1;
+  padding-left: 10px;
+  width: 75% !important;
+}
+​ .react-tel-input .form-control:focus {
+  box-shadow: none;
+}
+​ .react-tel-input .special-label {
+  display: none;
+}
+.react-tel-input .selected-flag:focus .arrow {
+  border-top: 5px solid #555;
+}
+.react-tel-input .country-list {
+  z-index: 50;
+  overflow-x: hidden;
+}
+.react-tel-input .country-list .country {
+  @apply transition-all duration-500;
+}
+.react-tel-input .country-list .country:hover .country-name,
+​ .react-tel-input .selected-flag {
+  width: 60px;
+  /* padding: 0 0 0 20px; */
+  border: none;
+}
+​ .react-tel-input .selected-flag:hover,
+.react-tel-input .selected-flag:focus {
+  border-radius: 6px;
+  background-color: #f8f8f8;
+}
+.react-tel-input .flag-dropdown.open .selected-flag {
+  background-color: inherit;
+  border-radius: 6px;
+}
+​ .react-tel-input .country-list .search-box {
+  margin-left: 0px;
+}
+.react-tel-input {
+  position: relative;
+  border-color: #d9d9d9 !important;
+}
+.flag-dropdown {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+.react-tel-input .country-list {
+  width: 100%;
+}
+​ .react-tel-input .form-control.invalid-number {
+  background: transparent !important;
+}
+​ .react-tel-input .form-control.invalid-number:focus {
+  box-shadow: none;
+  border: none;
+}

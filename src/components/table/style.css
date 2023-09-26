@@ -1,0 +1,131 @@
+.ant-table-wrapper .ant-table {
+  font-family: "Poppins";
+  /* border-radius: 0px; */
+}
+.ant-pagination {
+  gap: 8px;
+  font-family: "Poppins";
+  /* background: white; */
+  /* padding: 12px; */
+  /* border-radius: 8px;  */
+}
+
+.ant-table-wrapper table {
+  padding: 0 !important;
+}
+.ant-table-wrapper {
+  border-radius: 10px;
+  border: 1px solid #e3e3e3 !important;
+  padding-inline: 5px;
+  overflow-x: auto;
+}
+.ant-pagination .ant-pagination-item-active {
+  background-color: var(--primary-90);
+  border-radius: 50%;
+  border-color: var(--primary-90);
+}
+.ant-pagination .ant-pagination-item-active:hover a {
+  color: white;
+  opacity: 90;
+}
+:is(.ant-pagination-item:hover) {
+  border-radius: 50%;
+}
+.ant-pagination .ant-pagination-item:not(.ant-pagination-item-active):hover {
+  background: var(--primary-70);
+}
+
+.ant-pagination .ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-pagination .ant-pagination-next:hover .ant-pagination-item-link {
+  background: transparent;
+  color: var(--primary-90);
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: white;
+}
+
+.ant-table-wrapper table {
+  padding: 10px;
+  font-family: var(--mainFont);
+}
+
+.ant-pagination .ant-pagination-disabled:hover .ant-pagination-item-link {
+  color: rgba(0, 0, 0, 0.25);
+}
+
+/* .ant-pagination {
+  width: fit-content;
+  float: right;
+  margin-top: 20px;
+  padding: 8px 10px;
+  background-color: #fff;
+  border-radius: 40px;
+} */
+
+:is(li.ant-pagination-prev button span, li.ant-pagination-next button span) {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+li.ant-pagination-prev button span::after {
+  content: "Prev";
+  font-size: 0.875rem;
+}
+
+li.ant-pagination-next button span::before {
+  content: "Next";
+  display: inline;
+  font-size: 0.875rem;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: #fff;
+  background: #3cb5e5;
+  border-radius: 100%;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  @apply text-xxs 2xl:text-xs;
+}
+.ant-pagination .ant-pagination-item-active:hover {
+  @apply border-primary-90;
+}
+
+.ant-table-cell {
+  color: #474747;
+  font-family: "Poppins" !important;
+}
+
+.ant-pagination-total-text {
+  font-family: "Poppins" !important;
+}
+
+.ant-table-cell::before {
+  height: 0 !important;
+  width: 0 !important;
+}
+/* table font size */
+.ant-table-wrapper :is(.ant-table) {
+  @apply text-xxs 2xl:text-xs;
+}
+.ant-table-wrapper .ant-table {
+  @apply min-h-[50vh] max-h-full;
+}
+
+.ant-table-cell {
+  @apply !p-1.5 2xl:!py-3;
+  max-width: 100px;
+}
+
+.ant-space {
+  display: flex;
+  justify-content: flex-end;
+}
+
+:is(ul.ant-pagination li.ant-pagination-total-text) {
+  margin-inline-end: auto;
+  /* color: var(--grey-90); */
+  @apply text-grey-90;
+}

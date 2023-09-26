@@ -1,0 +1,12 @@
+.Drawer--wrapper .ant-drawer-body {
+  padding: 0 24px !important;
+}
+
+.anticon-close {
+  padding: 5px;
+  border-radius: 100%;
+}
+
+.ant-drawer-title {
+  font-size: 20px !important;
+}

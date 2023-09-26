@@ -1,0 +1,9 @@
+.ant-modal-close {
+  border-radius: 100% !important;
+  padding: 5px;
+}
+
+.ant-modal-close .ant-modal-close-x {
+  line-height: 0 !important;
+  font-size: 14px !important;
+}
