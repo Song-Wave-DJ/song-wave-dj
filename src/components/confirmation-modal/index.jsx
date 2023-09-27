@@ -11,7 +11,7 @@ const Confirmation = ({
 }) => {
   return (
     <>
-      <Modal open={open} closable={false}>
+      <Modal open={open} centered closable={false}>
         <div className="grid place-items-center">
           <img src={WarningIcon} className="w-20" />
           <Heading label="Are you sure?" styles="text-center">
@@ -20,7 +20,7 @@ const Confirmation = ({
           <div className="flex justify-center my-2 w-full">
             <Button
               isLoading={false}
-              styles="bg-white  flex-[.2] hover:opacity-30 mx-2 p-3 border-2 border-[#3CB5E5] text-[#000] my-0"
+              styles="!bg-red text-white rounded  flex-[.2] hover:opacity-30 mx-2 p-3 border-2 text-[#000] my-0"
               htmlType="button"
               label="Cancel"
               onClick={handleOpen}

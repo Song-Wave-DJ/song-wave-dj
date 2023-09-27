@@ -7,3 +7,7 @@
   line-height: 0 !important;
   font-size: 14px !important;
 }
+
+.Modal .ant-modal-content {
+  height: 66vh !important;
+}

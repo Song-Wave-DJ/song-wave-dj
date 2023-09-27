@@ -12,19 +12,21 @@ const ModalComp = ({
   className,
 }) => {
   return (
-    <Modal
-      open={open}
-      onOk={handleOk}
-      onCancel={handleCancel}
-      centered
-      footer={<></>}
-      closable={closable}
-      children={children}
-      width={width}
-      className={className}
-    >
-      {children}
-    </Modal>
+    <div className="Modal">
+      <Modal
+        open={open}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        centered
+        footer={<></>}
+        closable={closable}
+        children={children}
+        width={width}
+        className={className}
+      >
+        {children}
+      </Modal>
+    </div>
   );
 };
 

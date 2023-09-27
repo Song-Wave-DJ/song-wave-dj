@@ -14,7 +14,7 @@ export const Naviagtion = () => {
   return (
     <div className="bg-black pb-2">
       <div className="">
-        <h1 className="text-white text-3xl text-center py-2">3 Hours</h1>
+        <h1 className="text-white text-3xl text-center py-2">Song Wave</h1>
       </div>
       {/* Naviagtion */}
       <div className="sm:hidden block">
