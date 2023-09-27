@@ -3,6 +3,7 @@ import Layout from "../views/layout";
 import {
   Categoies,
   Communities,
+  DashboardMenu,
   Home,
   Menu,
   Orders,
@@ -107,6 +108,15 @@ const router = createBrowserRouter([
         children: [
           {
             element: <DashboardCategories />,
+            index: true,
+          },
+        ],
+      },
+      {
+        path: "menus",
+        children: [
+          {
+            element: <DashboardMenu />,
             index: true,
           },
         ],

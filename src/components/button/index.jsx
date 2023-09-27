@@ -17,11 +17,11 @@ const Button = ({
       htmlType={htmlType}
       onClick={onClick}
       type="primary"
-      className={`bg-[#000D11] flex justify-center font-sans items-center p-5 rounded-full 
-      hover:!bg-[#000D11] hover:opacity-60 ${styles}`}
+      className={`bg-purpal flex !hover:bg-[#916E99] justify-center font-sans items-center p-5 rounded-full 
+      hover:opacity-60  hover:transition-all ${styles}`}
     >
       {icon && <PlusOutlined />}
-      {label}
+      <p className="text-lg">{label}</p>
     </AndButton>
   );
 };

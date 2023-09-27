@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 
-import { DeleteIcon, EditIcon } from "../../assets";
+import { DeleteIcon, EditIcon, NonVegIcon, VegIcon } from "../../assets";
 import {
   Button,
   Confirmation,
@@ -8,9 +8,9 @@ import {
   Searching,
   TableComponent,
 } from "../../components";
-import AddCategory from "./add";
+import AddMenu from "./add";
 
-export const DashboardCategories = () => {
+export const DashboardMenu = () => {
   const [values, setValues] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
 
@@ -40,8 +40,35 @@ export const DashboardCategories = () => {
     },
     {
       title: "Category Name",
+      dataIndex: "category",
+      key: "category",
+    },
+    {
+      title: "Menu Name",
       dataIndex: "name",
       key: "name",
+    },
+    {
+      title: "Price",
+      dataIndex: "price",
+      key: "price",
+    },
+    {
+      title: "Type",
+      dataIndex: "type",
+      key: "type",
+      render: (_, { type }) => {
+        const isVeg = type?.toLowerCase() === "veg";
+        return (
+          <div className="flex flex-wrap items-center gap-2">
+            <img
+              src={isVeg ? VegIcon : NonVegIcon}
+              className="w-4 h-4 object-contain"
+            />
+            <span>{isVeg ? "Veg" : "Non-Veg"}</span>
+          </div>
+        );
+      },
     },
 
     {
@@ -49,8 +76,8 @@ export const DashboardCategories = () => {
       dataIndex: "address",
       key: "Action",
       render: (_, record) => (
-        <div className="flex">
-          <IconButton color="#EBF7FC" onClick={handleUpdate()}>
+        <div className="flex flex-wrap">
+          <IconButton color="#ad8e6f" onClick={handleDelete()}>
             <p className="px-2">Edit</p>
           </IconButton>
           <IconButton color="#FAE5E5" onClick={handleDelete()}>
@@ -66,7 +93,17 @@ export const DashboardCategories = () => {
   const dataSource = [
     {
       id: 123,
+      category: "Cocktail",
       name: "Cocktail",
+      price: 1234,
+      type: "veg",
+    },
+    {
+      id: 134523,
+      category: "Chicken",
+      name: "Chicken",
+      price: 1234,
+      type: "non-veg",
     },
   ];
   return (
@@ -76,7 +113,7 @@ export const DashboardCategories = () => {
           <Searching onChange={onChange} styles="flex-1 md:flex-[.2]" />
           <Button
             onClick={addCategory}
-            label="Add Category"
+            label="Add Menu"
             styles="w-40 text-purple-100 text-x rounded-full bg-gradient-to-r from-purple-600 to-purple-400"
             isLoading={false}
           />
@@ -88,7 +125,7 @@ export const DashboardCategories = () => {
         dataSource={dataSource}
         total={10}
       />
-      <AddCategory
+      <AddMenu
         isVisible={!!values}
         handleModal={onCancel}
         onFinish={onOk}

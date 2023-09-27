@@ -6,3 +6,4 @@ export * from "./polls";
 export * from "./communities";
 export * from "./category";
 export * from "./orders";
+export * from "./menus";

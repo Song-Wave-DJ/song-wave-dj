@@ -50,7 +50,7 @@ export const DashboardNavigation = [
   {
     id: 4,
     label: "Menus",
-    path: "/menus",
+    path: "/dashboard/menus",
   },
 ];
 

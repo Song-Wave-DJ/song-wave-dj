@@ -6,8 +6,11 @@ import {
   Searching,
   TableComponent,
   MyImage,
+  Confirmation,
 } from "../../components";
 import { useNavigate } from "react-router-dom";
+import ModalComp from "../../components/modal";
+import { Summary } from "../category/components/summary";
 
 const dataSource = [
   {
@@ -68,6 +71,13 @@ const RenderColor = {
 };
 
 export const Orders = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+
+  const handleCancel = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
   const navigation = useNavigate();
 
   const gotoEdit = (record) => () => {};
@@ -75,6 +85,10 @@ export const Orders = () => {
   const addMenu = () => {};
 
   const handleDelete = (value) => () => {};
+
+  const confirmationOpen = () => {
+    setIsConfirmationOpen((prev) => !prev);
+  };
 
   const gotoView = (record) => () => {};
 
@@ -127,11 +141,10 @@ export const Orders = () => {
       key: "Action",
       render: (_, record) => (
         <div className="flex flex-wrap">
-          <IconButton color="#EBF7FC" onClick={gotoView(record)}>
+          <IconButton color="#EBF7FC" onClick={confirmationOpen}>
             <span className="text-green text-xs">Received</span>
           </IconButton>
-
-          <IconButton color="#FAE5E5" onClick={handleDelete(record)}>
+          <IconButton color="#FAE5E5" onClick={confirmationOpen}>
             <span className="text-red text-xs">Decline</span>
           </IconButton>
         </div>
@@ -143,8 +156,11 @@ export const Orders = () => {
       key: "Action",
       render: (_, record) => (
         <div className="flex flex-wrap">
+          <IconButton color="#f4f1f1" onClick={() => setIsModalOpen(true)}>
+            <span className="px-2 text-xs">View</span>
+          </IconButton>
           {record.stauts === "Accept" && (
-            <IconButton color="#EBF7FC">
+            <IconButton color="#EBF7FC" onClick={confirmationOpen}>
               <span className="text-green cursor-not-allowed text-xs">
                 Accept
               </span>
@@ -152,7 +168,7 @@ export const Orders = () => {
           )}
 
           {record.stauts === "Reject" && (
-            <IconButton color="#FAE5E5">
+            <IconButton color="#FAE5E5" onClick={confirmationOpen}>
               <span className="text-red cursor-not-allowed text-xs">
                 Reject
               </span>
@@ -160,10 +176,10 @@ export const Orders = () => {
           )}
           {record.stauts === "Pending" && (
             <>
-              <IconButton color="#EBF7FC" onClick={gotoView(record)}>
+              <IconButton color="#EBF7FC" onClick={confirmationOpen}>
                 <span className="text-green text-xs">Accept</span>
               </IconButton>
-              <IconButton color="#FAE5E5" onClick={handleDelete(record)}>
+              <IconButton color="#FAE5E5" onClick={confirmationOpen}>
                 <span className="text-red text-xs">Reject</span>
               </IconButton>
             </>
@@ -172,6 +188,8 @@ export const Orders = () => {
       ),
     },
   ];
+
+  const handleConfirmationOpen = () => {};
 
   const onChange = () => null;
 
@@ -191,6 +209,32 @@ export const Orders = () => {
         total={10}
         pageSize={5}
       />
+
+      <ModalComp
+        open={isModalOpen}
+        handleOk={() => null}
+        handleCancel={handleCancel}
+      >
+        <>
+          <h2 className="text-s">Order Summary</h2>
+          <div className="my-4 flex justify-between">
+            <span className=" text-xs font-semibold">Name</span>
+            <span className=" text-xs font-semibold">Quantity</span>
+            <span className=" text-xs font-semibold">Price</span>
+          </div>
+
+          <Summary carts={[]} tax={10} gst={10} offer={300} total={400} />
+        </>
+      </ModalComp>
+
+      <Confirmation
+        handleOpen={confirmationOpen}
+        open={isConfirmationOpen}
+        onConfirm={confirmationOpen}
+        isMutating={false}
+      >
+        <p className="text-sxx text-[#717171]">Are you sure?</p>
+      </Confirmation>
     </main>
   );
 };
