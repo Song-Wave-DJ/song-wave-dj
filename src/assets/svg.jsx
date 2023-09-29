@@ -28,7 +28,7 @@ export const DeleteIcon = () => {
 
 export const ViewIcon = () => {
   return (
-    <svg width="16.951" height="11.301" viewBox="0 0 16.951 11.301">
+    <svg width="16" height="16" viewBox="0 0 16.951 11.301">
       <path
         id="Icon_awesome-eye"
         data-name="Icon awesome-eye"

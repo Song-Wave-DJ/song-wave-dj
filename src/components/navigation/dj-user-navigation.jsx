@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { DashboardNavigation } from "./constants";
+import { DJNavigation } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 import DrawerComp from "../drawer";
 
-export const DashboardNaviagtion = () => {
+export const DJUserNaviagtion = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDrawer = () => {
@@ -14,10 +14,10 @@ export const DashboardNaviagtion = () => {
     <div className="py-2 px-4 mb-1 shadow-xl gap-2 items-center flex justify-between">
       <Link to="/">
         <h1 className="text-2xl text-center py-2">Song Wave</h1>{" "}
-      </Link>{" "}
+      </Link>
       <div className="py-3">
         <ul className="flex justify-center gap-6">
-          {DashboardNavigation.map((item) => (
+          {DJNavigation.map((item) => (
             <Link
               to={item.path}
               key={item.id}
@@ -33,7 +33,7 @@ export const DashboardNaviagtion = () => {
         <DrawerComp width={300} showDrawer={openDrawer} open={isOpen}>
           <div className="">
             <ul className="flex flex-col  pl-6 gap-6">
-              {DashboardNavigation.map((item) => (
+              {DJNavigation.map((item) => (
                 <Link
                   to={item.path}
                   key={item.id}

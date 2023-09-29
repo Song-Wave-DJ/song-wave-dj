@@ -54,6 +54,14 @@ export const DashboardNavigation = [
   },
 ];
 
+export const DJNavigation = [
+  {
+    id: 1,
+    label: "DJ User",
+    path: "/music-list",
+  },
+];
+
 export const MobileNavigation = [
   {
     id: 1,

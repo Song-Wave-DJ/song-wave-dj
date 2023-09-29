@@ -1,10 +1,10 @@
 import React, { useEffect, useMemo, useState } from "react";
 import DrawerComp from "../../../components/drawer";
-import { CartMenuCard } from "../../menu/components/cart-menu";
 import { EmptyIcon } from "../../../assets";
 import ModalComp from "../../../components/modal";
 import { Button } from "../../../components";
 import { Summary } from "./summary";
+import { CartMenuCard } from "./cart-menu";
 
 const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);

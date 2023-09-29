@@ -20,19 +20,6 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: "bottom",
-    },
-    title: {
-      display: true,
-      text: "Monthy Revenu",
-    },
-  },
-};
-
 const labels = ["January", "February", "March", "April", "May", "June", "July"];
 
 export const data = {
@@ -46,6 +33,22 @@ export const data = {
   ],
 };
 
-export function BarChart() {
-  return <Bar options={options} data={data} />;
+export function BarChart({ title }) {
+  const options = {
+    responsive: true,
+
+    barPercentage: 0.7,
+
+    plugins: {
+      legend: {
+        position: "bottom",
+      },
+      title: {
+        display: true,
+        text: title,
+      },
+    },
+  };
+
+  return <Bar options={options} data={data} height={260} />;
 }

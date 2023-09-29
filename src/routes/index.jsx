@@ -5,7 +5,6 @@ import {
   Communities,
   DashboardMenu,
   Home,
-  Menu,
   Orders,
   Polls,
   ThreeHours,
@@ -14,6 +13,8 @@ import Login from "../views/auth/login/login";
 import { Dashboard } from "../views/dashboard";
 import { DashboardLayout } from "../views/layout/dashboard-layout";
 import { DashboardCategories } from "../views/categoriess/categories";
+import { DJUser } from "../views/dj-user";
+import { DJUserLayout } from "../views/layout/dj-user-layout";
 
 const router = createBrowserRouter([
   {
@@ -50,11 +51,6 @@ const router = createBrowserRouter([
     errorElement: <p>Error</p>,
   },
   {
-    path: "/menu/:id",
-    element: <Menu />,
-    errorElement: <p>Error</p>,
-  },
-  {
     path: "/polls",
     element: <Layout />,
     children: [
@@ -79,7 +75,6 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
-
     errorElement: <p>Error</p>,
   },
   {
@@ -121,51 +116,17 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // {
-      //   path: "category",
-      //   element: <Outlet />,
-      //   children: [
-      //     {
-      //       element: <Category />,
-      //       index: true,
-      //     },
-      //   ],
-      // },
-
-      // {
-      //   path: "menu",
-      //   element: <Outlet />,
-      //   children: [
-      //     {
-      //       element: <Menu />,
-      //       index: true,
-      //     },
-      //     {
-      //       path: ":id",
-      //       element: <AddMenu />,
-      //     },
-      //     {
-      //       path: "view",
-      //       element: <ViewMenu />,
-      //     },
-      //   ],
-      // },
-      // {
-      //   path: "order-history",
-      //   element: <OrderHistory />,
-      // },
-      // {
-      //   path: "peak-hours",
-      //   element: <PeakHours />,
-      // },
-      // {
-      //   path: "revenue-management",
-      //   element: <RevenueManagement />,
-      // },
-      // {
-      //   path: "orders",
-      //   element: <Order />,
-      // },
+    ],
+    errorElement: <Error />,
+  },
+  {
+    path: "music-list",
+    element: <DJUserLayout />,
+    children: [
+      {
+        index: true,
+        element: <DJUser />,
+      },
     ],
     errorElement: <Error />,
   },

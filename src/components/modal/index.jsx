@@ -8,7 +8,7 @@ const ModalComp = ({
   open,
   closable = true,
   children,
-  width,
+  width = 500,
   className,
 }) => {
   return (

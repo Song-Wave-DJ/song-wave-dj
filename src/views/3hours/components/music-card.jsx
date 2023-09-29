@@ -8,6 +8,7 @@ export const MusicCard = ({
   duration,
   reqMusics = [],
   onReqMusic,
+  status,
 }) => {
   const isSameReq = useMemo(
     () => reqMusics?.some((el) => el === id),
@@ -28,19 +29,31 @@ export const MusicCard = ({
           <p className="text-gray-300 text-x">{duration}</p>
         </div>
       </div>
-      {!isSameReq ? (
-        <button
-          className="p-2 text-purple-100 text-x rounded-full bg-gradient-to-r from-purple-600 to-purple-400"
-          onClick={() => onReqMusic(id)}
-        >
-          Request For Play
-        </button>
+      {status !== "Approve" ? (
+        <>
+          {!isSameReq ? (
+            <button
+              className="p-2 text-purple-100 text-x rounded-full bg-gradient-to-r from-purple-600 to-purple-400"
+              onClick={() => onReqMusic(id)}
+            >
+              Request For Play
+            </button>
+          ) : (
+            <button
+              className="p-2 text-black text-x rounded-full bg-gradient-to-b from-orange-500 to-yellow-300"
+              onClick={() => onReqMusic(id)}
+            >
+              Waiting For Approval
+            </button>
+          )}
+        </>
       ) : (
         <button
-          className="p-2 text-black text-x rounded-full bg-gradient-to-b from-orange-500 to-yellow-300"
+          disabled
+          className="p-2 px-4 text-purple-100 text-x rounded-full bg-gradient-to-r from-green-500 to-green-700 opacity-60 cursor-not-allowed"
           onClick={() => onReqMusic(id)}
         >
-          Waiting For Approval
+          Accepted
         </button>
       )}
     </div>
