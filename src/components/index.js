@@ -27,7 +27,10 @@ import PreviewImage from "./preview-image";
 import Rating from "./rating";
 import { MenuCardLoader } from "./skeleton-loading";
 import { Naviagtion } from "./navigation";
+import { TextDescription } from "./text-description";
+
 export {
+  TextDescription,
   Rating,
   Button,
   Title,

@@ -22,7 +22,7 @@ const Searching = ({ onChange, styles }) => {
     <Input
       placeholder="Search here..."
       onChange={debounceFn(onChange)}
-      className={`rounded-full text-xxs ${styles}`}
+      className={`rounded-lg text-xxs ${styles}`}
       prefix={
         <SearchOutlined
           style={{

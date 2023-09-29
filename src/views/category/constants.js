@@ -6,18 +6,23 @@ export const AllData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
+        type: "non-veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
+        type: "veg",
       },
     ],
   },
@@ -28,18 +33,23 @@ export const AllData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
         price: 234,
+        type: "veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
     ],
   },
@@ -50,18 +60,23 @@ export const AllData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
     ],
   },
@@ -72,18 +87,22 @@ export const AllData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "Non-veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "Non-veg",
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
       },
     ],
   },
@@ -97,18 +116,22 @@ export const VegData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        type: "veg",
+       
+        url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsQTIpliTjhKiP_A6ogXmur1B7zjJCPM7TeA&usqp=CAU",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
     ],
   },
@@ -131,6 +154,7 @@ export const VegData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
     ],
   },
@@ -141,6 +165,7 @@ export const VegData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        type: "veg",
 
         price: 234,
       },
@@ -148,11 +173,13 @@ export const VegData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
     ],
   },
@@ -166,6 +193,7 @@ export const NonVegData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        type: "veg",
 
         price: 234,
       },
@@ -173,11 +201,13 @@ export const NonVegData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
     ],
   },
@@ -189,16 +219,20 @@ export const NonVegData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
 
+        type: "veg",
+
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        type: "veg",
         price: 234,
       },
     ],
@@ -207,10 +241,13 @@ export const NonVegData = [
   {
     id: self.crypto.randomUUID(),
     title: "Non-Veg",
+    type: "Non-Veg",
+
     menus: [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        type: "Non-Veg",
 
         price: 234,
       },
@@ -218,11 +255,13 @@ export const NonVegData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "Non-Veg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "Non-Veg",
       },
     ],
   },
@@ -236,6 +275,8 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
+        type: "drink",
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
 
         price: 234,
       },
@@ -243,11 +284,15 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "drink",
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "drink",
+         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },
@@ -258,18 +303,22 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        type: "drink",
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        type: "drink",
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },
@@ -280,18 +329,20 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },
@@ -302,18 +353,21 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },
@@ -324,18 +378,20 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },
@@ -346,18 +402,20 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
-
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
         price: 234,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Burger Recipe",
         price: 234,
+        url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
       },
     ],
   },

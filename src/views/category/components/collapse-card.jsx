@@ -1,10 +1,10 @@
 import { Collapse } from "antd";
 import React from "react";
-import { MenuCard } from "../../menu/components/menu-card";
+import { MenuCard } from "./menu-card";
 
 export const CollapseCard = ({
   index,
-  dummyData,
+  menus,
   handleAddCart,
   handleRemoveToCart,
   title,
@@ -22,7 +22,7 @@ export const CollapseCard = ({
           label: title,
           children: (
             <div className="flex m-auto flex-col flex-wrap gap-4 relative mt-4 items-center justify-center md:gap-4">
-              {dummyData.map((item) => (
+              {menus?.map((item) => (
                 <MenuCard
                   isFormDrink={isFormDrink}
                   carts={carts}
@@ -30,6 +30,7 @@ export const CollapseCard = ({
                   key={item.id}
                   handleAddCart={handleAddCart}
                   handleRemoveToCart={handleRemoveToCart}
+                  menus={menus}
                 />
               ))}
             </div>

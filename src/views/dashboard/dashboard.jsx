@@ -70,32 +70,44 @@ export const Dashboard = () => {
   return (
     <div className="p-4">
       <Title label="Category" styles="px-2" />
-      <div className="p-4 flex gap-6   flex-wrap">
-        <div className="m-auto w-[440px] min-h-96 flex justify-center  shadow-lg hover:shadow-xl p-4 rounded border-red-500">
+      <div className="p-4 flex gap-6 flex-wrap">
+        <div className="m-auto md:m-1 w-[440px] min-h-96 flex justify-center  shadow-lg hover:shadow-xl p-4 rounded border-red-500">
           <PieChart data={PerDaydata} />
         </div>
-        <div className="m-auto w-[440px] min-h-96 flex justify-center hover:shadow-xl shadow-lg p-4 rounded">
+        <div className="m-auto md:m-1 w-[440px] min-h-96 flex justify-center hover:shadow-xl shadow-lg p-4 rounded">
           <PieChart data={Weeklydata} />
         </div>
 
         <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
-          <BarChart />
+          <BarChart title="Monthly Category" />
         </div>
       </div>
 
       {/* Menu */}
-
       <Title label="Menu" styles="px-2" />
       <div className="p-4 flex gap-6   flex-wrap">
-        <div className="m-auto w-[440px] min-h-96 flex justify-center  shadow-lg hover:shadow-xl p-4 rounded border-red-500">
+        <div className="m-auto md:m-1 w-[440px] min-h-96 flex justify-center  shadow-lg hover:shadow-xl p-4 rounded border-red-500">
           <PieChart data={PerDaydata} />
         </div>
-        <div className="m-auto w-[440px] min-h-96 flex justify-center hover:shadow-xl shadow-lg p-4 rounded">
+        <div className="m-auto md:m-1 w-[440px] min-h-96 flex justify-center hover:shadow-xl shadow-lg p-4 rounded">
           <PieChart data={Weeklydata} />
         </div>
 
         <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
-          <BarChart />
+          <BarChart title="Monthly Menu" />
+        </div>
+      </div>
+      {/* Revenu */}
+      <Title label="Revenus" styles="px-2" />
+      <div className="p-4 flex gap-6 flex-wrap">
+        <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
+          <BarChart title="Day Revenu" />
+        </div>
+        <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
+          <BarChart title="Weekly Revenu" />
+        </div>
+        <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
+          <BarChart title="Monthly Revenu" />
         </div>
       </div>
 

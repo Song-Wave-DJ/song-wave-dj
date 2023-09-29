@@ -27,8 +27,12 @@ import MessageIcon from "./conversation.png";
 import CopyIcon from "./copy.png";
 import VegIcon from "./veg.png";
 import NonVegIcon from "./non-veg.png";
+import DrinkIcon from "./drink.png";
+import DuplicateIcon from "./duplicate.png";
 
 export {
+  DuplicateIcon,
+  DrinkIcon,
   VegIcon,
   NonVegIcon,
   WhatsAppIcon,
