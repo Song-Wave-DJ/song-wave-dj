@@ -4,7 +4,7 @@ import { DrinkIcon } from "../../../assets/images";
 
 export const CartMenuCard = ({ id, title, type, qty, price, setCarts }) => {
   const renderIcon = useMemo(() => {
-    switch (type.toLowerCase()) {
+    switch (type?.toLowerCase()) {
       case "veg":
         return VegIcon;
       case "non-veg":
@@ -102,7 +102,6 @@ export const CartMenuCard = ({ id, title, type, qty, price, setCarts }) => {
         <input
           onChange={onChangeQty}
           type="text"
-          defaultValue={qty}
           value={qty}
           className="border text-center w-10 rounded-full"
         />

@@ -40,7 +40,7 @@ const DummyData = [
   },
   {
     id: self.crypto.randomUUID(),
-    name: "French Fries",
+    name: "Crispy and golden potato fries that are a staple",
     category: "Veg",
     price: 234,
     discount: 0,
@@ -197,26 +197,23 @@ export const DashboardMenu = () => {
 
   return (
     <main className="mx-4 p-4">
-      <div className="flex flex-wrap   justify-end items-center mb-4">
+      <div className="flex flex-wrap justify-end items-center mb-4">
         <div className="flex justify-end items-center gap-2">
           <Button
             isLoading={false}
             label="Add Menu"
-            styles="text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400 mx-2 flex-1"
+            styles="rounded-lg hover:"
             onClick={onAddMenu}
           />
           <Searching onChange={onChange} styles="flex-1 py-2" />
         </div>
       </div>
-      <div className="">
-        <AddDashbardMenu
-          onFinish={onSaveMenu}
-          form={form}
-          editData={editData}
-          onAddMenu={onAddMenu}
-          modalOpen={modalOpen}
-        />
-      </div>
+      <AddDashbardMenu
+        onFinish={onSaveMenu}
+        editData={editData}
+        onAddMenu={onAddMenu}
+        modalOpen={modalOpen}
+      />
       <div className="flex  flex-wrap justify-center gap-6 my-6">
         {datas.length > 0 ? (
           datas?.map((item) => (

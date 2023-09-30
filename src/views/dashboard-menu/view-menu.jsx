@@ -27,14 +27,14 @@ const ViewMenu = ({
           </div>
           {/* desc */}
           <div className="px-4 py-2 text-lg flex flex-col gap-1 items-center">
-            <h1 className="text-xl">{name}</h1>
+            <h1 className="text-xl text-center">{name}</h1>
             <p className="text-lg">{category}</p>
             <div className="flex flex-wrap items-center gap-1">
               <img
                 src={"veg" === "veg" ? VegIcon : NonVegIcon}
                 className="w-3 h-3 object-contain"
               />
-              <span className="text-x">
+              <span className="text-xs">
                 {"veg" === "veg" ? "Veg" : "Non-Veg"}
               </span>
             </div>

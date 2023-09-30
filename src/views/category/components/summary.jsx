@@ -6,7 +6,7 @@ export const Summary = ({ carts, tax, gst, offer, total }) => {
       {carts.map((el) => (
         <div className="my-4 flex justify-between" key={el.id}>
           <span className="text-xxs">{el.title}</span>
-          <span className="text-xxs flex-[.4]">{el.qty}</span>
+          <span className="text-xxs flex-[.2]">{el.qty}</span>
           <span className="text-xxs">&#x20B9;{el.price}</span>
         </div>
       ))}

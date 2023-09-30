@@ -1,10 +1,9 @@
-import React from "react";
 import { Input } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 
 let DELAY = 500;
 
-const Searching = ({ onChange, styles }) => {
+const Searching = ({ onChange, styles, placeholder = "Search here..." }) => {
   // delay thr search when typing keyboard
   const debounceFn = (func) => {
     let timer;
@@ -20,7 +19,7 @@ const Searching = ({ onChange, styles }) => {
 
   return (
     <Input
-      placeholder="Search here..."
+      placeholder={placeholder}
       onChange={debounceFn(onChange)}
       className={`rounded-lg text-xxs ${styles}`}
       prefix={

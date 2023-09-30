@@ -49,7 +49,7 @@ const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
               <Button
                 onClick={handleCancel}
                 label="Proceed"
-                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full"
+                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full rounded-lg"
               />
             </div>
           </>
@@ -61,7 +61,7 @@ const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
               <Button
                 onClick={onClose}
                 label="Add Menu"
-                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full"
+                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full rounded-lg"
               />
             </div>
           </div>
