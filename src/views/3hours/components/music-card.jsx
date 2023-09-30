@@ -33,14 +33,14 @@ export const MusicCard = ({
         <>
           {!isSameReq ? (
             <button
-              className="p-2 text-purple-100 text-x rounded-full bg-gradient-to-r from-purple-600 to-purple-400"
+              className="p-2 text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400"
               onClick={() => onReqMusic(id)}
             >
               Request For Play
             </button>
           ) : (
             <button
-              className="p-2 text-black text-x rounded-full bg-gradient-to-b from-orange-500 to-yellow-300"
+              className="p-2 text-black text-x rounded-lg bg-gradient-to-b from-orange-500 to-yellow-300"
               onClick={() => onReqMusic(id)}
             >
               Waiting For Approval
@@ -50,7 +50,7 @@ export const MusicCard = ({
       ) : (
         <button
           disabled
-          className="p-2 px-4 text-purple-100 text-x rounded-full bg-gradient-to-r from-green-500 to-green-700 opacity-60 cursor-not-allowed"
+          className="p-2 px-4 text-purple-100 text-x rounded-lg bg-gradient-to-r from-green-500 to-green-700 opacity-60 cursor-not-allowed"
           onClick={() => onReqMusic(id)}
         >
           Accepted

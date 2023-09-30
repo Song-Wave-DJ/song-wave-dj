@@ -7,12 +7,14 @@ import { useNotification } from "../../hooks";
 import { CollapseCard } from "./components/collapse-card";
 import { AllData, DrinksData, NonVegData, VegData } from "./constants";
 import { EmptyIcon } from "../../assets";
+import { FoodLoader } from "../../assets/images";
 
 export const Categoies = () => {
   const [filterItem, setFilterItem] = useState("All");
   const [isShowBar, setIsShowBar] = useState(false);
   const [carts, setCarts] = useState([]);
   const [open, setOpen] = useState(false);
+  const [loaded, setLoaded] = useState(true);
 
   const [categories, setCotegories] = useState(AllData);
   const { openNotificationWithIcon, contextHolder } = useNotification();
@@ -89,7 +91,18 @@ export const Categoies = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setTimeout(() => {
+      setLoaded(false);
+    }, 2000);
   }, []);
+
+  if (loaded) {
+    return (
+      <div className="flex justify-center">
+        <img src={FoodLoader} />
+      </div>
+    );
+  }
 
   return (
     <div className="py-2 px-4">

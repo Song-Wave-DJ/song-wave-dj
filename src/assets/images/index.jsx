@@ -29,8 +29,10 @@ import VegIcon from "./veg.png";
 import NonVegIcon from "./non-veg.png";
 import DrinkIcon from "./drink.png";
 import DuplicateIcon from "./duplicate.png";
+import FoodLoader from "./food-loading.gif";
 
 export {
+  FoodLoader,
   DuplicateIcon,
   DrinkIcon,
   VegIcon,

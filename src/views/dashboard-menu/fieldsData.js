@@ -126,22 +126,22 @@ export const fieldSet = {
     ],
     placeholder: "Decription",
   },
-  // image: {
-  //   name: "image",
-  //   className: "w-full md:w-1/2",
-  //   inputClassName: "py-2 col-span-2",
-  //   label: "Dish Picture",
-  //   labelCol: {
-  //     className: "child:!text-xs col-span-2	",
-  //   },
-  //   rules: [],
-  //   placeholder: "Dish Picture",
-  // },
+  image: {
+    name: "image",
+    className: "",
+    inputClassName: "py-2 col-span-2",
+    label: "Menu Picture",
+    labelCol: {
+      className: "child:!text-xs col-span-2	",
+    },
+    rules: [],
+    placeholder: "Menu Picture",
+  },
   type: {
     name: "type",
     label: "Type",
     labelCol: {
-      className: "child:!text-xxs font-sans",
+      className: "child:!text-xxs",
     },
     rules: [],
     placeholder: "Type",
