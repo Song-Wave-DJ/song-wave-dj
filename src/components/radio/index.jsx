@@ -11,6 +11,7 @@ const RadioButton = ({ onChange, value, OPTIONS }) => {
           }}
           key={item}
           value={item}
+          className="font-sans"
         >
           {item}
         </Radio>

@@ -1,6 +1,4 @@
-import React, { memo } from "react";
-
-import { Button, Heading, Modal, TextInput } from "../../../components";
+import { Button, Heading, Modal, TextInput } from "../../../../components";
 import { Form } from "antd";
 import { fieldSet } from "../fieldsData";
 

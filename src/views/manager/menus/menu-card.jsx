@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Tooltip } from "antd";
 import {
   DeleteIcon,
@@ -5,10 +6,10 @@ import {
   NonVegIcon,
   VegIcon,
   ViewIcon,
-} from "../../assets";
-import { DuplicateIcon } from "../../assets/images";
+} from "../../../assets";
+import { DuplicateIcon } from "../../../assets/images";
 
-export const DashbordMenuCard = ({
+export const MenuCard = ({
   handleView,
   handleDelete,
   handleEdit,

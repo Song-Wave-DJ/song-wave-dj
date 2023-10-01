@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
-import { Searching, Title } from "../../components";
+import { Searching, Title } from "@/components";
 import { MusicCard } from "./components/music-card";
 import { MusicData } from "./constants";
+import { useNavigate } from "react-router-dom";
+
 export const ThreeHours = () => {
   const [reqMusics, setReqMusic] = useState([]);
+  const navigation = useNavigate();
 
   async function getAccessToken() {}
 
@@ -34,6 +37,10 @@ export const ThreeHours = () => {
 
   const onChangeSearch = (e) => {};
 
+  const onSubmitMusicReq = () => {
+    navigation("/sign-up");
+  };
+
   return (
     <div className="py-2 min-h-screen sm:w-[500px] w-full m-auto px-2 relative">
       <div className="flex justify-end my-4 gap-1">
@@ -42,7 +49,10 @@ export const ThreeHours = () => {
           styles="flex-[.8]"
           onChange={onChangeSearch}
         />
-        <button className="p-2 px-6 text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400">
+        <button
+          className="p-2 px-6 text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400"
+          onClick={onSubmitMusicReq}
+        >
           Request
         </button>
       </div>

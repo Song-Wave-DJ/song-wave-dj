@@ -1,6 +1,6 @@
 import { PieChart } from "./component/pie-chart";
 import { BarChart } from "./component/bar-chart";
-import { Button, Title } from "../../components";
+import { Button, Title } from "../../../components";
 
 export const Weeklydata = {
   labels: ["Monday", "Tuesday", "Wed", "Thu", "Firday", "Sturady", "Sunday"],

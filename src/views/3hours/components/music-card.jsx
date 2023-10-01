@@ -25,8 +25,9 @@ export const MusicCard = ({
         </div>
         <div>
           <h3 className="text-xs">{title}</h3>
-          <p className="text-gray-300 text-x">{artist}</p>
-          <p className="text-gray-300 text-x">{duration}</p>
+          <p className="text-gray-400 text-[12px]">{artist}</p>
+          <p className="text-gray-400 text-[12px]">{duration}</p>
+          <p className="text-gray-400 text-[12px]">Reqeust Time: {duration}</p>
         </div>
       </div>
       {status !== "Approve" ? (

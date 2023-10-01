@@ -7,7 +7,7 @@ export const Navigation = [
   {
     id: 2,
     label: "Menu",
-    path: "/menu",
+    path: "/category",
   },
   {
     id: 3,
@@ -47,6 +47,11 @@ export const DashboardNavigation = [
     label: "Menus",
     path: "/dashboard/menus",
   },
+  {
+    id: 2,
+    label: "Waiter",
+    path: "/dashboard/waiter",
+  },
 ];
 
 export const DJNavigation = [
@@ -66,7 +71,7 @@ export const MobileNavigation = [
   {
     id: 2,
     label: "Menu",
-    path: "/menu",
+    path: "/category",
   },
   {
     id: 3,

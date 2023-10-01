@@ -28,8 +28,9 @@ import Rating from "./rating";
 import { MenuCardLoader } from "./skeleton-loading";
 import { Naviagtion } from "./navigation";
 import { TextDescription } from "./text-description";
-
+import { NotFound } from "./not-found";
 export {
+  NotFound,
   TextDescription,
   Rating,
   Button,

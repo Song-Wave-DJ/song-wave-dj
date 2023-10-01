@@ -1,16 +1,15 @@
-import React from "react";
-
-import { Modal } from "../../components";
-import { NonVegIcon, VegIcon } from "../../assets";
+/* eslint-disable react/prop-types */
+import { NonVegIcon, VegIcon } from "../../../assets";
+import { Modal } from "../../../components";
 
 const ViewMenu = ({
-  id,
   name = "",
   category = "",
   price = 0,
   isVisible,
   handleCancelModal,
   description = "",
+  type,
 }) => {
   return (
     <>
@@ -31,11 +30,11 @@ const ViewMenu = ({
             <p className="text-lg">{category}</p>
             <div className="flex flex-wrap items-center gap-1">
               <img
-                src={"veg" === "veg" ? VegIcon : NonVegIcon}
+                src={type === "veg" ? VegIcon : NonVegIcon}
                 className="w-3 h-3 object-contain"
               />
               <span className="text-xs">
-                {"veg" === "veg" ? "Veg" : "Non-Veg"}
+                {type === "veg" ? "Veg" : "Non-Veg"}
               </span>
             </div>
             <p className="text-lg">&#x20B9;{price}</p>

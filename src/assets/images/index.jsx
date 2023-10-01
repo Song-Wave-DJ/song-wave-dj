@@ -30,8 +30,10 @@ import NonVegIcon from "./non-veg.png";
 import DrinkIcon from "./drink.png";
 import DuplicateIcon from "./duplicate.png";
 import FoodLoader from "./food-loading.gif";
+import NotFoundIcon from "./not-found.png";
 
 export {
+  NotFoundIcon,
   FoodLoader,
   DuplicateIcon,
   DrinkIcon,

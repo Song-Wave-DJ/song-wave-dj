@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { MobileNavigation, Navigation } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
@@ -45,7 +45,12 @@ export const Naviagtion = () => {
         <div className="">
           <ul className="flex flex-col  pl-6 gap-6">
             {Navigation.map((item) => (
-              <Link to={item.path} key={item.id} className="text-xs">
+              <Link
+                to={item.path}
+                key={item.id}
+                className="text-xs"
+                onClick={openDrawer}
+              >
                 {item.label}
               </Link>
             ))}

@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button as AndButton } from "antd";
 import { PlusOutlined } from "@ant-design/icons";
@@ -16,7 +17,7 @@ const Button = ({
       disabled={isLoading}
       htmlType={htmlType}
       onClick={onClick}
-      className={`bg-purpal flex !hover:bg-purpal justify-center font-sans items-center p-5 rounded-lg 
+      className={`bg-green-500 flex hover:bg-green-700 justify-center font-sans items-center p-5 rounded-lg 
       hover:opacity-60  hover:transition-all ${styles}`}
     >
       {icon && <PlusOutlined />}

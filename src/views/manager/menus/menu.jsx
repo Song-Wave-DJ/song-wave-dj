@@ -1,17 +1,10 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 
-import {
-  DeleteIcon,
-  EditIcon,
-  EmptyIcon,
-  NonVegIcon,
-  VegIcon,
-} from "../../assets";
-import { Button, Confirmation, Searching } from "../../components";
+import { Button, Confirmation, Searching } from "../../../components";
 import ViewMenu from "./view-menu";
-import { DashbordMenuCard } from "./dashboard-menu-card";
+import { MenuCard } from "./menu-card";
 import { AddDashbardMenu } from "./add-menu";
-import { Form } from "antd";
+import { EmptyIcon } from "../../../assets";
 
 const DummyData = [
   {
@@ -64,7 +57,7 @@ const DummyData = [
   },
 ];
 
-export const DashboardMenu = () => {
+export const Menus = () => {
   const [values, setValues] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -77,14 +70,12 @@ export const DashboardMenu = () => {
   });
   const [datas, setData] = useState(DummyData);
   // Hooks
-  const [form] = Form.useForm();
 
   const onCancel = () => {
     setValues(null);
-    setDeleteId(null);
   };
 
-  const onConfirm = () => onDelete();
+  const onConfirm = () => null;
 
   const onChange = (e) => {
     const query = e.target.value?.toLowerCase(); // Convert query to lowercase
@@ -217,7 +208,7 @@ export const DashboardMenu = () => {
       <div className="flex  flex-wrap justify-center gap-6 my-6">
         {datas.length > 0 ? (
           datas?.map((item) => (
-            <DashbordMenuCard
+            <MenuCard
               key={item.id}
               handleView={handleView}
               handleDelete={handleDelete}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { DJNavigation } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";

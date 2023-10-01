@@ -1,3 +1,4 @@
 import "./style.css";
 export * from "./navigation";
-export * from "./dashboard-navigation";
+export * from "./manager";
+export * from "./dj-user";
