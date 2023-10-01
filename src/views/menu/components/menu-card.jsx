@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 import { useMemo, useState } from "react";
-import { VegIcon } from "../../../assets";
-import ViewMenu from "../../dashboard-menu/view-menu";
+import { DrinkIcon, NonVegIcon, VegIcon } from "../../../assets";
+import ViewMenu from "../../manager/menus/view-menu";
 export const MenuCard = ({
   id,
   title,
@@ -9,7 +10,6 @@ export const MenuCard = ({
   handleAddCart,
   carts = [],
   handleRemoveToCart,
-  isFormDrink,
   menus,
   type,
 }) => {
@@ -28,15 +28,27 @@ export const MenuCard = ({
     setIsVisible(data);
   };
 
+  const renderIcon = useMemo(() => {
+    switch (type?.toLowerCase()) {
+      case "veg":
+        return VegIcon;
+      case "non-veg":
+        return NonVegIcon;
+      case "drink":
+        return DrinkIcon;
+      default:
+        return null;
+    }
+  }, [type]);
   return (
     <>
-      <div className="p-4 flex justify-between  w-full">
+      <div className="flex justify-between w-full">
         <div className="p-2">
-          {isFormDrink && (
-            <img src={VegIcon} className="w-4 h-4 object-contain" />
+          {renderIcon && (
+            <img src={renderIcon} className="w-4 h-4 object-contain" />
           )}
-          <h3 className="text-xs">{title}</h3>
-          <p className="text-x text-light">&#x20B9;{price}</p>
+          <h3 className="text-sm font-sans capitalize">{title}</h3>
+          <p className="text-sm text-light font-sans">&#x20B9;{price}</p>
         </div>
         <div className="flex justify-center items-center">
           {!isExistMenu ? (

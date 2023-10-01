@@ -1,29 +1,25 @@
-import React, { useState } from "react";
-import { DeleteIcon, EditIcon, ViewIcon } from "@/assets";
+import { useState } from "react";
 import {
-  Button,
   IconButton,
   Searching,
   TableComponent,
-  MyImage,
   Confirmation,
-} from "../../components";
-import { useNavigate } from "react-router-dom";
-import ModalComp from "../../components/modal";
-import { Summary } from "../category/components/summary";
+} from "@/components";
+import ModalComp from "@/components/modal";
+import { Summary } from "../../menu/components/summary";
 
 const dataSource = [
   {
     id: "12345678",
     table: 12,
     price: 1230,
-    createdAt: "12/12/2023",
+    createdAt: "12/12/2022 12:00",
     stauts: "Pending",
   },
   {
     id: "1678",
     table: 12,
-    price: 1230,
+    price: 900,
     createdAt: "12/12/2023",
     stauts: "Pending",
   },
@@ -36,7 +32,7 @@ const dataSource = [
   },
   {
     id: "134d2378",
-    table: 12,
+    table: 10,
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Pending",
@@ -46,7 +42,7 @@ const dataSource = [
     table: 12,
     price: 1230,
     createdAt: "12/12/2023",
-    stauts: "Pending",
+    stauts: "Accept",
   },
   {
     id: "12345673238",
@@ -73,30 +69,15 @@ const RenderColor = {
 export const Orders = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
+  const [data, setData] = useState(dataSource);
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
   };
 
-  const navigation = useNavigate();
-
-  const gotoEdit = (record) => () => {};
-
-  const addMenu = () => {};
-
-  const handleDelete = (value) => () => {};
-
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
-
-  const gotoView = (record) => () => {};
-
-  const onCancel = () => {
-    setDeletedItem(null);
-  };
-
-  const onConfirm = () => {};
 
   const columns = [
     {
@@ -139,7 +120,7 @@ export const Orders = () => {
       title: "Payment Status",
       dataIndex: "address",
       key: "Action",
-      render: (_, record) => (
+      render: () => (
         <div className="flex flex-wrap">
           <IconButton color="#EBF7FC" onClick={confirmationOpen}>
             <span className="text-green text-xs">Received</span>
@@ -189,25 +170,44 @@ export const Orders = () => {
     },
   ];
 
-  const handleConfirmationOpen = () => {};
-
-  const onChange = () => null;
+  const onChange = ({ target }) => {
+    const { value } = target;
+    if (value) {
+      setData((prev) => {
+        const prevObj = structuredClone(prev);
+        const filterData = prevObj.filter((item) => {
+          const queryTabel = item.table.toString();
+          const queryPrice = item.price.toString();
+          const queryStatus = item.stauts?.toLowerCase();
+          const query = value.toLowerCase();
+          return (
+            queryTabel.includes(query) ||
+            queryStatus.includes(query) ||
+            queryPrice.includes(query)
+          );
+        });
+        return filterData;
+      });
+    } else {
+      setData(dataSource);
+    }
+  };
 
   return (
-    <main className="mx-4 p-4 rounded-md bg-white">
+    <main className="mx-4 p-4">
       <div className="flex justify-between mb-4 items-center">
         <p className="bg-[#FAFAFA]  px-4 py-2 rounded-sm text-xs">
           Total orders items{"   "} <span className="text-[#3CB5E5]">0</span>
         </p>
 
-        <Searching onChange={onChange} styles="flex-[.2]" />
+        <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
       </div>
       <TableComponent
         loading={false}
         columns={columns}
-        dataSource={dataSource || []}
+        dataSource={data || []}
         total={10}
-        pageSize={5}
+        pageSize={10}
       />
 
       <ModalComp

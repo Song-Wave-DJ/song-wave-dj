@@ -13,16 +13,19 @@ const dataSource = [
     id: "12345678",
     name: "New Songs",
     createdAt: "12/12/2023",
+    time: "4:22 min",
   },
   {
     id: "1678",
     name: "Comming Songs",
     createdAt: "12/12/2023",
+    time: "4:22 min",
   },
   {
     id: "df12378",
     name: "Tum hi ho ",
     createdAt: "12/12/2023",
+    time: "4:22 min",
   },
 ];
 
@@ -66,6 +69,11 @@ export const DJUser = () => {
       title: "Music Name",
       dataIndex: "name",
       key: "name",
+    },
+    {
+      title: "Request Time",
+      dataIndex: "time",
+      key: "time",
     },
     {
       title: "Date & Time",

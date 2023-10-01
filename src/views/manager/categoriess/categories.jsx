@@ -1,13 +1,12 @@
-import React, { useContext, useState } from "react";
+import { useState } from "react";
 
-import { DeleteIcon, EditIcon } from "../../assets";
 import {
   Button,
   Confirmation,
   IconButton,
   Searching,
   TableComponent,
-} from "../../components";
+} from "../../../components";
 import AddCategory from "./add";
 
 export const DashboardCategories = () => {

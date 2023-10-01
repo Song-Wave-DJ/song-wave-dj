@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { DashboardNavigation } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 import DrawerComp from "../drawer";
 
-export const DashboardNaviagtion = () => {
+export const ManagerNaviagtion = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDrawer = () => {

@@ -1,15 +1,14 @@
 import { Form } from "antd";
-import React, { useMemo } from "react";
+import { useMemo } from "react";
 import {
   TextInput,
-  Select,
   Switch,
   TextDescription,
   Button,
   Modal,
   Title,
   ImageUploader,
-} from "../../components";
+} from "../../../components";
 import { fieldSet } from "./fieldsData";
 import "./style.css";
 

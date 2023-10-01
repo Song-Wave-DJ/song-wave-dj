@@ -1,20 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import Layout from "../views/layout";
 import {
-  Categoies,
+  Menu,
   Communities,
-  DashboardMenu,
+  Dashboard,
+  DashboardCategories,
+  Menus,
   Home,
   Orders,
   Polls,
   ThreeHours,
+  Waiters,
+  SignUp,
+  Login,
+  Category,
 } from "../views";
-import Login from "../views/auth/login/login";
-import { Dashboard } from "../views/dashboard";
 import { DashboardLayout } from "../views/layout/dashboard-layout";
-import { DashboardCategories } from "../views/categoriess/categories";
 import { DJUser } from "../views/dj-user";
 import { DJUserLayout } from "../views/layout/dj-user-layout";
+import { NotFound } from "../components";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +30,7 @@ const router = createBrowserRouter([
         element: <Home />,
       },
     ],
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
   },
   {
     path: "/three-hours",
@@ -37,7 +41,7 @@ const router = createBrowserRouter([
         element: <ThreeHours />,
       },
     ],
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
   },
   {
     path: "/menu",
@@ -45,10 +49,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Categoies />,
+        element: <Menu />,
       },
     ],
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
   },
   {
     path: "/polls",
@@ -59,7 +63,18 @@ const router = createBrowserRouter([
         element: <Polls />,
       },
     ],
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/category",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <Category />,
+      },
+    ],
+    errorElement: <NotFound />,
   },
   {
     path: "/communities",
@@ -70,13 +85,19 @@ const router = createBrowserRouter([
         element: <Communities />,
       },
     ],
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
   },
   {
     path: "/login",
     element: <Login />,
-    errorElement: <p>Error</p>,
+    errorElement: <NotFound />,
   },
+  {
+    path: "/sign-up",
+    element: <SignUp />,
+    errorElement: <NotFound />,
+  },
+
   {
     path: "/dashboard",
     element: (
@@ -111,13 +132,22 @@ const router = createBrowserRouter([
         path: "menus",
         children: [
           {
-            element: <DashboardMenu />,
+            element: <Menus />,
+            index: true,
+          },
+        ],
+      },
+      {
+        path: "waiter",
+        children: [
+          {
+            element: <Waiters />,
             index: true,
           },
         ],
       },
     ],
-    errorElement: <Error />,
+    errorElement: <NotFound />,
   },
   {
     path: "music-list",
@@ -128,7 +158,7 @@ const router = createBrowserRouter([
         element: <DJUser />,
       },
     ],
-    errorElement: <Error />,
+    errorElement: <NotFound />,
   },
 ]);
 
