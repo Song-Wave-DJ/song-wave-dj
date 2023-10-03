@@ -47,52 +47,6 @@ export const Waiters = () => {
     });
   };
 
-  const columns = [
-    {
-      title: "S.No.",
-      dataIndex: "id",
-      key: "id",
-      render: (_, record, index) => <p>{index + 1}</p>,
-    },
-    {
-      title: "name",
-      dataIndex: "name",
-      key: "name",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-    },
-    {
-      title: "Password",
-      dataIndex: "password",
-      key: "password",
-    },
-
-    {
-      title: "Date",
-      dataIndex: "createdAt",
-      key: "createdAt",
-    },
-
-    {
-      title: "Action",
-      dataIndex: "address",
-      key: "Action",
-      render: (_, { id }) => (
-        <div className="flex flex-wrap">
-          <div
-            className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
-            onClick={() => onDeleteWaiter(id)}
-          >
-            <DeleteIcon />
-          </div>
-        </div>
-      ),
-    },
-  ];
-
   const onChange = ({ target }) => {
     const { value } = target;
     if (value) {
@@ -135,6 +89,52 @@ export const Waiters = () => {
   const onAddWaiter = () => {
     setIsModalOpen(true);
   };
+
+  const columns = [
+    {
+      title: "S.No.",
+      dataIndex: "id",
+      key: "id",
+      render: (_, record, index) => <p>{index + 1}</p>,
+    },
+    {
+      title: "name",
+      dataIndex: "name",
+      key: "name",
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+      key: "email",
+    },
+    {
+      title: "Password",
+      dataIndex: "password",
+      key: "password",
+    },
+
+    {
+      title: "Date",
+      dataIndex: "createdAt",
+      key: "createdAt",
+    },
+
+    {
+      title: "Action",
+      dataIndex: "address",
+      key: "Action",
+      render: (_, { id }) => (
+        <div className="flex flex-wrap">
+          <div
+            className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-danger"
+            onClick={() => onDeleteWaiter(id)}
+          >
+            <DeleteIcon color="#fff" />
+          </div>
+        </div>
+      ),
+    },
+  ];
 
   return (
     <main className="mx-4 p-4">

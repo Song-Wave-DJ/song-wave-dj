@@ -19,7 +19,6 @@ export default {
         danger: "#FF4B4B",
         pending: "#f8d75dc1",
         primary: {
-          // blue color
           DEFAULT: "#43D396",
           90: "#26CBED",
           80: "#9AEEFF",

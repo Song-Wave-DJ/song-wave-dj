@@ -6,10 +6,12 @@ import DrawerComp from "../drawer";
 
 export const AdminNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isActiveUrl, setIsActiveUrl] = useState("/admin-dashboard");
 
   const openDrawer = () => {
     setIsOpen((prev) => !prev);
   };
+
   return (
     <div className="py-2 px-4 mb-1 shadow-lg gap-2 items-center flex justify-between">
       <Link to="/admin-dashboard">
@@ -19,9 +21,13 @@ export const AdminNavigation = () => {
         <ul className="flex justify-center gap-6">
           {AdminNavigations.map((item) => (
             <Link
+              onClick={() => setIsActiveUrl(item.path)}
               to={item.path}
               key={item.id}
-              className="text-lg hidden md:flex hover:underline"
+              className="text-lg hidden md:flex hover:underline hover:text-primary"
+              style={{
+                color: isActiveUrl === item.path ? "#43D396" : "",
+              }}
             >
               {item.label}
             </Link>
