@@ -7,6 +7,7 @@ import {
   Title,
   TextInput,
   TextPassword,
+  Select,
 } from "@/components";
 import ModalComp from "@/components/modal";
 import { Form } from "antd";
@@ -18,12 +19,13 @@ const dataSource = [
     id: "12345678",
     name: "John Deo",
     email: "john@gmail.com",
+    userType: "DJUSER",
     password: "123456788",
     createdAt: "30-09-2023",
   },
 ];
 
-export const Waiters = () => {
+export const Users = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
@@ -69,6 +71,11 @@ export const Waiters = () => {
       dataIndex: "password",
       key: "password",
     },
+    {
+      title: "UserType",
+      dataIndex: "userType",
+      key: "userType",
+    },
 
     {
       title: "Date",
@@ -81,7 +88,7 @@ export const Waiters = () => {
       dataIndex: "address",
       key: "Action",
       render: (_, { id }) => (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-3">
           <div
             className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
             onClick={() => onDeleteWaiter(id)}
@@ -93,16 +100,21 @@ export const Waiters = () => {
     },
   ];
 
-  const onChange = ({ target }) => {
+  const onChangeSearch = ({ target }) => {
     const { value } = target;
     if (value) {
       setData((prev) => {
         const prevObj = structuredClone(prev);
         const filterData = prevObj.filter((item) => {
-          const queryTabel = item.name.toString();
-          const queryPrice = item.email.toString();
+          const queryName = item.name.toLowerCase();
+          const queryEmail = item.email.toLowerCase();
+          const queryuserType = item.userType.toLowerCase();
           const query = value.toLowerCase();
-          return queryTabel.includes(query) || queryPrice.includes(query);
+          return (
+            queryName.includes(query) ||
+            queryEmail.includes(query) ||
+            queryuserType.includes(query)
+          );
         });
         return filterData;
       });
@@ -132,7 +144,7 @@ export const Waiters = () => {
     setIsModalOpen(false);
   };
 
-  const onAddWaiter = () => {
+  const onAddUsers = () => {
     setIsModalOpen(true);
   };
 
@@ -140,17 +152,20 @@ export const Waiters = () => {
     <main className="mx-4 p-4">
       <div className="flex justify-between mb-4 items-center">
         <p className="bg-[#FAFAFA] px-4 py-2 rounded-sm text-xs">
-          Total Waiter{" "}
+          Total Users{" "}
           <span className="text-[#3CB5E5] text-lg">{data?.length}</span>
         </p>
         <div className="flex flex-1 justify-end gap-4">
           <Button
             isLoading={false}
-            label="Add Waiter"
+            label="Add Users"
             styles="rounded-lg hover:"
-            onClick={onAddWaiter}
+            onClick={onAddUsers}
           />
-          <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
+          <Searching
+            onChange={onChangeSearch}
+            styles="flex-[.9] md:flex-[.2] py-2"
+          />
         </div>
       </div>
       <TableComponent
@@ -163,9 +178,9 @@ export const Waiters = () => {
 
       <ModalComp open={isModalOpen} handleCancel={handleCancel}>
         <div className="p-4 w-full">
-          <Title label="Add New Waiter"></Title>
+          <Title label="Add New Users"></Title>
           <Form
-            name="add-waiter"
+            name="add-users"
             requiredMark={false}
             layout="vertical"
             onFinish={onFinish}
@@ -174,8 +189,25 @@ export const Waiters = () => {
             <TextInput name="name" {...fieldSet.name} />
             <TextInput name="email" {...fieldSet.email} />
             <TextPassword {...fieldSet.password} />
+            <Select
+              options={[
+                {
+                  label: "Admin",
+                  value: "ADMIN",
+                },
+                {
+                  label: "DJ User",
+                  value: "DJUSER",
+                },
+                {
+                  label: "User",
+                  value: "USER",
+                },
+              ]}
+              {...fieldSet.userType}
+            />
             <Form.Item>
-              <div className="flex justify-between  mt-4 gap-4 w-full">
+              <div className="flex justify-between  mt-8 gap-4 w-full">
                 <Button
                   htmlType="button"
                   onClick={handleCancel}

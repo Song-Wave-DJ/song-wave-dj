@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import { Select } from "antd";
-import React from "react";
 
 const Dropdown = ({
   onChange,
@@ -7,6 +7,7 @@ const Dropdown = ({
   OPTIONS = [],
   selectedItems,
   width = 250,
+  optionalClassName,
 }) => {
   return (
     <Select
@@ -16,7 +17,7 @@ const Dropdown = ({
       style={{
         width: width,
       }}
-      className="mx-4 py-1 w-full"
+      className={`mx-4 py-1 w-full ${optionalClassName}`}
       options={OPTIONS.filter((o) => !selectedItems.includes(o)).map(
         (item) => ({
           value: item,

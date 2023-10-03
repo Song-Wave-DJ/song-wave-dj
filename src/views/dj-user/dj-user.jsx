@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import { DeleteIcon, EditIcon, ViewIcon } from "@/assets";
+import { useState } from "react";
 import {
   IconButton,
   Searching,
   TableComponent,
   Confirmation,
-} from "../../components";
-import { useNavigate } from "react-router-dom";
+} from "@/components";
 
 const dataSource = [
   {
@@ -29,34 +27,12 @@ const dataSource = [
   },
 ];
 
-const RenderColor = {
-  Accept: "#00BC00",
-  Pending: "#FFA200",
-  Reject: "#840000",
-};
-
 export const DJUser = () => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-
-  const navigation = useNavigate();
-
-  const gotoEdit = (record) => () => {};
-
-  const addMenu = () => {};
-
-  const handleDelete = (value) => () => {};
 
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
-
-  const gotoView = (record) => () => {};
-
-  const onCancel = () => {
-    setDeletedItem(null);
-  };
-
-  const onConfirm = () => {};
 
   const columns = [
     {
@@ -98,18 +74,16 @@ export const DJUser = () => {
     },
   ];
 
-  const handleConfirmationOpen = () => {};
-
   const onChange = () => null;
 
   return (
-    <main className="mx-4 p-4 rounded-md bg-white">
+    <main className="mx-4 p-4 my-6 bg-white">
       <div className="flex justify-between mb-4 items-center">
         <p className="bg-[#FAFAFA]  px-4 py-2 rounded-sm text-xs">
           Total request{"   "} <span className="text-[#3CB5E5]">3</span>
         </p>
 
-        <Searching onChange={onChange} styles="flex-[.2]" />
+        <Searching onChange={onChange} styles="flex-[.2] py-3" />
       </div>
       <TableComponent
         loading={false}
