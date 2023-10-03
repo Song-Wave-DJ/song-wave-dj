@@ -7,7 +7,7 @@ function IconButton({ children, color, onClick }) {
       style={{
         backgroundColor: color,
       }}
-      className={`px-2 py-1 bg-[${color}] hover:cursor-pointer m-2 rounded-lg`}
+      className={`px-2 bg-[${color}] hover:cursor-pointer m-2 rounded-lg`}
     >
       {children}
     </div>

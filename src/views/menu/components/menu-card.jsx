@@ -40,6 +40,9 @@ export const MenuCard = ({
         return null;
     }
   }, [type]);
+
+  console.log(isVisibleData);
+
   return (
     <>
       <div className="flex justify-between w-full">
@@ -56,12 +59,12 @@ export const MenuCard = ({
               <img
                 src={url}
                 alt=""
-                className=" rounded-lg w-full h-full cursor-pointer"
+                className="rounded-lg w-full h-full cursor-pointer"
                 onClick={() => handleView(id)}
               />
               <button
-                className="px-3 py-1 absolute top-16 left-5 
-                text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400"
+                className="px-3 py-0 absolute text-x bottom-[-10px] left-5 
+                bg-primary rounded-lg text-white"
                 onClick={handleAddCart({ id, title, price, type })}
               >
                 Add
@@ -71,7 +74,8 @@ export const MenuCard = ({
             <div className="relative w-20 h-20 shadow-md shadow-gray-900  rounded-lg">
               <img src={url} alt="" className=" rounded-lg w-full h-full" />
               <button
-                className="text-x text-center absolute top-16  left-3 px-2 py-1 text-red-100 rounded-lg bg-gradient-to-r from-red-600 to-red-400"
+                className="px-3 py-0 absolute text-x bottom-[-10px] left-2 
+                bg-danger rounded-lg text-white"
                 onClick={handleRemoveToCart({ id })}
               >
                 Remove
@@ -81,9 +85,10 @@ export const MenuCard = ({
         </div>
       </div>
       <ViewMenu
-        isVisibleData={!!isVisibleData}
+        isVisible={!!isVisibleData}
         handleCancelModal={handleCancelModal}
         {...isVisibleData}
+        category={title}
       />
     </>
   );

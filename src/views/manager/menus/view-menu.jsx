@@ -3,12 +3,13 @@ import { NonVegIcon, VegIcon } from "../../../assets";
 import { Modal } from "../../../components";
 
 const ViewMenu = ({
+  title = "",
   name = "",
   category = "",
   price = 0,
   isVisible,
   handleCancelModal,
-  description = "",
+  description = "I respectfully disagree - component state is an excellent place to store data that is specific to the UI of a component, that has no relevance to the app as a whole, for example. Without being able to potentially pass default values as props in some instances,",
   type,
 }) => {
   return (
@@ -26,7 +27,7 @@ const ViewMenu = ({
           </div>
           {/* desc */}
           <div className="px-4 py-2 text-lg flex flex-col gap-1 items-center">
-            <h1 className="text-xl text-center">{name}</h1>
+            <h1 className="text-xl text-center">{name ?? title}</h1>
             <p className="text-lg">{category}</p>
             <div className="flex flex-wrap items-center gap-1">
               <img
