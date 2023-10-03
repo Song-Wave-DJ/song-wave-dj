@@ -1,24 +1,28 @@
-import { useState } from "react";
 import {
+  Button,
+  Confirmation,
   IconButton,
   Searching,
   TableComponent,
-  Confirmation,
-  Title,
-  Button,
 } from "@/components";
-import ModalComp from "@/components/modal";
-import { Form, TimePicker } from "antd";
+import { useState } from "react";
+import { DeleteIcon, EditIcon } from "../../assets";
 import { RenderColor } from "../admin/constanst";
+import { AddNewMusic } from "./component/add-new-music";
+import { AddWaitingTime } from "./component/add-waiting-time";
 import "./style.css";
+
 const dataSource = [
   {
     id: "12345678",
     name: "Example",
     duration: "4:33",
+    artist: "Example",
+
     createdAt: "12/12/2022 12:00",
     stauts: "Pending",
     waitingTime: "",
+    thumbnail: "",
   },
   {
     id: "1678",
@@ -27,6 +31,8 @@ const dataSource = [
     createdAt: "12/12/2023",
     stauts: "Approved",
     waitingTime: "",
+    artist: "Example",
+    thumbnail: "",
   },
   {
     id: "df12378",
@@ -35,6 +41,8 @@ const dataSource = [
     createdAt: "12/12/2023",
     stauts: "Rejected",
     waitingTime: "",
+    artist: "Example",
+    thumbnail: "",
   },
 ];
 
@@ -48,6 +56,9 @@ export const DJUser = () => {
     time: "",
   });
   const [ids, setIds] = useState("");
+  const [editData, setEditData] = useState(null);
+
+  const [isAdd, isSetAdd] = useState(false);
 
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
@@ -120,9 +131,30 @@ export const DJUser = () => {
     handleCancel();
   };
 
+  const onAddNewMusic = () => {
+    isSetAdd(true);
+  };
+
+  const onDeleteMusic = (id) => {
+    setData((prev) => {
+      const prevObj = structuredClone(prev);
+      const idx = prevObj?.findIndex((el) => el.id === id);
+      if (idx !== -1) {
+        prevObj.splice(idx, 1);
+      }
+      return prevObj;
+    });
+  };
+
+  const onEditMusic = (id) => {
+    const singleData = data.find((el) => el.id === id);
+    setEditData(singleData);
+    isSetAdd(true);
+  };
+
   const columns = [
     {
-      title: "Request Id",
+      title: "Thumnail",
       dataIndex: "id",
       key: "id",
     },
@@ -138,6 +170,11 @@ export const DJUser = () => {
       key: "duration",
     },
     {
+      title: "Artist",
+      dataIndex: "artist",
+      key: "artist",
+    },
+    {
       title: "Date & Time",
       dataIndex: "createdAt",
       key: "createdAt",
@@ -147,7 +184,7 @@ export const DJUser = () => {
       dataIndex: "waitingTime",
       key: "waitingTime",
       render: (_, { waitingTime }) => (
-        <p className="text-lg">{waitingTime ? waitingTime : "--"}</p>
+        <p className="text-lg ">{waitingTime ? waitingTime : "--"}</p>
       ),
     },
     {
@@ -156,7 +193,7 @@ export const DJUser = () => {
       key: "stauts",
       render: (_, { stauts }) => (
         <p
-          className="text-lg"
+          className="text-lg "
           style={{
             color: RenderColor[stauts],
           }}
@@ -165,15 +202,16 @@ export const DJUser = () => {
         </p>
       ),
     },
-
     {
-      title: "Action",
-      dataIndex: "address",
+      title: "Request Action",
+      dataIndex: "request",
       key: "Action",
       render: (_, { id }) => (
         <div className="flex flex-wrap">
           <IconButton color="#876CFE" onClick={() => onSetWaitingTime(id)}>
-            <span className="text-x text-white">Set Wating Time</span>
+            <span className="text-x text-white whitespace-nowrap">
+              Set Wating Time
+            </span>
           </IconButton>
           <IconButton color="#43D396" onClick={confirmationOpen}>
             <span className="text-white text-x">Accept</span>
@@ -184,15 +222,45 @@ export const DJUser = () => {
         </div>
       ),
     },
+    {
+      title: "Action",
+      dataIndex: "address",
+      key: "Action",
+      render: (_, { id }) => (
+        <div className="flex flex-wrap gap-4">
+          <div
+            className="bg-[#876CFE] cursor-pointer w-8 h-8 flex items-center justify-center rounded-full"
+            onClick={() => onEditMusic(id)}
+          >
+            <EditIcon color="#fff" />
+          </div>
+
+          <div
+            className="bg-danger cursor-pointer w-8 h-8 flex items-center justify-center rounded-full"
+            onClick={() => onDeleteMusic(id)}
+          >
+            <DeleteIcon color="#fff" />
+          </div>
+        </div>
+      ),
+    },
   ];
+
   return (
     <main className="mx-4 p-4">
-      <div className="flex justify-between mb-4 items-center">
-        <p className="bg-[#FAFAFA]  px-4 py-2 rounded-sm text-xs">
+      <div className="flex md:flex-row flex-col gap-4 justify-between mb-4 items-center">
+        <p className="bg-[#FAFAFA] px-4 py-2 rounded-sm text-xs">
           Total Music {"   "} <span className="text-[#3CB5E5]">0</span>
         </p>
-
-        <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
+        <div className="flex gap-4 flex-1 md:flex-[.4]">
+          <Button
+            isLoading={false}
+            label="Add Music"
+            styles="w-3/2"
+            onClick={onAddNewMusic}
+          />
+          <Searching onChange={onChange} styles="py-2" />
+        </div>
       </div>
       <TableComponent
         loading={false}
@@ -210,43 +278,21 @@ export const DJUser = () => {
       >
         <p className="text-sxx text-[#717171]">Are you sure?</p>
       </Confirmation>
-
-      <ModalComp open={isModalOpen} handleCancel={handleCancel}>
-        <>
-          <Title label="Set Waiting Time">
-            <p className="text-x my-4">
-              This to ChangeTimeime wait before your music not approved
-            </p>
-          </Title>
-          <Form classname="my-4" layout="vertical">
-            <TimePicker
-              open={open}
-              className="w-full py-2"
-              onOpenChange={onOpenChange}
-              onChange={onChangeTime}
-              use12Hours
-              autoFocus
-              value={times?.time}
-            />
-
-            <div className="grid grid-cols-1 mt-4  md:grid-cols-2 lg:grid-cols-2 gap-6">
-              <Button
-                isLoading={false}
-                label="Cancel"
-                styles="text-x text-center text-red-100 rounded-lg bg-[#FF4B4B]"
-                htmlType="button"
-                onClick={handleCancel}
-              />
-              <Button
-                isLoading={false}
-                label="Set"
-                styles="bg-[#43d396]  flex-1"
-                onClick={onSaveTime}
-              />
-            </div>
-          </Form>
-        </>
-      </ModalComp>
+      <AddWaitingTime
+        isModalOpen={isModalOpen}
+        handleCancel={handleCancel}
+        onOpenChange={onOpenChange}
+        onChangeTime={onChangeTime}
+        times={times}
+        onSaveTime={onSaveTime}
+        open={open}
+      />
+      <AddNewMusic
+        editData={editData}
+        isAdd={isAdd}
+        isSetAdd={isSetAdd}
+        setEditData={setEditData}
+      />
     </main>
   );
 };

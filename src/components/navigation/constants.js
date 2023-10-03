@@ -57,7 +57,7 @@ export const DashboardNavigation = [
 export const DJNavigation = [
   {
     id: 1,
-    label: "DJ User",
+    label: "Music",
     path: "/music-list",
   },
 ];

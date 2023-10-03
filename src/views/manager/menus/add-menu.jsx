@@ -8,7 +8,7 @@ import {
   Modal,
   Title,
   ImageUploader,
-} from "../../../components";
+} from "@/components";
 import { fieldSet } from "./fieldsData";
 import "./style.css";
 

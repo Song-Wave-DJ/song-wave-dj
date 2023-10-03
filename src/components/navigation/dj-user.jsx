@@ -1,21 +1,21 @@
-import { useState } from "react";
-import { DJNavigation } from "./constants";
+// import { useState } from "react";
+// import { DJNavigation } from "./constants";
 import { Link } from "react-router-dom";
-import { MenuOutlined } from "@ant-design/icons";
-import DrawerComp from "../drawer";
+// import { MenuOutlined } from "@ant-design/icons";
+// import DrawerComp from "../drawer";
 
 export const DJUserNaviagtion = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  // const [isOpen, setIsOpen] = useState(false);
 
-  const openDrawer = () => {
-    setIsOpen((prev) => !prev);
-  };
+  // const openDrawer = () => {
+  //   setIsOpen((prev) => !prev);
+  // };
   return (
     <div className="py-2 px-4 mb-1 shadow-lg gap-2 items-center flex justify-between">
       <Link to="/music-list">
-        <h1 className="text-2xl text-center py-2">Song Wave</h1>{" "}
+        <h1 className="text-2xl text-center py-2">Song Wave</h1>
       </Link>
-      <div className="py-3">
+      {/* <div className="py-3">
         <ul className="flex justify-center gap-6">
           {DJNavigation.map((item) => (
             <Link
@@ -46,7 +46,7 @@ export const DJUserNaviagtion = () => {
             </ul>
           </div>
         </DrawerComp>
-      </div>
+      </div> */}
     </div>
   );
 };

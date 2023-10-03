@@ -1,11 +1,10 @@
-import React from "react";
-
-function IconButton({ children, color, onClick }) {
+function IconButton({ children, color, onClick, optionalStyles = {} }) {
   return (
     <div
       onClick={onClick}
       style={{
         backgroundColor: color,
+        ...optionalStyles,
       }}
       className={`px-2 bg-[${color}] hover:cursor-pointer m-2 rounded-lg`}
     >
