@@ -43,12 +43,12 @@ export const DashboardNavigation = [
     path: "/dashboard/orders",
   },
   {
-    id: 4,
+    id: 3,
     label: "Menus",
     path: "/dashboard/menus",
   },
   {
-    id: 2,
+    id: 4,
     label: "Waiter",
     path: "/dashboard/waiter",
   },
@@ -59,6 +59,35 @@ export const DJNavigation = [
     id: 1,
     label: "DJ User",
     path: "/music-list",
+  },
+];
+
+export const AdminNavigation = [
+  {
+    id: 1,
+    label: "Dashbaord",
+    path: "/admin-dashboard",
+  },
+
+  {
+    id: 3,
+    label: "Managers",
+    path: "/admin-dashboard/mangers",
+  },
+  {
+    id: 2,
+    label: "Orders",
+    path: "/admin-dashboard/orders",
+  },
+  {
+    id: 4,
+    label: "Music",
+    path: "/admin-dashboard/musics",
+  },
+  {
+    id: 5,
+    label: "Users",
+    path: "/admin-dashboard/users",
   },
 ];
 

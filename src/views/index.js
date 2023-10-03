@@ -7,3 +7,4 @@ export * from "./menu";
 export * from "./manager";
 export * from "./auth";
 export * from "./category";
+export * from "./admin";

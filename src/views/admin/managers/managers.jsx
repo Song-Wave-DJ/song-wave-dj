@@ -12,6 +12,8 @@ import ModalComp from "@/components/modal";
 import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
 import { DeleteIcon } from "@/assets";
+import { Link } from "react-router-dom";
+import { RightOutlined } from "@ant-design/icons";
 
 const dataSource = [
   {
@@ -23,7 +25,7 @@ const dataSource = [
   },
 ];
 
-export const Waiters = () => {
+export const AdminManagers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
@@ -81,13 +83,19 @@ export const Waiters = () => {
       dataIndex: "address",
       key: "Action",
       render: (_, { id }) => (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-3">
           <div
             className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
             onClick={() => onDeleteWaiter(id)}
           >
             <DeleteIcon />
           </div>
+          <Link
+            className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
+            to="/admin-dashboard/mangers/23"
+          >
+            <RightOutlined />
+          </Link>
         </div>
       ),
     },
@@ -140,13 +148,13 @@ export const Waiters = () => {
     <main className="mx-4 p-4">
       <div className="flex justify-between mb-4 items-center">
         <p className="bg-[#FAFAFA] px-4 py-2 rounded-sm text-xs">
-          Total Waiter{" "}
+          Total Managers{" "}
           <span className="text-[#3CB5E5] text-lg">{data?.length}</span>
         </p>
         <div className="flex flex-1 justify-end gap-4">
           <Button
             isLoading={false}
-            label="Add Waiter"
+            label="Add Manager"
             styles="rounded-lg hover:"
             onClick={onAddWaiter}
           />
@@ -163,9 +171,9 @@ export const Waiters = () => {
 
       <ModalComp open={isModalOpen} handleCancel={handleCancel}>
         <div className="p-4 w-full">
-          <Title label="Add New Waiter"></Title>
+          <Title label="Add New Manager"></Title>
           <Form
-            name="add-waiter"
+            name="add-manager"
             requiredMark={false}
             layout="vertical"
             onFinish={onFinish}

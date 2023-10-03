@@ -1,15 +1,14 @@
 import BgLogo from "./bg-logo.png";
 import Logo from "./logo.png";
 import LockIcon from "./lock.png";
-import OrderImg from "./order.png";
-import CategoryImg from "./category.png";
+import OrderIconss from "./order.png";
+import CategoryIcon from "./category.png";
 import EmployeeImg from "./employee.png";
-import MenuImg from "./menu.png";
+import MenuIcon from "./menu.png";
 import WarningIcon from "./warning.png";
 import ImageIcon from "./image.png";
 import WavingHand from "./wavinghand.png";
 import Pin from "./pin.png";
-import Dish1 from "./Spaghetti carbonara.png";
 import AddIcon from "./addicon.png";
 import Staff from "./staff.png";
 import ShoppingBag from "./shoppingBag.png";
@@ -31,8 +30,21 @@ import DrinkIcon from "./drink.png";
 import DuplicateIcon from "./duplicate.png";
 import FoodLoader from "./food-loading.gif";
 import NotFoundIcon from "./not-found.png";
+import ApprovedIcon from "./approved.png";
+import HandIcon from "./hand.png";
+import RequestIcon from "./request.png";
+import FeedbackIcon from "./feedback.png";
+import UserIcon from "./user.png";
 
 export {
+  UserIcon,
+  FeedbackIcon,
+  ApprovedIcon,
+  HandIcon,
+  RequestIcon,
+  MenuIcon,
+  OrderIconss,
+  CategoryIcon,
   NotFoundIcon,
   FoodLoader,
   DuplicateIcon,
@@ -51,15 +63,11 @@ export {
   BgLogo,
   Logo,
   LockIcon,
-  OrderImg,
-  CategoryImg,
   EmployeeImg,
-  MenuImg,
   WarningIcon,
   ImageIcon,
   WavingHand,
   Pin,
-  Dish1,
   AddIcon,
   Staff,
   ShoppingBag,

@@ -14,8 +14,8 @@ export const Naviagtion = () => {
   return (
     <div className="bg-black pb-2">
       <Link to="/">
-        <h1 className="text-white text-3xl text-center py-2">Song Wave</h1>{" "}
-      </Link>{" "}
+        <h1 className="text-white text-3xl text-center py-2">Song Wave</h1>
+      </Link>
       {/* Naviagtion */}
       <div className="sm:hidden block">
         <ul className="flex justify-center py-2 gap-6">

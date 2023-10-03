@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { DJNavigation } from "./constants";
+import { AdminNavigation as AdminNavigations } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 import DrawerComp from "../drawer";
 
-export const DJUserNaviagtion = () => {
+export const AdminNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDrawer = () => {
@@ -12,12 +12,12 @@ export const DJUserNaviagtion = () => {
   };
   return (
     <div className="py-2 px-4 mb-1 shadow-lg gap-2 items-center flex justify-between">
-      <Link to="/music-list">
-        <h1 className="text-2xl text-center py-2">Song Wave</h1>{" "}
+      <Link to="/admin-dashboard">
+        <h1 className="text-2xl text-center py-2">Song Wave</h1>
       </Link>
       <div className="py-3">
         <ul className="flex justify-center gap-6">
-          {DJNavigation.map((item) => (
+          {AdminNavigations.map((item) => (
             <Link
               to={item.path}
               key={item.id}
@@ -33,7 +33,7 @@ export const DJUserNaviagtion = () => {
         <DrawerComp width={300} showDrawer={openDrawer} open={isOpen}>
           <div className="">
             <ul className="flex flex-col  pl-6 gap-6">
-              {DJNavigation.map((item) => (
+              {AdminNavigations.map((item) => (
                 <Link
                   to={item.path}
                   key={item.id}

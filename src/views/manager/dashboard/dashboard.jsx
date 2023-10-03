@@ -100,7 +100,7 @@ const MonthlyLabels = [
 
 export const Dashboard = () => {
   return (
-    <div className="p-4">
+    <div className="bg-[#F7F8FB] p-8">
       <Title label="Category" styles="px-2" />
       <div className="p-4 flex gap-6 flex-wrap">
         <div className="m-auto md:m-1 w-[440px] min-h-96 flex justify-center  shadow-lg hover:shadow-xl p-4 rounded border-red-500">
@@ -134,28 +134,28 @@ export const Dashboard = () => {
         </div>
       </div>
 
-      {/* Revenus */}
-      <Title label="Revenus" styles="px-2" />
+      {/* Revenue */}
+      <Title label="Revenue" styles="px-2" />
       <div className="p-4 flex gap-6 flex-wrap">
         <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
           <BarChart
-            label="Revenus"
-            title="Daily Revenus"
+            label="Revenue"
+            title="Daily Revenue"
             labels={DailyLabels}
           />
         </div>
         <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
           <BarChart
-            label="Revenus"
-            title="Weekly Revenus"
+            label="Revenue"
+            title="Weekly Revenue"
             labels={WeeklyLabels}
             backgroundColor="#9881FE"
           />
         </div>
         <div className="m-auto md:m-1 w-[400px] md:w-[500px] min-h-96  shadow-lg p-4 hover:shadow-xl rounded">
           <BarChart
-            label="Revenus"
-            title="Monthly Revenus"
+            label="Revenue"
+            title="Monthly Revenue"
             labels={MonthlyLabels}
             backgroundColor="#26D3A5"
           />

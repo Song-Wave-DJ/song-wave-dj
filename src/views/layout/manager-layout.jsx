@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { ManagerNaviagtion } from "../../components/navigation";
 
-export const DashboardLayout = () => {
+export const ManagerLayout = () => {
   return (
     <>
       <ManagerNaviagtion />

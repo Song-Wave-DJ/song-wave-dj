@@ -11,7 +11,7 @@ export const ManagerNaviagtion = () => {
     setIsOpen((prev) => !prev);
   };
   return (
-    <div className="py-2 px-4 mb-1 shadow-xl gap-2 items-center flex justify-between">
+    <div className="py-2 px-4 mb-1 shadow-lg gap-2 items-center flex justify-between">
       <Link to="/">
         <h1 className="text-2xl text-center py-2">Song Wave</h1>{" "}
       </Link>{" "}

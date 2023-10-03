@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useMemo } from "react";
 import {
   Chart as ChartJS,
@@ -61,6 +62,7 @@ export function BarChart({
           label,
           data: labels.map(() => faker.datatype.number({ min: 0, max: 1000 })),
           backgroundColor,
+          borderRadius: 5,
         },
       ],
     }),

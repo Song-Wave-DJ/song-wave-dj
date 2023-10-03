@@ -1,10 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "../views/layout";
 import {
   Menu,
   Communities,
   Dashboard,
-  DashboardCategories,
   Menus,
   Home,
   Orders,
@@ -14,10 +12,18 @@ import {
   SignUp,
   Login,
   Category,
-} from "../views";
-import { DashboardLayout } from "../views/layout/dashboard-layout";
+  AdminDashboard,
+  AdminOrders,
+  AdminManagers,
+  AdminMusic,
+  ManagerLayout,
+  DJUserLayout,
+  AdminLayout,
+  Layout,
+  AdminWaiter,
+  Users,
+} from "@/views";
 import { DJUser } from "../views/dj-user";
-import { DJUserLayout } from "../views/layout/dj-user-layout";
 import { NotFound } from "../components";
 
 const router = createBrowserRouter([
@@ -33,7 +39,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/three-hours",
+    path: "three-hours",
     element: <Layout />,
     children: [
       {
@@ -44,7 +50,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/menu",
+    path: "menu",
     element: <Layout />,
     children: [
       {
@@ -55,7 +61,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/polls",
+    path: "polls",
     element: <Layout />,
     children: [
       {
@@ -66,7 +72,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/category",
+    path: "category",
     element: <Layout />,
     children: [
       {
@@ -77,7 +83,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/communities",
+    path: "communities",
     element: <Layout />,
     children: [
       {
@@ -88,67 +94,75 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: "/login",
+    path: "login",
     element: <Login />,
     errorElement: <NotFound />,
   },
   {
-    path: "/sign-up",
+    path: "sign-up",
     element: <SignUp />,
     errorElement: <NotFound />,
   },
 
+  // Mangar
   {
-    path: "/dashboard",
-    element: (
-      // <ProtectedRoute>
-      <DashboardLayout />
-      // </ProtectedRoute>
-    ),
+    path: "dashboard",
+    element: <ManagerLayout />,
     children: [
       {
         index: true,
         element: <Dashboard />,
       },
       {
-        path: "orders",
-        children: [
-          {
-            element: <Orders />,
-            index: true,
-          },
-        ],
+        path: "/dashboard/orders",
+        element: <Orders />,
       },
       {
-        path: "categories",
-        children: [
-          {
-            element: <DashboardCategories />,
-            index: true,
-          },
-        ],
+        path: "/dashboard/menus",
+        element: <Menus />,
       },
       {
-        path: "menus",
-        children: [
-          {
-            element: <Menus />,
-            index: true,
-          },
-        ],
-      },
-      {
-        path: "waiter",
-        children: [
-          {
-            element: <Waiters />,
-            index: true,
-          },
-        ],
+        path: "/dashboard/waiter",
+        element: <Waiters />,
       },
     ],
     errorElement: <NotFound />,
   },
+
+  // Admin
+  {
+    path: "admin-dashboard",
+    element: <AdminLayout />,
+    children: [
+      {
+        index: true,
+        element: <AdminDashboard />,
+      },
+      {
+        path: "/admin-dashboard/orders",
+        element: <AdminOrders />,
+      },
+      {
+        path: "/admin-dashboard/mangers",
+        element: <AdminManagers />,
+      },
+      {
+        path: "/admin-dashboard/musics",
+        element: <AdminMusic />,
+      },
+      {
+        path: "/admin-dashboard/mangers/:id",
+        element: <AdminWaiter />,
+      },
+      {
+        path: "/admin-dashboard/users",
+        element: <Users />,
+      },
+    ],
+    errorElement: <NotFound />,
+  },
+
+  // Dj Admin
   {
     path: "music-list",
     element: <DJUserLayout />,
