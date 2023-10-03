@@ -78,7 +78,7 @@ const LabelData = [
 export const AnalyticUser = () => {
   return (
     <div className="flex my-4 gap-4 md:flex-row flex-col">
-      <div className="bg-white hover:shadow-md max-h-[31rem] md:h-[30rem] p-2 w-full md:w-[26rem] rounded-lg">
+      <div className="bg-white hover:shadow-md min-h-[30rem] md:h-[30rem] p-2 w-full md:w-[26rem] rounded-lg">
         <TextTitle label="Total User" styles="text-lg" />
         <DoughnutChart />
         <div className="flex justify-between mt-2">
