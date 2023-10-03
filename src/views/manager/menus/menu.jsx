@@ -136,19 +136,21 @@ export const Menus = () => {
   };
 
   const onSaveMenu = (payload, id) => {
-    console.log(payload);
     if (id) {
       setData((prev) => {
         const prevObj = structuredClone(prev);
         const data = prevObj.find((el) => el.id === id);
         const idx = prevObj.findIndex((el) => el.id === id);
-        const newData = {
-          ...data,
-          ...payload,
-          type: payload?.type ? "Veg" : "Non-Veg",
-          id,
-        };
-        prevObj.splice(idx, 1, newData);
+        if (idx !== -1) {
+          const newData = {
+            ...data,
+            ...payload,
+            type: payload?.type ? "Veg" : "Non-Veg",
+            id,
+          };
+          prevObj.splice(idx, 1, newData);
+        }
+
         return prevObj;
       });
     } else {

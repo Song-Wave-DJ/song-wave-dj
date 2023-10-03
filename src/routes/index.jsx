@@ -22,6 +22,7 @@ import {
   Layout,
   AdminWaiter,
   Users,
+  AdminMenus,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
@@ -157,6 +158,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/users",
         element: <Users />,
+      },
+      {
+        path: "/admin-dashboard/menus",
+        element: <AdminMenus />,
       },
     ],
     errorElement: <NotFound />,

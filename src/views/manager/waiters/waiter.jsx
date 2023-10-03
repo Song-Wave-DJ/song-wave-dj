@@ -180,7 +180,7 @@ export const Waiters = () => {
                   htmlType="button"
                   onClick={handleCancel}
                   label="Cancel"
-                  styles="bg-red flex-[.5]"
+                  styles="bg-danger flex-[.5]"
                 />
                 <Button label="Add" styles="flex-[.5]" />
               </div>

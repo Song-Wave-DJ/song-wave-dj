@@ -60,15 +60,11 @@ export const AddDashbardMenu = ({
           <Button
             isLoading={false}
             label="Cancel"
-            styles="text-x text-center text-red-100 rounded-lg bg-gradient-to-r from-red-600 to-red-400"
+            styles="text-x text-center bg-danger"
             htmlType="button"
             onClick={onAddMenu}
           />
-          <Button
-            isLoading={false}
-            label="Save"
-            styles="text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400  flex-1"
-          />
+          <Button isLoading={false} label="Save" styles="flex-1" />
         </div>
       </Form>
     </Modal>

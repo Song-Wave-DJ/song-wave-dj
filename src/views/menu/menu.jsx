@@ -157,7 +157,7 @@ export const Menu = () => {
         <div className="w-full">
           <button
             onClick={showBar}
-            className="text-lg my-4 w-3/2 text-center px-5 py-2 text-purple-100 rounded bg-gradient-to-r from-purple-600 to-purple-400"
+            className="text-lg my-4 w-3/2 text-center px-5 py-2 bg-primary text-white rounded-md"
           >
             Drinks
           </button>
@@ -172,7 +172,6 @@ export const Menu = () => {
                 handleRemoveToCart={handleRemoveToCart}
                 carts={carts}
               />
-              // <CategoryCard filterItem={filterItem} {...item} key={item.id} />
             ))}
         </div>
       </div>

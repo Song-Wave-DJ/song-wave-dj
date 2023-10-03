@@ -122,11 +122,11 @@ export const Orders = () => {
       key: "Action",
       render: () => (
         <div className="flex flex-wrap">
-          <IconButton color="#EBF7FC" onClick={confirmationOpen}>
-            <span className="text-green text-xs">Received</span>
+          <IconButton color="#43D396" onClick={confirmationOpen}>
+            <span className="text-white text-x">Received</span>
           </IconButton>
-          <IconButton color="#FAE5E5" onClick={confirmationOpen}>
-            <span className="text-red text-xs">Decline</span>
+          <IconButton color="#FF4B4B" onClick={confirmationOpen}>
+            <span className="text-white text-x">Decline</span>
           </IconButton>
         </div>
       ),
@@ -137,31 +137,31 @@ export const Orders = () => {
       key: "Action",
       render: (_, record) => (
         <div className="flex flex-wrap">
-          <IconButton color="#f4f1f1" onClick={() => setIsModalOpen(true)}>
-            <span className="px-2 text-xs">View</span>
+          <IconButton color="#876CFE" onClick={() => setIsModalOpen(true)}>
+            <span className="text-x text-white">View</span>
           </IconButton>
           {record.stauts === "Accept" && (
-            <IconButton color="#EBF7FC" onClick={confirmationOpen}>
-              <span className="text-green cursor-not-allowed text-xs">
+            <IconButton color="#43D396" onClick={confirmationOpen}>
+              <span className="text-white cursor-not-allowed text-x">
                 Accept
               </span>
             </IconButton>
           )}
 
           {record.stauts === "Reject" && (
-            <IconButton color="#FAE5E5" onClick={confirmationOpen}>
-              <span className="text-red cursor-not-allowed text-xs">
+            <IconButton color="#FF4B4B" onClick={confirmationOpen}>
+              <span className="text-white cursor-not-allowed text-x">
                 Reject
               </span>
             </IconButton>
           )}
           {record.stauts === "Pending" && (
             <>
-              <IconButton color="#EBF7FC" onClick={confirmationOpen}>
-                <span className="text-green text-xs">Accept</span>
+              <IconButton color="#f8d75dc1" onClick={confirmationOpen}>
+                <span className="text-white text-x">Accept</span>
               </IconButton>
-              <IconButton color="#FAE5E5" onClick={confirmationOpen}>
-                <span className="text-red text-xs">Reject</span>
+              <IconButton color="#FF4B4B" onClick={confirmationOpen}>
+                <span className="text-white text-x">Reject</span>
               </IconButton>
             </>
           )}

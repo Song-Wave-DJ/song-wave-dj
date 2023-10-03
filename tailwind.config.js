@@ -16,9 +16,11 @@ export default {
         app: {
           DEFAULT: "#3CB5E5",
         },
+        danger: "#FF4B4B",
+        pending: "#f8d75dc1",
         primary: {
           // blue color
-          DEFAULT: "#005774",
+          DEFAULT: "#43D396",
           90: "#26CBED",
           80: "#9AEEFF",
           light: "#E1FAFF",

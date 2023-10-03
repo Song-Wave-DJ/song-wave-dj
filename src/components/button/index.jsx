@@ -17,7 +17,7 @@ const Button = ({
       disabled={isLoading}
       htmlType={htmlType}
       onClick={onClick}
-      className={`bg-green-500 flex hover:bg-green-700 justify-center font-sans items-center p-5 rounded-lg 
+      className={`bg-green-500 flex justify-center font-sans items-center p-5 rounded-lg 
       hover:opacity-60  hover:transition-all ${styles}`}
     >
       {icon && <PlusOutlined />}

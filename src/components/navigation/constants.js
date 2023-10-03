@@ -79,6 +79,12 @@ export const AdminNavigation = [
     label: "Orders",
     path: "/admin-dashboard/orders",
   },
+
+  {
+    id: 6,
+    label: "Menu",
+    path: "/admin-dashboard/menus",
+  },
   {
     id: 4,
     label: "Music",
