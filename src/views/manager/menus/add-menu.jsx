@@ -60,7 +60,7 @@ export const AddDashbardMenu = ({
           <Button
             isLoading={false}
             label="Cancel"
-            styles="text-x text-center bg-danger"
+            styles="text-x text-center !bg-danger"
             htmlType="button"
             onClick={onAddMenu}
           />
