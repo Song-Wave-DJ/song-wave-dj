@@ -9,6 +9,7 @@ const Button = ({
   isLoading,
   styles = "w-full",
   icon = false,
+  lableStyles = {},
 }) => {
   return (
     <AndButton
@@ -20,7 +21,7 @@ const Button = ({
       hover:opacity-60  hover:transition-all ${styles}`}
     >
       {icon && <PlusOutlined />}
-      <p className="text-lg text-white">{label}</p>
+      <p className={`text-lg text-white ${lableStyles}`}>{label}</p>
     </AndButton>
   );
 };
