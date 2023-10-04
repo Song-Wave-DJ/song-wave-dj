@@ -8,70 +8,39 @@ import {
 import ModalComp from "@/components/modal";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../../admin/constanst";
+import { Tooltip } from "antd";
+import { Link, useParams } from "react-router-dom";
+import { ArrowLeftOutlined } from "@ant-design/icons";
 
 const dataSource = [
-  {
-    id: "12345678",
-    table: 12,
-    price: 1230,
-    createdAt: "12/12/2022 12:00",
-    stauts: "Pending",
-    paymentStatus: "Decline",
-  },
-  {
-    id: "1678",
-    table: 12,
-    price: 900,
-    createdAt: "12/12/2023",
-    stauts: "Pending",
-    paymentStatus: "Decline",
-  },
-  {
-    id: "df12378",
-    table: 12,
-    price: 1230,
-    createdAt: "12/12/2023",
-    stauts: "Pending",
-    paymentStatus: "Decline",
-  },
-  {
-    id: "134d2378",
-    table: 10,
-    price: 1230,
-    createdAt: "12/12/2023",
-    stauts: "Pending",
-    paymentStatus: "Decline",
-  },
   {
     id: "12378",
     table: 12,
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Accepted",
-    paymentStatus: "Pending",
   },
   {
     id: "12345673238",
-    table: 12,
+    table: 212,
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Accepted",
-    paymentStatus: "Accepted",
   },
   {
     id: "123453673238",
-    table: 12,
+    table: 1232,
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Rejected",
-    paymentStatus: "Rejected",
   },
 ];
 
-export const Orders = () => {
+export const TableBillings = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
+  const { id } = useParams();
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
@@ -83,14 +52,9 @@ export const Orders = () => {
 
   const columns = [
     {
-      title: "Order Id",
+      title: "Transation Id",
       dataIndex: "id",
       key: "id",
-    },
-    {
-      title: "Table No.",
-      dataIndex: "table",
-      key: "table",
     },
 
     {
@@ -99,7 +63,7 @@ export const Orders = () => {
       key: "price",
     },
     {
-      title: "Date & Time",
+      title: "Date",
       dataIndex: "createdAt",
       key: "createdAt",
     },
@@ -109,7 +73,7 @@ export const Orders = () => {
       key: "stauts",
       render: (_, { stauts }) => (
         <p
-          className="text-xs font-semibold"
+          className="text-lg"
           style={{
             color: RenderColor[stauts],
           }}
@@ -118,36 +82,21 @@ export const Orders = () => {
         </p>
       ),
     },
-    {
-      title: "Payment Status",
-      dataIndex: "address",
-      key: "Action",
-      render: (_, { paymentStatus }) => (
-        <p
-          className="text-xs font-semibold"
-          style={{
-            color: RenderColor[paymentStatus],
-          }}
-        >
-          {paymentStatus}
-        </p>
-      ),
-    },
+
     {
       title: "Action",
       dataIndex: "address",
       key: "Action",
-      render: () => (
+      render: (_, { stauts }) => (
         <div className="flex flex-wrap">
           <IconButton color="#876CFE" onClick={() => setIsModalOpen(true)}>
-            <span className="text-x text-white">View</span>
+            <span className="text-x px-2 text-white">Bill</span>
           </IconButton>
-          <IconButton color="#43D396" onClick={confirmationOpen}>
-            <span className="text-white text-x">Accept</span>
-          </IconButton>
-          <IconButton color="#FF4B4B" onClick={confirmationOpen}>
-            <span className="text-white text-x">Reject</span>
-          </IconButton>
+          {stauts === "Accepted" && (
+            <IconButton color="#f8d75dc1">
+              <span className="text-x text-white">Print</span>
+            </IconButton>
+          )}
         </div>
       ),
     },
@@ -179,9 +128,19 @@ export const Orders = () => {
   return (
     <main className="mx-4 p-4">
       <div className="flex justify-between mb-4 items-center">
-        <p className="bg-[#FAFAFA]  px-4 py-2 rounded-sm text-xs">
-          Total orders items{"   "} <span className="text-[#3CB5E5]">0</span>
-        </p>
+        <div className="flex items-center gap-2">
+          <Tooltip placement="bottom" title="Back">
+            <Link
+              to="/dashboard/billings"
+              className="bg-[#FAFAFA] px-4 py-2 rounded-md"
+            >
+              <ArrowLeftOutlined />
+            </Link>
+          </Tooltip>
+          <p className="bg-[#FAFAFA] px-4 py-2 rounded-md text-lg font-semibold ">
+            Table No: <span className="text-primary text-lg">{id ?? "00"}</span>
+          </p>
+        </div>
 
         <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
       </div>
@@ -199,7 +158,8 @@ export const Orders = () => {
         handleCancel={handleCancel}
       >
         <>
-          <h2 className="text-s">Order Summary</h2>
+          <h2 className="text-lg font-semibold my-2">Order Summary</h2>
+          <h2 className="text-lg">GST No. : 1234567</h2>
           <div className="my-4 flex justify-between">
             <span className=" text-xs font-semibold">Name</span>
             <span className=" text-xs font-semibold">Quantity</span>

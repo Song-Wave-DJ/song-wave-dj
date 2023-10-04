@@ -23,6 +23,8 @@ import {
   AdminWaiter,
   Users,
   AdminMenus,
+  Billings,
+  TableBillings,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
@@ -119,12 +121,20 @@ const router = createBrowserRouter([
         element: <Orders />,
       },
       {
+        path: "/dashboard/billings/:id",
+        element: <TableBillings />,
+      },
+      {
         path: "/dashboard/menus",
         element: <Menus />,
       },
       {
         path: "/dashboard/waiter",
         element: <Waiters />,
+      },
+      {
+        path: "/dashboard/billings",
+        element: <Billings />,
       },
     ],
     errorElement: <NotFound />,

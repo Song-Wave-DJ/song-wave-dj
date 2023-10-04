@@ -12,7 +12,7 @@ export const EditIcon = ({ color = "#3cb5e5" }) => {
   );
 };
 
-export const DeleteIcon = () => {
+export const DeleteIcon = ({ color = "#cf0000" }) => {
   return (
     <svg width="11.84" height="14.573" viewBox="0 0 11.84 14.573">
       <path
@@ -20,7 +20,7 @@ export const DeleteIcon = () => {
         data-name="Icon metro-bin"
         d="M5.41,6.482V15.59a.913.913,0,0,0,.911.911h8.2a.913.913,0,0,0,.911-.911V6.482Zm2.732,8.2H7.231V8.3h.911Zm1.822,0H9.053V8.3h.911Zm1.822,0h-.911V8.3h.911Zm1.822,0H12.7V8.3h.911ZM15.656,3.75H12.7V2.611a.685.685,0,0,0-.683-.683H8.825a.685.685,0,0,0-.683.683V3.75H5.182a.685.685,0,0,0-.683.683V5.571h11.84V4.433a.685.685,0,0,0-.683-.683Zm-3.871,0H9.053v-.9h2.732v.9Z"
         transform="translate(-4.499 -1.928)"
-        fill="#cf0000"
+        fill={color}
       />
     </svg>
   );

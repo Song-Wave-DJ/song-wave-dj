@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AdminNavigation as AdminNavigations } from "./constants";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 import DrawerComp from "../drawer";
 
 export const AdminNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isActiveUrl, setIsActiveUrl] = useState("/admin-dashboard");
+
+  const location = useLocation();
+  const pathname = useMemo(() => location?.pathname, [location?.pathname]);
 
   const openDrawer = () => {
     setIsOpen((prev) => !prev);
@@ -21,12 +23,11 @@ export const AdminNavigation = () => {
         <ul className="flex justify-center gap-6">
           {AdminNavigations.map((item) => (
             <Link
-              onClick={() => setIsActiveUrl(item.path)}
               to={item.path}
               key={item.id}
               className="text-lg hidden md:flex hover:underline hover:text-primary"
               style={{
-                color: isActiveUrl === item.path ? "#43D396" : "",
+                color: pathname === item.path ? "#43D396" : "",
               }}
             >
               {item.label}
@@ -45,6 +46,9 @@ export const AdminNavigation = () => {
                   key={item.id}
                   onClick={openDrawer}
                   className="text-xs"
+                  style={{
+                    color: pathname === item.path ? "#43D396" : "",
+                  }}
                 >
                   {item.label}
                 </Link>

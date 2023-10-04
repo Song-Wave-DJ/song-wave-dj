@@ -138,7 +138,7 @@ export const Waiters = () => {
 
   return (
     <main className="mx-4 p-4">
-      <div className="flex justify-between mb-4 items-center">
+      <div className="flex justify-between flex-wrap gap-4 mb-4 items-center">
         <p className="bg-[#FAFAFA] px-4 py-2 rounded-sm text-xs">
           Total Waiter{" "}
           <span className="text-[#3CB5E5] text-lg">{data?.length}</span>
@@ -147,7 +147,7 @@ export const Waiters = () => {
           <Button
             isLoading={false}
             label="Add Waiter"
-            styles="rounded-lg hover:"
+            styles="rounded-"
             onClick={onAddWaiter}
           />
           <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />

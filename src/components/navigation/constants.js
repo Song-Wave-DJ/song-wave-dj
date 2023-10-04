@@ -43,6 +43,11 @@ export const DashboardNavigation = [
     path: "/dashboard/orders",
   },
   {
+    id: 5,
+    label: "Billings",
+    path: "/dashboard/billings",
+  },
+  {
     id: 3,
     label: "Menus",
     path: "/dashboard/menus",
