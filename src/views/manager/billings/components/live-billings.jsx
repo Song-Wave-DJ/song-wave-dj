@@ -8,8 +8,8 @@ export const LiveBilling = ({ data = [], onClickBottomDrawer }) => {
         data.map((item) => (
           <div
             key={item.id}
-            className="w-28 p-2 h-28 pt-6 flex flex-col justify-start  items-center rounded-lg shadow-md  cursor-pointer hover:shadow-lg"
-            onClick={() => onClickBottomDrawer(item.table)}
+            className="w-32 p-2 h-32 pt-6 flex flex-col justify-start  items-center rounded-lg shadow-md  cursor-pointer hover:shadow-lg"
+            onClick={() => onClickBottomDrawer(item)}
           >
             <h1 className="text-2xl font-semibold">{item.table}</h1>
             {item.isActive && (

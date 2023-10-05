@@ -171,6 +171,7 @@ export const Menu = () => {
                 handleAddCart={handleAddCart}
                 handleRemoveToCart={handleRemoveToCart}
                 carts={carts}
+                formDrink
               />
             ))}
         </div>

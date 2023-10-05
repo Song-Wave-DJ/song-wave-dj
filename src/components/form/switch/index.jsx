@@ -1,5 +1,4 @@
-import React from "react";
-import { Form, Switch } from "antd";
+import { Switch } from "antd";
 import "./style.css";
 
 const SwitchComp = ({

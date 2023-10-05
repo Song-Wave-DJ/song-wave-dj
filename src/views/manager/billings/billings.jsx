@@ -4,29 +4,32 @@ import {
   BilllingAction,
   HeaderView,
   LiveBilling,
+  MoveTable,
+  Payment,
   ViewBill,
 } from "./components";
 import { useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { dataLive, pastLive } from "./constants";
-import ModalComp from "@/components/modal";
-import { QRCode, Space } from "antd";
 
 export const Billings = () => {
-  const [tableNo, setTableNo] = useState(null);
+  // State
+  const [tableData, setTableData] = useState(null);
   const [orderSummary, setOrderSummary] = useState(null);
   const [isLive, setIsLive] = useState(true);
   const [data, setData] = useState(dataLive);
   const [showQR, setShowQR] = useState(false);
+  const [isMoveTable, setIsMoveTable] = useState(false);
 
-  const navigation = useNavigate();
+  // Hooks
   const location = useLocation();
   const search = useMemo(
     () => location?.search?.split("=")[1] ?? "",
     [location]
   );
 
+  // Method
   const handleSearch = ({ target }) => {
     const { value } = target;
     if (value) {
@@ -45,18 +48,14 @@ export const Billings = () => {
     }
   };
 
-  const onClickBottomDrawer = (tableNo) => {
-    setTableNo(tableNo);
+  const onClickBottomDrawer = (table) => {
+    setTableData(table);
   };
   const onCloseDrawer = () => {
-    setTableNo(null);
+    setTableData(null);
   };
 
   const onViewBillings = () => {
-    if (!isLive) {
-      navigation(`/dashboard/billings/${tableNo}`);
-      return;
-    }
     setOrderSummary("new");
   };
 
@@ -65,9 +64,37 @@ export const Billings = () => {
   };
 
   const handleShowQR = () => {
-    setShowQR((prev) => !prev);
+    setShowQR(true);
+    if (showQR) {
+      onCloseDrawer();
+    }
   };
 
+  const handleCanelShowQR = () => {
+    setShowQR(false);
+  };
+
+  const onMoveTable = () => {
+    setIsMoveTable((prev) => !prev);
+  };
+
+  const onUpdateTable = ({ table }) => {
+    setData((prev) => {
+      const prevObj = structuredClone(prev);
+      const idx = prevObj?.findIndex((el) => el.id === tableData?.id);
+      if (idx !== -1) {
+        const payload = {
+          ...tableData,
+          table,
+        };
+        prevObj.splice(idx, 1, payload);
+      }
+      return prevObj;
+    });
+    setIsMoveTable(false);
+  };
+
+  // Effect
   useEffect(() => {
     if (search === "active") {
       setIsLive(false);
@@ -84,7 +111,7 @@ export const Billings = () => {
       <HeaderView data={data} onChange={handleSearch} />
 
       {/* body */}
-      <div className="border-t py-4 flex gap-4 flex-wrap">
+      <div className="border-t py-4 justify-center flex gap-4 flex-wrap">
         {!isLive ? (
           <BillingHistory />
         ) : (
@@ -95,19 +122,21 @@ export const Billings = () => {
       {/* Billings Actions */}
       <BilllingAction
         onViewBillings={onViewBillings}
-        tableNo={tableNo}
+        tableNo={tableData?.table ?? ""}
         onCloseDrawer={onCloseDrawer}
-        isLive={isLive}
         handleShowQR={handleShowQR}
+        onMoveTable={onMoveTable}
+      />
+      {/* Move table */}
+      <MoveTable
+        isMoveTable={isMoveTable}
+        onMoveTable={onMoveTable}
+        tableNo={tableData?.table ?? ""}
+        onUpdateTable={onUpdateTable}
       />
 
       {/* Print and take pyament */}
-      <ModalComp open={showQR} handleCancel={handleShowQR}>
-        <Space direction="vertical" align="center">
-          <QRCode value={"'https://ant.design/'" || "-"} />
-          <h1 className="text-3xl font-semibold">Pay: 400</h1>
-        </Space>
-      </ModalComp>
+      <Payment handleShowQR={handleCanelShowQR} showQR={showQR} />
 
       {/* View Billings */}
       <ViewBill orderSummary={orderSummary} onViewCancel={onViewCancel} />

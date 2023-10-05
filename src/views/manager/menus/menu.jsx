@@ -67,6 +67,7 @@ export const Menus = () => {
     discount: "",
     description: "",
     price: "",
+    available: true,
   });
   const [datas, setData] = useState(DummyData);
   // Hooks
@@ -185,6 +186,7 @@ export const Menus = () => {
       discount: "",
       description: "",
       price: "",
+      available: true,
     });
   };
 

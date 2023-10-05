@@ -136,6 +136,10 @@ const router = createBrowserRouter([
         path: "/dashboard/billings",
         element: <Billings />,
       },
+      {
+        path: "/dashboard/music",
+        element: <DJUser />,
+      },
     ],
     errorElement: <NotFound />,
   },

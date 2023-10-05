@@ -1,12 +1,12 @@
-import React, { useEffect, useMemo, useState } from "react";
-import DrawerComp from "../../../components/drawer";
-import { EmptyIcon } from "../../../assets";
-import ModalComp from "../../../components/modal";
-import { Button } from "../../../components";
+import { useEffect, useMemo, useState } from "react";
+import DrawerComp from "@/components/drawer";
+import { EmptyIcon } from "@/assets";
+import ModalComp from "@/components/modal";
+import { Button } from "@/components";
 import { Summary } from "./summary";
 import { CartMenuCard } from "./cart-menu";
 
-const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
+const MenuDrawer = ({ onClose, open, carts = [], setCarts, onFinish }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tax, _] = useState(10);
   const [gst, __] = useState(20);
@@ -49,7 +49,7 @@ const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
               <Button
                 onClick={handleCancel}
                 label="Proceed"
-                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full rounded-lg"
+                styles="w-full rounded-lg"
               />
             </div>
           </>
@@ -61,7 +61,7 @@ const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
               <Button
                 onClick={onClose}
                 label="Add Menu"
-                styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full rounded-lg"
+                styles="w-full rounded-lg"
               />
             </div>
           </div>
@@ -89,11 +89,7 @@ const MenuDrawer = ({ onClose, open, carts, setCarts, onFinish }) => {
             total={total}
           />
           <div className="mt-8 w-full">
-            <Button
-              label="Order Now"
-              styles="bg-gradient-to-r from-purple-600 to-purple-400 w-full"
-              onClick={onFinish}
-            />
+            <Button label="Order Now" styles="w-full" onClick={onFinish} />
           </div>
         </>
       </ModalComp>

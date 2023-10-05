@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Form } from "antd";
 import { useMemo } from "react";
 import {
@@ -36,6 +37,7 @@ export const AddDashbardMenu = ({
           discount: initialValue?.discount,
           description: initialValue?.description,
           type: initialValue?.type,
+          available: initialValue?.available ? initialValue?.available : true,
         }}
         className=""
       >
@@ -45,15 +47,23 @@ export const AddDashbardMenu = ({
           <TextInput {...fieldSet.price} />
           <TextInput {...fieldSet.discount} />
           <TextDescription {...fieldSet.desciption} />
-          <Form.Item {...fieldSet.image}>
-            <ImageUploader />
-          </Form.Item>
+
           <Form.Item {...fieldSet.type} className="!mb-0">
             <Switch
               prefixName="VEG"
               suffixName="NON-VEG"
               className="aria-[checked=true]:!bg-green hover:!bg-green-light aria-[checked=false]:bg-bloodRed"
             />
+          </Form.Item>
+          <Form.Item {...fieldSet.available} className="!mb-0">
+            <Switch
+              prefixName="Availabel"
+              suffixName="Not Availabel"
+              className="aria-[checked=true]:!bg-green hover:!bg-green-light aria-[checked=false]:bg-bloodRed"
+            />
+          </Form.Item>
+          <Form.Item {...fieldSet.image}>
+            <ImageUploader />
           </Form.Item>
         </div>
         <div className="grid grid-cols-1  md:grid-cols-2 lg:grid-cols-2 gap-6">
