@@ -9,7 +9,7 @@ export const CollapseCard = ({
   handleRemoveToCart,
   title,
   carts,
-  quantity,
+  formDrink = false,
 }) => {
   return (
     <Collapse
@@ -22,9 +22,6 @@ export const CollapseCard = ({
           label: (
             <div className="flex gap-6 items-center">
               <p className="font-sans text-sm ">{title}</p>
-              {quantity && (
-                <p className="font-sans text-xs font-semibold">{quantity}ML</p>
-              )}
             </div>
           ),
           children: (
@@ -37,6 +34,7 @@ export const CollapseCard = ({
                   handleAddCart={handleAddCart}
                   handleRemoveToCart={handleRemoveToCart}
                   menus={menus}
+                  formDrink={formDrink}
                 />
               ))}
             </div>

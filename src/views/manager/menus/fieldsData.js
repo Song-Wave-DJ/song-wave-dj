@@ -92,23 +92,6 @@ export const fieldSet = {
     placeholder: "Discount",
   },
 
-  // symbol: {
-  //   name: "symbol",
-  //   suffix: false,
-  //   className: "",
-  //   inputClassName,
-  //   label: "Allergy symbols of the dish",
-  //   labelCol: {
-  //     className: "child:!text-xxs font-sans",
-  //   },
-  //   rules: [
-  //     {
-  //       pattern: /^.{0,60}$/,
-  //       message: "maximum length should be 60 characters ",
-  //     },
-  //   ],
-  //   placeholder: "Allergy symbols of the dish",
-  // },
   desciption: {
     name: "description",
     suffix: false,
@@ -126,6 +109,26 @@ export const fieldSet = {
     ],
     placeholder: "Decription",
   },
+
+  type: {
+    name: "type",
+    label: "Type",
+    labelCol: {
+      className: "child:!text-xxs",
+    },
+    rules: [],
+    placeholder: "Type",
+  },
+  available: {
+    name: "available",
+    label: "Availability",
+    labelCol: {
+      className: "child:!text-xxs",
+    },
+    rules: [],
+    placeholder: "Available",
+  },
+
   image: {
     name: "image",
     className: "",
@@ -136,14 +139,5 @@ export const fieldSet = {
     },
     rules: [],
     placeholder: "Menu Picture",
-  },
-  type: {
-    name: "type",
-    label: "Type",
-    labelCol: {
-      className: "child:!text-xxs",
-    },
-    rules: [],
-    placeholder: "Type",
   },
 };

@@ -542,11 +542,13 @@ export const DrinksData = [
         title: "Beluga hunting berry",
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: false,
         price: 899,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Beluga hunting herbal",
+        available: false,
         price: 899,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -554,6 +556,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Beluga Nobel",
+        available: false,
         price: 775,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -561,6 +564,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Grey goose",
+        available: false,
         price: 625,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -568,6 +572,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Absolute elyx",
+        available: false,
         price: 599,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -575,6 +580,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Ciroc",
+        available: false,
         price: 652,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -583,6 +589,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Finlandia",
+        available: true,
         price: 450,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -590,6 +597,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Ketel one",
+        available: true,
         price: 435,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -597,6 +605,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Absolute blue",
+        available: true,
         price: 425,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -604,6 +613,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Smirnoff",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -611,6 +621,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Smirnoff flavours",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -627,11 +638,13 @@ export const DrinksData = [
         title: "Bacardi carta blanca",
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 250,
       },
       {
         id: self.crypto.randomUUID(),
         title: "Bacardi gold",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -639,6 +652,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Bacardi black",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -646,6 +660,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Bacardi flavours",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -653,6 +668,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Captain morgan",
+        available: true,
         price: 199,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -660,6 +676,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Old Monk",
+        available: true,
         price: 199,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -675,12 +692,14 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "long island iced tea",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 250,
         type: "drink",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Rock lobster",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -688,6 +707,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Riders on the strom",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -695,6 +715,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Cucumber ginito",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -702,6 +723,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Sangria red",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -709,6 +731,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Bluegrass lemonade",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -716,6 +739,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Hannah's rum punch",
+        available: true,
         price: 400,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -731,12 +755,14 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "Chivas Regal 18 yo",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 999,
         type: "drink",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Jonnnie walker gold label reserve",
+        available: true,
         price: 999,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -744,6 +770,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Dewar's 18 yo",
+        available: true,
         price: 799,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -751,6 +778,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Dewar's 15 yo",
+        available: true,
         price: 799,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -758,6 +786,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Jonnnie walker double black",
+        available: true,
         price: 799,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -765,6 +794,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "monkey shoulder",
+        available: true,
         price: 699,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -772,6 +802,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "dewar's 12 yo",
+        available: true,
         price: 699,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -779,6 +810,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Jonnnie walker red label",
+        available: true,
         price: 450,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -786,6 +818,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Black dog triple gold reserve",
+        available: true,
         price: 450,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -793,6 +826,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Teacher's 50",
+        available: true,
         price: 425,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -800,6 +834,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "100 pipers 12 yo",
+        available: true,
         price: 425,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -807,6 +842,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "100 pipers 8 yo",
+        available: true,
         price: 424,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -814,6 +850,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Drwar's white label",
+        available: true,
         price: 399,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -829,12 +866,14 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "Roulette brandy",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 275,
         type: "drink",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Mc.Dowell's No.1",
+        available: true,
         price: 199,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -850,12 +889,14 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "Kingfisher Premium",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 250,
         type: "drink",
       },
       {
         id: self.crypto.randomUUID(),
         title: "Kingfisher ultra",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -863,6 +904,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Heineken silver",
+        available: true,
         price: 250,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -878,12 +920,14 @@ export const DrinksData = [
         id: self.crypto.randomUUID(),
         title: "big banyan sauvignon blanc",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
+        available: true,
         price: 375,
         type: "drink",
       },
       {
         id: self.crypto.randomUUID(),
         title: "fratelli chenin blanc",
+        available: true,
         price: 375,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -891,6 +935,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "fratelli chardonnay",
+        available: true,
         price: 375,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -898,6 +943,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "big banyan shiraz",
+        available: true,
         price: 375,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -905,6 +951,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "big banyan merlot",
+        available: true,
         price: 375,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",
@@ -912,6 +959,7 @@ export const DrinksData = [
       {
         id: self.crypto.randomUUID(),
         title: "Fratelli cabernet sauvignon",
+        available: true,
         price: 375,
         type: "drink",
         url: "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2020/08/waterStrawberry-ST-040820-770x533-1.jpg",

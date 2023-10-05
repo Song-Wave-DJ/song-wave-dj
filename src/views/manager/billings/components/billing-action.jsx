@@ -6,8 +6,8 @@ export const BilllingAction = ({
   onViewBillings,
   tableNo,
   onCloseDrawer,
-  isLive,
   handleShowQR,
+  onMoveTable,
 }) => {
   return (
     <Drawer
@@ -25,24 +25,22 @@ export const BilllingAction = ({
           className="text-lg border-b w-full text-center p-2 cursor-pointer"
           onClick={onViewBillings}
         >
-          {isLive ? "View Bill" : "View Bills"}
+          View Bill
+        </p>
+        <PrintBill />
+        <p
+          className="text-lg border-b w-full text-center p-2 cursor-pointer"
+          onClick={onMoveTable}
+        >
+          Move Table
         </p>
 
-        {isLive && (
-          <>
-            <PrintBill />
-            <p className="text-lg border-b w-full text-center p-2 cursor-pointer">
-              Move Table
-            </p>
-
-            <p
-              className="text-lg border-b w-full text-center p-2 cursor-pointer"
-              onClick={handleShowQR}
-            >
-              Print Bill & Take Payment
-            </p>
-          </>
-        )}
+        <p
+          className="text-lg border-b w-full text-center p-2 cursor-pointer"
+          onClick={handleShowQR}
+        >
+          Print Bill & Take Payment
+        </p>
       </div>
     </Drawer>
   );

@@ -57,6 +57,11 @@ export const DashboardNavigation = [
     label: "Waiter",
     path: "/dashboard/waiter",
   },
+  {
+    id: 5,
+    label: "Music",
+    path: "/dashboard/music",
+  },
 ];
 
 export const DJNavigation = [

@@ -20,7 +20,6 @@ const ModalComp = ({
         centered
         footer={<></>}
         closable={closable}
-        children={children}
         width={width}
         className={className}
       >
