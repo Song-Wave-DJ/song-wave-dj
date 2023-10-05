@@ -1,160 +1,189 @@
 import { EmptyIcon } from "@/assets";
 import { FoodLoader } from "@/assets/images";
-import { RadioButton } from "@/components";
-import Searching from "@/components/search-text";
-import { useNotification } from "@/hooks";
-import { ShoppingCartOutlined } from "@ant-design/icons";
-import { useEffect, useMemo, useState } from "react";
-import { CollapseCard } from "./components/collapse-card";
-import MenuDrawer from "./components/menu-drawe";
-import { AllData, DrinksData, NonVegData, VegData } from "./constants";
-import { useLocation } from "react-router-dom";
-import { useCallback } from "react";
+import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useMemo } from "react";
+import {
+  AddPaymentCard,
+  CollapseCard,
+  MenuDrawer,
+  MenuHeader,
+} from "./components";
+import ModalComp from "../../components/modal";
+import { Button } from "../../components";
+import { QRCode, Space, Tooltip } from "antd";
+import { useMenuOrder } from "./hooks";
+
+const PaymentType = [
+  {
+    label: "Pay with QR",
+    value: "QR",
+  },
+  {
+    label: "Pay with Card",
+    value: "CARD",
+  },
+  {
+    label: "UPI",
+    value: "UPI",
+  },
+];
 
 export const Menu = () => {
-  const [filterItem, setFilterItem] = useState("All");
-  const [isShowBar, setIsShowBar] = useState(false);
-  const [carts, setCarts] = useState([]);
-  const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(true);
+  const {
+    selectedMethod,
+    onChooseMethod,
+    onOpenPayment,
+    onNextPage,
+    setNavigate,
+    navigate,
+    handlePayNow,
+    loaded,
+    contextHolder,
+    categories,
+    isBar,
+    onChangeVegNonVeg,
+    filterItem,
+    onChangeSearch,
+    onClose,
+    carts,
+    isPlacedOrder,
+    onPlacedOrder,
+    isPaynow,
+    setCarts,
+    handleRemoveToCart,
+    handleAddCart,
+    selectQuantity,
+    open,
+  } = useMenuOrder();
 
-  const [categories, setCotegories] = useState(AllData);
+  const chooseBody = useMemo(
+    () => (
+      <>
+        <h1 className="text-lg font-semibold mb-4">Choose Payment Method</h1>
+        <div className="flex flex-col gap-4">
+          {PaymentType.map((item) => {
+            const checked = selectedMethod === item.value;
+            return (
+              <div
+                onClick={() => onChooseMethod(item.value)}
+                key={item.label}
+                className="border flex cursor-pointer gap-2 text-lg items-center font-semibold p-2  rounded-md"
+                style={{
+                  borderColor: checked ? "#43D396" : "",
+                }}
+              >
+                <input type="radio" checked={checked} />
+                <p>{item.label} </p>
+              </div>
+            );
+          })}
+        </div>
 
-  const { search = "" } = useLocation();
-
-  const categoryType = useMemo(
-    () => search?.split("?")[1]?.split("=")[1],
-    [search]
+        <div className="flex gap-4 mt-8">
+          <Button
+            isLoading={false}
+            label="Cancel"
+            styles="bg-white border-danger rounded-lg w-full"
+            lableStyles="!text-black"
+            onClick={onOpenPayment}
+          />
+          <Button
+            isLoading={false}
+            label="Next"
+            onClick={onNextPage}
+            styles="rounded-lg w-full"
+          />
+        </div>
+      </>
+    ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedMethod]
   );
-  const { openNotificationWithIcon, contextHolder } = useNotification();
 
-  const onChangeSearch = (e) => {
-    const query = e.target.value.toLowerCase();
-    if (categories && query) {
-      setCotegories((prev) => {
-        const prevObj = structuredClone(prev);
-        const serachData = prevObj?.filter((data) => {
-          const name = data?.title?.toLowerCase();
-          return name.includes(query);
-        });
-        return serachData;
-      });
-    } else {
-      setCotegories(AllData);
+  const qrBody = useMemo(
+    () => (
+      <>
+        <Tooltip
+          placement="bottom"
+          title="Back"
+          className="w-14 cursor-pointer"
+        >
+          <div
+            className="bg-[#FAFAFA] px-4 py-2 rounded-md"
+            onClick={() => setNavigate("PaymentChoose")}
+          >
+            <ArrowLeftOutlined />
+          </div>
+        </Tooltip>
+        <Space direction="vertical" align="center">
+          <QRCode value={"'https://ant.design/'" || "-"} />
+          <h1 className="text-3xl font-semibold">Pay: 400</h1>
+        </Space>
+      </>
+    ),
+    [setNavigate]
+  );
+
+  const renderChooseMethod = useMemo(() => {
+    switch (navigate) {
+      case "Card":
+        return (
+          <div className="">
+            <Tooltip
+              placement="bottom"
+              title="Back"
+              className="w-14 cursor-pointer"
+            >
+              <div
+                className="bg-[#FAFAFA] px-4 py-2 rounded-md"
+                onClick={() => setNavigate("PaymentChoose")}
+              >
+                <ArrowLeftOutlined />
+              </div>
+            </Tooltip>
+            <AddPaymentCard handlePayNow={handlePayNow} />;
+          </div>
+        );
+      case "QR":
+        return qrBody;
+      default:
+        return chooseBody;
     }
-  };
-
-  const onClose = () => {
-    setOpen((prev) => !prev);
-  };
-
-  const handleAddCart =
-    ({ id, title, url, price, type, ml }) =>
-    () => {
-      setCarts((prev) => [
-        ...prev,
-        {
-          id,
-          title,
-          price,
-          url,
-          qty: 1,
-          type,
-          ml,
-        },
-      ]);
-    };
-
-  const handleRemoveToCart =
-    ({ id }) =>
-    () => {
-      setCarts((prev) => {
-        const prvObj = structuredClone(prev);
-        const filterData = prvObj.filter((item) => item.id !== id);
-        return filterData;
-      });
-    };
-
-  const onChangeVegNonVeg = (event) => {
-    const { value } = event.target;
-    setFilterItem(value);
-    if (value?.toLowerCase() === "non-veg") {
-      setCotegories(NonVegData);
-    } else if (value?.toLowerCase() === "veg") {
-      setCotegories(VegData);
-    } else {
-      setCotegories(AllData);
-    }
-  };
-
-  const showBar = () => setIsShowBar((prev) => !prev);
-
-  const onFinish = () => {
-    openNotificationWithIcon({
-      message: "Order Placed",
-      description: "Your placed successfully!",
-      type: "success",
-    });
-    onClose();
-    setCarts([]);
-  };
-
-  const selectQuantity = useCallback((item, id) => {
-    setCarts((prev) => {
-      const prevObj = structuredClone(prev);
-      const data = prevObj?.find((el) => el.id == id);
-      const idx = prevObj?.findIndex((el) => el.id == id);
-      if (idx !== -1) {
-        const payload = {
-          ...data,
-          id,
-          ...item,
-        };
-        prevObj.splice(idx, 1, payload);
-      }
-      return prevObj;
-    });
-  }, []);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    setTimeout(() => {
-      setLoaded(false);
-    }, 2000);
-  }, []);
+  }, [chooseBody, handlePayNow, navigate, qrBody, setNavigate]);
 
   if (loaded) {
     return (
-      <div className="flex justify-center">
-        <img src={FoodLoader} />
+      <div className="flex min-h-[80vh] justify-center items-center">
+        <img src={FoodLoader} className="mix-blend-darken object-contain" />
+      </div>
+    );
+  }
+
+  if (!categories?.length) {
+    return (
+      <div className="flex flex-col items-center">
+        <img className="w-40 object-contain" src={EmptyIcon} />
+        <p className="text-lg">No data available!</p>
       </div>
     );
   }
 
   return (
-    <div className="py-2 px-4">
+    <div className="py-2 px-4 ">
       {contextHolder}
-      <div className="flex sm:w-[600px] w-full m-auto mt-2 flex-col flex-wrap relative  items-center justify-center md:gap-4">
-        <div className="flex my-4 justify-between gap-2 w-full items-center">
-          <RadioButton
-            OPTIONS={["All", "Veg", "Non-Veg"]}
-            onChange={onChangeVegNonVeg}
-            value={filterItem}
-          />
-          <Searching styles="flex-1 py-2" onChange={onChangeSearch} />
-          <div
-            onClick={onClose}
-            className="text-2xl cursor-pointer border flex relative justify-center w-10 h-10 p-2 rounded-full"
-          >
-            <ShoppingCartOutlined />
-            {carts?.length > 0 ? (
-              <div className="bg-gradient-to-r absolute top-[-6px] right-[-4px] from-purple-600 to-purple-400 flex items-center justify-center rounded-full w-4 h-4">
-                <span className="text-x text-white">{carts?.length}</span>
-              </div>
-            ) : null}
-          </div>
-        </div>
-        {categories?.length > 0 ? (
+      <div className="flex sm:w-[600px] w-full m-auto mt-2 flex-col flex-wrap items-center justify-center md:gap-4">
+        <MenuHeader
+          isBar={isBar}
+          onChangeVegNonVeg={onChangeVegNonVeg}
+          filterItem={filterItem}
+          onChangeSearch={onChangeSearch}
+          onClose={onClose}
+          carts={carts}
+          isPlacedOrder={isPlacedOrder}
+          onOpenPayment={onOpenPayment}
+        />
+        {/* Body */}
+        {!isBar ? (
           categories.map((item, index) => (
             <CollapseCard
               key={item.id}
@@ -167,20 +196,8 @@ export const Menu = () => {
             />
           ))
         ) : (
-          <div className="flex flex-col items-center">
-            <img className="w-40 object-contain" src={EmptyIcon} />
-            <p className="text-lg">No data available!</p>
-          </div>
-        )}
-        <div className="w-full">
-          <button
-            onClick={showBar}
-            className="text-lg my-4 w-3/2 text-center px-5 py-2 bg-primary text-white rounded-md"
-          >
-            Drinks
-          </button>
-          {(isShowBar || categoryType === "bar") &&
-            DrinksData.map((item, idx) => (
+          <div className="w-full">
+            {categories.map((item, idx) => (
               <CollapseCard
                 key={idx}
                 index={idx}
@@ -193,7 +210,8 @@ export const Menu = () => {
                 selectQuantity={selectQuantity}
               />
             ))}
-        </div>
+          </div>
+        )}
       </div>
 
       <MenuDrawer
@@ -201,8 +219,12 @@ export const Menu = () => {
         open={open}
         carts={carts}
         setCarts={setCarts}
-        onFinish={onFinish}
+        onPlacedOrder={onPlacedOrder}
       />
+
+      <ModalComp open={isPaynow} handleCancel={onOpenPayment}>
+        <div className="max-h-96">{renderChooseMethod}</div>
+      </ModalComp>
     </div>
   );
 };

@@ -151,8 +151,8 @@ const NonVegMain = [
   },
 ];
 
-const VegMenuData = [];
-const NonVegMenuData = [];
+// const VegMenuData = [];
+// const NonVegMenuData = [];
 
 const StarterVeg = [
   {

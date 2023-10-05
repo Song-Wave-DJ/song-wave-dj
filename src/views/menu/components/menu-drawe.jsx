@@ -1,16 +1,23 @@
-import { useEffect, useMemo, useState } from "react";
-import DrawerComp from "@/components/drawer";
+/* eslint-disable react/prop-types */
 import { EmptyIcon } from "@/assets";
-import ModalComp from "@/components/modal";
 import { Button } from "@/components";
-import { Summary } from "./summary";
+import DrawerComp from "@/components/drawer";
+import ModalComp from "@/components/modal";
+import { useEffect, useMemo, useState } from "react";
 import { CartMenuCard } from "./cart-menu";
+import { OrderSummary } from "./order-summary";
 
-const MenuDrawer = ({ onClose, open, carts = [], setCarts, onFinish }) => {
+export const MenuDrawer = ({
+  onClose,
+  open,
+  carts = [],
+  setCarts,
+  onPlacedOrder,
+}) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [tax, _] = useState(10);
-  const [gst, __] = useState(20);
-  const [offer, ___] = useState(5);
+  const [tax] = useState(10);
+  const [gst] = useState(20);
+  const [offer] = useState(5);
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
@@ -22,6 +29,21 @@ const MenuDrawer = ({ onClose, open, carts = [], setCarts, onFinish }) => {
     }, 0);
     return response;
   }, [carts]);
+
+  const renderBody = useMemo(() => {
+    return (
+      <OrderSummary
+        isModalOpen={isModalOpen}
+        handleCancel={handleCancel}
+        carts={carts}
+        gst={gst}
+        tax={tax}
+        offer={offer}
+        total={total}
+        onPlacedOrder={onPlacedOrder}
+      />
+    );
+  }, [carts, gst, isModalOpen, offer, onPlacedOrder, tax, total]);
 
   useEffect(() => {
     if (!carts?.length) {
@@ -68,33 +90,9 @@ const MenuDrawer = ({ onClose, open, carts = [], setCarts, onFinish }) => {
         )}
       </DrawerComp>
 
-      <ModalComp
-        open={isModalOpen}
-        handleOk={() => null}
-        handleCancel={handleCancel}
-      >
-        <>
-          <h2 className="text-s">Order Summary</h2>
-          <div className="my-4 flex justify-between">
-            <span className=" text-xs font-semibold">Name</span>
-            <span className=" text-xs font-semibold">Quantity</span>
-            <span className=" text-xs font-semibold">Price</span>
-          </div>
-
-          <Summary
-            carts={carts}
-            tax={tax}
-            gst={gst}
-            offer={offer}
-            total={total}
-          />
-          <div className="mt-8 w-full">
-            <Button label="Order Now" styles="w-full" onClick={onFinish} />
-          </div>
-        </>
+      <ModalComp open={isModalOpen} handleCancel={handleCancel}>
+        {renderBody}
       </ModalComp>
     </>
   );
 };
-
-export default MenuDrawer;

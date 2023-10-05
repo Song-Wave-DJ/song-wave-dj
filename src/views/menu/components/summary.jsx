@@ -3,7 +3,7 @@ export const Summary = ({ carts = [], tax, gst, offer, total }) => {
     <div className="h-[35vh] overflow-auto">
       {carts.map((el) => (
         <div className="my-4 flex justify-between" key={el.id}>
-          <span className="text-xxs">
+          <span className="text-xxs flex-[.5]">
             {el.title}
             {el?.ml && (
               <span className="text-x px-1 font-semibold">({el.ml} ml)</span>
