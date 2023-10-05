@@ -2,7 +2,15 @@ import { useMemo } from "react";
 import { VegIcon, NonVegIcon } from "../../../assets";
 import { DrinkIcon } from "../../../assets/images";
 
-export const CartMenuCard = ({ id, title, type, qty, price, setCarts }) => {
+export const CartMenuCard = ({
+  id,
+  title,
+  type = "",
+  qty,
+  ml,
+  price,
+  setCarts,
+}) => {
   const renderIcon = useMemo(() => {
     switch (type?.toLowerCase()) {
       case "veg":
@@ -80,7 +88,10 @@ export const CartMenuCard = ({ id, title, type, qty, price, setCarts }) => {
       <div className="p-1">
         <img src={renderIcon} className="w-4 h-4 object-contain" />
         <h3 className="text-xs">{title}</h3>
-        <p className="text-x text-light">&#x20B9;{price}</p>
+        <p className="text-x text-light">
+          &#x20B9;{price}
+          {ml && <span className="text-x px-1 font-semibold">({ml} ml)</span>}
+        </p>
       </div>
       <div className="flex justify-center px-1 gap-2 items-center">
         {qty === 1 ? (

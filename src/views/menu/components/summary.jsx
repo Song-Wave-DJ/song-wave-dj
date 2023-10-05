@@ -1,11 +1,14 @@
-import React from "react";
-
-export const Summary = ({ carts, tax, gst, offer, total }) => {
+export const Summary = ({ carts = [], tax, gst, offer, total }) => {
   return (
     <div className="h-[35vh] overflow-auto">
       {carts.map((el) => (
         <div className="my-4 flex justify-between" key={el.id}>
-          <span className="text-xxs">{el.title}</span>
+          <span className="text-xxs">
+            {el.title}
+            {el?.ml && (
+              <span className="text-x px-1 font-semibold">({el.ml} ml)</span>
+            )}
+          </span>
           <span className="text-xxs flex-[.2]">{el.qty}</span>
           <span className="text-xxs">&#x20B9;{el.price}</span>
         </div>

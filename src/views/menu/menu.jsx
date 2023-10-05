@@ -9,6 +9,7 @@ import { CollapseCard } from "./components/collapse-card";
 import MenuDrawer from "./components/menu-drawe";
 import { AllData, DrinksData, NonVegData, VegData } from "./constants";
 import { useLocation } from "react-router-dom";
+import { useCallback } from "react";
 
 export const Menu = () => {
   const [filterItem, setFilterItem] = useState("All");
@@ -48,7 +49,7 @@ export const Menu = () => {
   };
 
   const handleAddCart =
-    ({ id, title, url, price, type }) =>
+    ({ id, title, url, price, type, ml }) =>
     () => {
       setCarts((prev) => [
         ...prev,
@@ -59,6 +60,7 @@ export const Menu = () => {
           url,
           qty: 1,
           type,
+          ml,
         },
       ]);
     };
@@ -96,6 +98,23 @@ export const Menu = () => {
     onClose();
     setCarts([]);
   };
+
+  const selectQuantity = useCallback((item, id) => {
+    setCarts((prev) => {
+      const prevObj = structuredClone(prev);
+      const data = prevObj?.find((el) => el.id == id);
+      const idx = prevObj?.findIndex((el) => el.id == id);
+      if (idx !== -1) {
+        const payload = {
+          ...data,
+          id,
+          ...item,
+        };
+        prevObj.splice(idx, 1, payload);
+      }
+      return prevObj;
+    });
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -145,7 +164,6 @@ export const Menu = () => {
               handleAddCart={handleAddCart}
               handleRemoveToCart={handleRemoveToCart}
               carts={carts}
-              isFormDrink
             />
           ))
         ) : (
@@ -172,6 +190,7 @@ export const Menu = () => {
                 handleRemoveToCart={handleRemoveToCart}
                 carts={carts}
                 formDrink
+                selectQuantity={selectQuantity}
               />
             ))}
         </div>
