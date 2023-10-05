@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@ant-design/icons": "5.2.6",
+    "@stripe/react-stripe-js": "2.3.1",
+    "@stripe/stripe-js": "2.1.7",
     "antd": "5.9.2",
     "axios": "1.5.1",
     "chart.js": "4.4.0",
@@ -21,7 +23,7 @@
     "react-lazy-load-image-component": "1.6.0",
     "react-phone-input-2": "2.15.1",
     "react-router-dom": "6.16.0",
-    "react-to-print": "^2.14.15"
+    "react-to-print": "2.14.15"
   },
   "devDependencies": {
     "@types/react": "18.2.15",

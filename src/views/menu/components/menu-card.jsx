@@ -107,11 +107,12 @@ export const MenuCard = ({
           <h3 className="text-sm font-sans capitalize">{title}</h3>
           <div className="flex items-center gap-2">
             {formDrink ? (
-              prices.map((el) => (
+              prices.map((el, idx) => (
                 <div key={el.ml}>
                   {qunatity(el)}
                   <p className="text-sm text-light font-sans">
-                    &#x20B9;{el.price}/
+                    {idx === 0 ? <span>&#x20B9;</span> : ""}
+                    {el.price} {idx !== prices.length - 1 ? "/" : ""}
                   </p>
                 </div>
               ))

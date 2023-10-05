@@ -10,11 +10,12 @@ const Button = ({
   styles = "w-full",
   icon = false,
   lableStyles = {},
+  disabled = false,
 }) => {
   return (
     <AndButton
       loading={isLoading}
-      disabled={isLoading}
+      disabled={disabled}
       htmlType={htmlType}
       onClick={onClick}
       className={`bg-primary flex justify-center font-sans items-center p-5 rounded-lg 
