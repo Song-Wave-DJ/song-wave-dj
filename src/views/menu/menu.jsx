@@ -67,7 +67,7 @@ export const Menu = () => {
               <div
                 onClick={() => onChooseMethod(item.value)}
                 key={item.label}
-                className="border flex cursor-pointer gap-2 text-lg items-center font-semibold p-2  rounded-md"
+                className="border flex cursor-pointer gap-2 text-x items-center font-semibold p-2  rounded-md"
                 style={{
                   borderColor: checked ? "#43D396" : "",
                 }}
@@ -141,7 +141,7 @@ export const Menu = () => {
                 <ArrowLeftOutlined />
               </div>
             </Tooltip>
-            <AddPaymentCard handlePayNow={handlePayNow} />;
+            <AddPaymentCard handlePayNow={handlePayNow} />
           </div>
         );
       case "QR":

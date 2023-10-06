@@ -11,9 +11,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components";
 
-const stripePromise = loadStripe(
-  "pk_test_51KoUyGKWG9QNXXiWcg7WpBnHJ9PCHsHG2H7YFlXEdLzkq1mYtnxH0OIN1I3A7RVaclESwfx77Xw8gOVwgacXcfnZ00d3DYOQtf"
-);
+const stripePromise = loadStripe("");
 
 export const AddPaymentCard = ({ handlePayNow }) => {
   return (
@@ -85,7 +83,7 @@ const PaymentCard = ({ handlePayNow }) => {
 
   return (
     <>
-      <div className="shadow-sm py-4 rounded-lg  m-auto">
+      <div className="shadow-sm pt-4 rounded-lg  m-auto">
         <form className="form" onSubmit={onSubmitCard}>
           <div className=" mb-4">
             <div className="text-xs">Card number</div>
