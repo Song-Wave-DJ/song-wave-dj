@@ -11,7 +11,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useCallback, useMemo, useState } from "react";
 import { Button } from "@/components";
 
-const stripePromise = loadStripe("");
+const stripePromise = loadStripe(
+  "pk_test_51KoUyGKW345678903G9QNXXiWcg7WpBnHJ9PCHsHG2H7YFlXEdLzkq1mYtnxH0OIN1I3A7RVaclESwfx77Xw8gOVwgacXcfnZ00d3DYOQtf"
+);
 
 export const AddPaymentCard = ({ handlePayNow }) => {
   return (

@@ -36,7 +36,8 @@ const dataSource = [
   },
 ];
 
-export const TableBillings = () => {
+// eslint-disable-next-line react/prop-types
+export const TableBillings = ({ fromAdmin = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
@@ -131,7 +132,9 @@ export const TableBillings = () => {
         <div className="flex items-center gap-2">
           <Tooltip placement="bottom" title="Back">
             <Link
-              to="/dashboard/billings"
+              to={
+                !fromAdmin ? "/dashboard/billings" : "/admin-dashboard/billings"
+              }
               className="bg-[#FAFAFA] px-4 py-2 rounded-md"
             >
               <ArrowLeftOutlined />

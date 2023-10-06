@@ -89,6 +89,11 @@ export const AdminNavigation = [
     label: "Orders",
     path: "/admin-dashboard/orders",
   },
+  {
+    id: 6,
+    label: "Billings",
+    path: "/admin-dashboard/billings",
+  },
 
   {
     id: 6,
