@@ -28,6 +28,7 @@ import {
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
+import { AdminBillingHistory } from "../views/admin";
 
 const router = createBrowserRouter([
   {
@@ -168,6 +169,14 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/mangers/:id",
         element: <AdminWaiter />,
+      },
+      {
+        path: "/admin-dashboard/billings",
+        element: <AdminBillingHistory />,
+      },
+      {
+        path: "/admin-dashboard/billings/:id",
+        element: <TableBillings fromAdmin />,
       },
       {
         path: "/admin-dashboard/users",

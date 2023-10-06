@@ -27,7 +27,10 @@ import HandIcon from "./hand.png";
 import RequestIcon from "./request.png";
 import FeedbackIcon from "./feedback.png";
 import UserIcon from "./user.png";
-
+import Checkbox from "./checkbox.png";
+// import Peeks from "./peeks.png";
+// import Share from "./share.png";
+// import Comments from "./comment.png";
 export {
   UserIcon,
   FeedbackIcon,
@@ -58,4 +61,8 @@ export {
   Staff,
   Cooking,
   EmptyIcon,
+  Checkbox,
+  // Peek,
+  // Share,
+  // Comments,
 };
