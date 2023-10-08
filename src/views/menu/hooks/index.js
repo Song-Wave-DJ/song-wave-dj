@@ -17,10 +17,20 @@ export const useMenuOrder = () => {
 
   // Hooks
   const { search = "" } = useLocation();
+
   const categoryType = useMemo(
     () => search?.split("?")[1]?.split("=")[1],
     [search]
   );
+
+  const restaurntId = useMemo(
+    () => search?.split("?")[2]?.split("=")[1],
+    [search]
+  );
+
+  // Restaunt Id we need to send this id inot menus APIS so that we diff the restaunt. menus accordinly
+  console.log(restaurntId);
+
   const isBar = useMemo(() => categoryType === "bar", [categoryType]);
   const { contextHolder } = useNotification();
 

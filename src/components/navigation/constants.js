@@ -64,6 +64,19 @@ export const DashboardNavigation = [
   },
 ];
 
+export const EmployeeNavigation = [
+  {
+    id: 1,
+    label: "Orders",
+    path: "/employee",
+  },
+  {
+    id: 2,
+    label: "Billings",
+    path: "/employee/billings",
+  },
+];
+
 export const DJNavigation = [
   {
     id: 1,

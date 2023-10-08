@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import { Searching, Title } from "@/components";
 import { MusicCard } from "./components/music-card";
 import { MusicData } from "./constants";
@@ -7,6 +7,12 @@ import { useNavigate } from "react-router-dom";
 export const ThreeHours = () => {
   const [reqMusics, setReqMusic] = useState([]);
   const navigation = useNavigate();
+
+  useLayoutEffect(() => {
+    const resturantId = localStorage.getItem("resturantId");
+    if (!resturantId) return navigation("/");
+    navigation(`?resturantId=${resturantId}`);
+  }, [navigation]);
 
   async function getAccessToken() {}
 

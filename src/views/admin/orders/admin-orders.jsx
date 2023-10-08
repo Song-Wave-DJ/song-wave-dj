@@ -193,7 +193,6 @@ export const AdminOrders = () => {
     }
   };
 
-  return <p>Admin order</p>;
   return (
     <main className="mx-4 p-4">
       <div className="flex justify-between mb-4 items-center">

@@ -43,3 +43,10 @@ export const MobileNavigation = [
     path: "/menu",
   },
 ];
+
+export const UserType = {
+  Manager: "MANAGER",
+  Admin: "ADMIN",
+  Employee: "EMPLOYEE",
+  DJUSer: "DJUSER",
+};

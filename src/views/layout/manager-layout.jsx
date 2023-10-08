@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { ManagerNaviagtion } from "../../components/navigation";
 
-export const ManagerLayout = () => {
+export const ManagerLayout = ({ isEmployee = false }) => {
   return (
     <>
-      <ManagerNaviagtion />
+      <ManagerNaviagtion isEmployee={isEmployee} />
       <Outlet />
     </>
   );

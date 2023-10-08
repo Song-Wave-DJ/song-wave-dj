@@ -29,6 +29,12 @@ import {
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
 import { AdminBillingHistory } from "../views/admin";
+import {
+  ProtectedAdminRoute,
+  ProtectedDJUserRoute,
+  ProtectedEmployeeRoute,
+  ProtectedMangaerRoute,
+} from "../protected-route";
 
 const router = createBrowserRouter([
   {
@@ -108,10 +114,14 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
 
-  // Mangar
+  // Manager
   {
     path: "dashboard",
-    element: <ManagerLayout />,
+    element: (
+      <ProtectedMangaerRoute>
+        <ManagerLayout />
+      </ProtectedMangaerRoute>
+    ),
     children: [
       {
         index: true,
@@ -148,7 +158,12 @@ const router = createBrowserRouter([
   // Admin
   {
     path: "admin-dashboard",
-    element: <AdminLayout />,
+    element: (
+      <ProtectedAdminRoute>
+        <AdminLayout />
+      </ProtectedAdminRoute>
+    ),
+
     children: [
       {
         index: true,
@@ -193,11 +208,41 @@ const router = createBrowserRouter([
   // Dj Admin
   {
     path: "music-list",
-    element: <DJUserLayout />,
+    element: (
+      <ProtectedDJUserRoute>
+        <DJUserLayout />
+      </ProtectedDJUserRoute>
+    ),
     children: [
       {
         index: true,
         element: <DJUser />,
+      },
+    ],
+    errorElement: <NotFound />,
+  },
+
+  // Employee
+
+  {
+    path: "employee",
+    element: (
+      <ProtectedEmployeeRoute>
+        <ManagerLayout isEmployee />
+      </ProtectedEmployeeRoute>
+    ),
+    children: [
+      {
+        index: true,
+        element: <Orders />,
+      },
+      {
+        path: "/employee/billings",
+        element: <Billings isEmployee />,
+      },
+      {
+        path: "/employee/billings/:id",
+        element: <TableBillings isEmployee />,
       },
     ],
     errorElement: <NotFound />,
