@@ -113,7 +113,7 @@ export const AdminBillingHistory = () => {
   ];
 
   return (
-    <main className="w-full mx-4 p-4">
+    <main className="w-full p-4">
       <div className="flex flex-col md:flex-row justify-between mb-4 items-center gap-4">
         <p className="bg-[#FAFAFA] w-full md:w-auto px-4 py-2 rounded-sm text-lg">
           Total Post Billings: {"   "}

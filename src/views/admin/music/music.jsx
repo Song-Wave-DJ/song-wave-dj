@@ -54,8 +54,6 @@ export const AdminMusic = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
 
-  return <p>Music</p>;
-
   const onSetWaitingTime = (id) => {
     isSetModalOpen(true);
     setIds(id);

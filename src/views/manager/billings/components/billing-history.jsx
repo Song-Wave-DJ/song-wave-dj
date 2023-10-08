@@ -34,7 +34,7 @@ const dataSource = [
   },
 ];
 
-export const BillingHistory = () => {
+export const BillingHistory = ({ isEmployee }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleCancel = () => {
@@ -101,7 +101,11 @@ export const BillingHistory = () => {
           <Tooltip placement="bottom" title="Show Table Billings">
             <Link
               className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
-              to={`/dashboard/billings/${table}`}
+              to={
+                !isEmployee
+                  ? `/dashboard/billings/${table}`
+                  : `/employee/billings/${table}`
+              }
             >
               <RightOutlined />
             </Link>

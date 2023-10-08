@@ -13,7 +13,7 @@ import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { dataLive, pastLive } from "./constants";
 
-export const Billings = () => {
+export const Billings = ({ isEmployee = false }) => {
   // State
   const [tableData, setTableData] = useState(null);
   const [orderSummary, setOrderSummary] = useState(null);
@@ -113,7 +113,7 @@ export const Billings = () => {
       {/* body */}
       <div className="border-t py-4 justify-center flex gap-4 flex-wrap">
         {!isLive ? (
-          <BillingHistory />
+          <BillingHistory isEmployee={isEmployee} />
         ) : (
           <LiveBilling data={data} onClickBottomDrawer={onClickBottomDrawer} />
         )}

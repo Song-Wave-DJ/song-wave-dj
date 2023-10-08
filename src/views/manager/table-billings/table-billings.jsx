@@ -11,6 +11,7 @@ import { RenderColor } from "../../admin/constanst";
 import { Tooltip } from "antd";
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
+import { useMemo } from "react";
 
 const dataSource = [
   {
@@ -37,11 +38,17 @@ const dataSource = [
 ];
 
 // eslint-disable-next-line react/prop-types
-export const TableBillings = ({ fromAdmin = false }) => {
+export const TableBillings = ({ fromAdmin = false, isEmployee = false }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
   const { id } = useParams();
+
+  const backRoute = useMemo(() => {
+    if (fromAdmin) return "/admin-dashboard/billings";
+    else if (isEmployee) return "/employee/billings";
+    else return "/dashboard/billings";
+  }, [isEmployee, fromAdmin]);
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
@@ -131,12 +138,7 @@ export const TableBillings = ({ fromAdmin = false }) => {
       <div className="flex justify-between mb-4 items-center">
         <div className="flex items-center gap-2">
           <Tooltip placement="bottom" title="Back">
-            <Link
-              to={
-                !fromAdmin ? "/dashboard/billings" : "/admin-dashboard/billings"
-              }
-              className="bg-[#FAFAFA] px-4 py-2 rounded-md"
-            >
+            <Link to={backRoute} className="bg-[#FAFAFA] px-4 py-2 rounded-md">
               <ArrowLeftOutlined />
             </Link>
           </Tooltip>

@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-export const CategoryCard = ({ name, imageUrl, type }) => {
+export const CategoryCard = ({ name, imageUrl, type, restaurntId }) => {
   return (
     <Link
-      to={`/menu?category=${type}`}
+      to={`/menu?category=${type}?restaurntId=${restaurntId}`}
       className="shadow-lg min-h-[280px] w-full md:w-72"
     >
       <div className="h-56 w-full">

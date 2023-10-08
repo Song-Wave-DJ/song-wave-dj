@@ -1,10 +1,10 @@
 import { useMemo, useState } from "react";
-import { DashboardNavigation } from "./constants";
+import { DashboardNavigation, EmployeeNavigation } from "./constants";
 import { Link, useLocation } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
 import DrawerComp from "../drawer";
 
-export const ManagerNaviagtion = () => {
+export const ManagerNaviagtion = ({ isEmployee }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const pathname = useMemo(() => location?.pathname, [location?.pathname]);
@@ -20,18 +20,20 @@ export const ManagerNaviagtion = () => {
       </Link>{" "}
       <div className="py-3">
         <ul className="flex justify-center gap-6">
-          {DashboardNavigation.map((item) => (
-            <Link
-              to={item.path}
-              key={item.id}
-              className="text-lg hidden md:flex hover:underline hover:text-primary"
-              style={{
-                color: pathname === item.path ? "#43D396" : "",
-              }}
-            >
-              {item.label}
-            </Link>
-          ))}
+          {(!isEmployee ? DashboardNavigation : EmployeeNavigation).map(
+            (item) => (
+              <Link
+                to={item.path}
+                key={item.id}
+                className="text-lg hidden md:flex hover:underline hover:text-primary"
+                style={{
+                  color: pathname === item.path ? "#43D396" : "",
+                }}
+              >
+                {item.label}
+              </Link>
+            )
+          )}
           <div className="cursor-pointer block md:hidden" onClick={openDrawer}>
             <MenuOutlined />
           </div>
