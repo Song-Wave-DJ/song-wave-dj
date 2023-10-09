@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Searching, Title } from "@/components";
+import { Searching, Title, Button } from "@/components";
 import { MusicCard } from "./components/music-card";
 import { MusicData } from "./constants";
 import { useNavigate } from "react-router-dom";
@@ -48,55 +48,49 @@ export const ThreeHours = () => {
   };
 
   return (
-    <div className="py-2 min-h-screen sm:w-[500px] w-full m-auto px-2 relative">
-      <div className="flex justify-end my-4 gap-1">
-        <Searching
-          placeholder="Request here..."
-          styles="flex-[.8]"
-          onChange={onChangeSearch}
-        />
-        <button
-          className="p-2 px-6 text-purple-100 text-x rounded-lg bg-gradient-to-r from-purple-600 to-purple-400"
-          onClick={onSubmitMusicReq}
-        >
-          Request
-        </button>
-      </div>
-      {/* top music */}
-      <div className="mt-4">
-        <Title label="Top Musics" styles="text-lg" />
-        {MusicData.map((item) => (
-          <MusicCard
-            {...item}
-            key={item.id}
-            reqMusics={reqMusics}
-            onReqMusic={onReqMusic}
+    <div className="bg-black w-full">
+      <div className="py-2 min-h-screen sm:w-[500px] w-full m-auto px-2 relative">
+        <div className="flex justify-end my-4 gap-1">
+          <div className="border border-none flex items-center  p-2 flex-1 bg-[#242424] rounded-lg">
+            <input
+              type="text"
+              className="bg-[#242424] w-full text-white outline-none"
+              placeholder="Search & Request here..."
+              onChange={onChangeSearch}
+            />
+          </div>
+
+          <Button
+            htmlType="button"
+            onClick={onSubmitMusicReq}
+            label="Request"
+            styles="flex-[.2] border-none  !bg-[#242424] "
           />
-        ))}
-      </div>
-      {/* Recommanded */}
-      <div className="mt-4">
-        <Title label="Recommendations" styles="text-lg" />
-        {MusicData.map((item) => (
-          <MusicCard
-            {...item}
-            key={item.id}
-            reqMusics={reqMusics}
-            onReqMusic={onReqMusic}
-          />
-        ))}
-      </div>
-      {/* Playlist */}
-      <div className="mt-4">
-        <Title label="Playlists" styles="text-lg" />
-        {MusicData.map((item) => (
-          <MusicCard
-            {...item}
-            key={item.id}
-            reqMusics={reqMusics}
-            onReqMusic={onReqMusic}
-          />
-        ))}
+        </div>
+        {/* top music */}
+        <div className="my-6">
+          <Title label="Recommended Songs" styles="text-lg text-white " />
+          {MusicData.map((item) => (
+            <MusicCard
+              {...item}
+              key={item.id}
+              reqMusics={reqMusics}
+              onReqMusic={onReqMusic}
+            />
+          ))}
+        </div>
+        {/* Recommanded */}
+        <div className="mt-4">
+          <Title label="Songs" styles="text-lg text-white" />
+          {MusicData.map((item) => (
+            <MusicCard
+              {...item}
+              key={item.id}
+              reqMusics={reqMusics}
+              onReqMusic={onReqMusic}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
