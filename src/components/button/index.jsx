@@ -9,7 +9,7 @@ const Button = ({
   isLoading,
   styles = "w-full",
   icon = false,
-  lableStyles = {},
+  lableStyles = "",
   disabled = false,
 }) => {
   return (

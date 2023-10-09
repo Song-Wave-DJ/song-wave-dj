@@ -28,9 +28,8 @@ import RequestIcon from "./request.png";
 import FeedbackIcon from "./feedback.png";
 import UserIcon from "./user.png";
 import Checkbox from "./checkbox.png";
-// import Peeks from "./peeks.png";
-// import Share from "./share.png";
-// import Comments from "./comment.png";
+import CallingIcon from "./calling.png";
+
 export {
   UserIcon,
   FeedbackIcon,
@@ -62,6 +61,7 @@ export {
   Cooking,
   EmptyIcon,
   Checkbox,
+  CallingIcon,
   // Peek,
   // Share,
   // Comments,

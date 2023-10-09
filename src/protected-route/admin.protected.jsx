@@ -5,6 +5,6 @@ import { UserType } from "../constants";
 export const ProtectedAdminRoute = ({ children }) => {
   const role = "ADMIN";
 
-  if (role === UserType.Manager) return <>{children} </>;
+  if (role === UserType.Admin) return <>{children} </>;
   else return <Navigate to="/login" />;
 };

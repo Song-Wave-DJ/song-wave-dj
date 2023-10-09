@@ -173,6 +173,8 @@ export const Waiters = () => {
           >
             <TextInput name="name" {...fieldSet.name} />
             <TextInput name="email" {...fieldSet.email} />
+            <TextInput name="phone" {...fieldSet.phone} />
+
             <TextPassword {...fieldSet.password} />
             <Form.Item>
               <div className="flex justify-between  mt-4 gap-4 w-full">
@@ -180,7 +182,7 @@ export const Waiters = () => {
                   htmlType="button"
                   onClick={handleCancel}
                   label="Cancel"
-                  styles="bg-danger flex-[.5]"
+                  styles="!bg-danger flex-[.5]"
                 />
                 <Button label="Add" styles="flex-[.5]" />
               </div>
