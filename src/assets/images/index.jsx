@@ -29,8 +29,17 @@ import FeedbackIcon from "./feedback.png";
 import UserIcon from "./user.png";
 import Checkbox from "./checkbox.png";
 import CallingIcon from "./calling.png";
+import BackgroundIcon from "./bg.jpg";
+import DiskIcon from "./disk.jpg";
+import RetroIcon from "./retro.png";
+import RetroBgIcon from "./retro-bg.jpg";
+import LightIcon from "./light.jpg";
 
 export {
+  LightIcon,
+  RetroBgIcon,
+  RetroIcon,
+  BackgroundIcon,
   UserIcon,
   FeedbackIcon,
   ApprovedIcon,
@@ -62,6 +71,7 @@ export {
   EmptyIcon,
   Checkbox,
   CallingIcon,
+  DiskIcon,
   // Peek,
   // Share,
   // Comments,
