@@ -4,7 +4,7 @@ import ModalComp from "@/components/modal";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { Searching } from "../../../components";
+import { DateRange, Searching } from "../../../components";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../constanst";
 
@@ -37,11 +37,19 @@ const dataSource = [
 
 export const AdminBillingHistory = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [dateRange, setDateRange] = useState(null);
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
   };
 
+  const onChangeDateRange = (val) => {
+    setDateRange(val);
+  };
+
+  const onChange = (e) => {
+    console.log(e);
+  };
   const columns = [
     {
       title: "Order Id",
@@ -120,7 +128,13 @@ export const AdminBillingHistory = () => {
           <span className="text-primary text-lg">{dataSource?.length}</span>
         </p>
 
-        <Searching styles="flex-[.9] md:flex-[.2] py-2" />
+        <div className="flex   items-center gap-4">
+          <Searching onChange={onChange} />
+          <DateRange
+            onChangeDateRange={onChangeDateRange}
+            dateRange={dateRange}
+          />
+        </div>
       </div>
       <TableComponent
         loading={false}

@@ -4,4 +4,5 @@ export * from "./orders";
 export * from "./dashboard";
 export * from "./waiters";
 export * from "./billings";
+export * from "./waiter-history";
 export * from "./table-billings";

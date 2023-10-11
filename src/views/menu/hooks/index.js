@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AllData, DrinksData, NonVegData, VegData } from "../constants";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useNotification from "antd/es/notification/useNotification";
 
+const user = false;
 export const useMenuOrder = () => {
   const [filterItem, setFilterItem] = useState("All");
   const [carts, setCarts] = useState([]);
@@ -14,6 +15,7 @@ export const useMenuOrder = () => {
 
   const [navigate, setNavigate] = useState("PaymentChoose");
   const [selectedMethod, setSelectedMethod] = useState("QR");
+  const navigation = useNavigate();
 
   // Hooks
   const { search = "" } = useLocation();
@@ -106,6 +108,13 @@ export const useMenuOrder = () => {
     //   description: "Your placed successfully!",
     //   type: "success",
     // });
+
+    // check if user exist
+    if (user) {
+      navigation("/login");
+      return;
+    }
+
     onClose();
     setCarts([]);
     setIsPlacedOrder(true);

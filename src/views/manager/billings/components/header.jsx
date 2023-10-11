@@ -1,8 +1,15 @@
 /* eslint-disable react/prop-types */
 import { Searching, Button } from "@/components";
 import { useNavigate } from "react-router-dom";
+import { DateRange } from "../../../../components";
 
-export const HeaderView = ({ data = [], onChange }) => {
+export const HeaderView = ({
+  data = [],
+  onChange,
+  onDateRangeFilter,
+  dateRange,
+  isLive = false,
+}) => {
   const navigation = useNavigate();
 
   const onPastView = () => {
@@ -38,6 +45,12 @@ export const HeaderView = ({ data = [], onChange }) => {
           onClick={onPastView}
         />
         <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
+        {!isLive && (
+          <DateRange
+            onChangeDateRange={onDateRangeFilter}
+            dateRange={dateRange}
+          />
+        )}
       </div>
     </div>
   );
