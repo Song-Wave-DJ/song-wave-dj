@@ -21,7 +21,7 @@ export const Billings = ({ isEmployee = false }) => {
   const [data, setData] = useState(dataLive);
   const [showQR, setShowQR] = useState(false);
   const [isMoveTable, setIsMoveTable] = useState(false);
-
+  const [dateRange, setDateRange] = useState(null);
   // Hooks
   const location = useLocation();
   const search = useMemo(
@@ -93,7 +93,10 @@ export const Billings = ({ isEmployee = false }) => {
     });
     setIsMoveTable(false);
   };
-
+  const onDateRangeFilter = (val) => {
+    console.log(val);
+    setDateRange(val);
+  };
   // Effect
   useEffect(() => {
     if (search === "active") {
@@ -108,7 +111,13 @@ export const Billings = ({ isEmployee = false }) => {
   return (
     <main className="mx-4 p-4">
       {/* Header */}
-      <HeaderView data={data} onChange={handleSearch} />
+      <HeaderView
+        data={data}
+        onChange={handleSearch}
+        onDateRangeFilter={onDateRangeFilter}
+        dateRange={dateRange}
+        isLive={isLive}
+      />
 
       {/* body */}
       <div className="border-t py-4 justify-center flex gap-4 flex-wrap">

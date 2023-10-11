@@ -9,9 +9,11 @@ import {
   TextPassword,
 } from "@/components";
 import ModalComp from "@/components/modal";
-import { Form } from "antd";
+import { Form, Tooltip } from "antd";
 import { fieldSet } from "./fieldsData";
 import { DeleteIcon } from "@/assets";
+import { Link } from "react-router-dom";
+import { RightOutlined } from "@ant-design/icons";
 
 const dataSource = [
   {
@@ -124,13 +126,21 @@ export const Waiters = () => {
       dataIndex: "address",
       key: "Action",
       render: (_, { id }) => (
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap gap-3">
           <div
             className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-danger"
             onClick={() => onDeleteWaiter(id)}
           >
             <DeleteIcon color="#fff" />
           </div>
+          <Tooltip placement="bottom" title="View total order">
+            <Link
+              to={`/dashboard/waiter/${id}`}
+              className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
+            >
+              <RightOutlined />
+            </Link>
+          </Tooltip>
         </div>
       ),
     },

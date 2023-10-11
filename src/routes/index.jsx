@@ -25,6 +25,7 @@ import {
   AdminMenus,
   Billings,
   TableBillings,
+  OrderHistory,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
@@ -35,6 +36,7 @@ import {
   ProtectedEmployeeRoute,
   ProtectedMangaerRoute,
 } from "../protected-route";
+import { WaiterOrder } from "../views";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +46,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+    ],
+    errorElement: <NotFound />,
+  },
+  {
+    path: "order-history/:id",
+    element: <Layout />,
+    children: [
+      {
+        index: true,
+        element: <OrderHistory />,
       },
     ],
     errorElement: <NotFound />,
@@ -142,6 +155,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/waiter",
         element: <Waiters />,
+      },
+      {
+        path: "/dashboard/waiter/:id",
+        element: <WaiterOrder />,
       },
       {
         path: "/dashboard/billings",

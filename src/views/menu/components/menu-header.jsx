@@ -2,6 +2,7 @@
 import { RadioButton, Searching } from "@/components";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { ChefIcon } from "../../../assets";
+import { Link } from "react-router-dom";
 
 export const MenuHeader = ({
   isBar,
@@ -22,12 +23,17 @@ export const MenuHeader = ({
             <img src={ChefIcon} alt="" />
             <p className="text-lg">Your food is being prepaired</p>
           </div>
-          <div
-            className="text-right whitespace-nowrap text-white cursor-pointer px-2 py-1 rounded-full bg-primary"
-            onClick={onOpenPayment}
-          >
-            Pay Now
-          </div>
+          <Link to="/order-history/234" className="flex gap-2">
+            <div className="text-right whitespace-nowrap text-white cursor-pointer px-2 py-1 rounded-full bg-primary">
+              View Order
+            </div>
+            <div
+              className="text-right whitespace-nowrap text-white cursor-pointer px-2 py-1 rounded-full bg-primary"
+              onClick={onOpenPayment}
+            >
+              Pay Now
+            </div>
+          </Link>
         </div>
       )}
       {/* Search */}
