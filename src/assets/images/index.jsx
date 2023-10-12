@@ -34,8 +34,9 @@ import DiskIcon from "./disk.jpg";
 import RetroIcon from "./retro.png";
 import RetroBgIcon from "./retro-bg.jpg";
 import LightIcon from "./light.jpg";
-
+import RequestImageIcon from "./requestImage.png";
 export {
+  RequestImageIcon,
   LightIcon,
   RetroBgIcon,
   RetroIcon,

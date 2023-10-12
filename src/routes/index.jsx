@@ -36,7 +36,7 @@ import {
   ProtectedEmployeeRoute,
   ProtectedMangaerRoute,
 } from "../protected-route";
-import { WaiterOrder } from "../views";
+import { AttendeceLogs, WaiterOrder } from "../views";
 
 const router = createBrowserRouter([
   {
@@ -160,6 +160,11 @@ const router = createBrowserRouter([
         path: "/dashboard/waiter/:id",
         element: <WaiterOrder />,
       },
+      {
+        path: "/dashboard/waiter/attendance/:id",
+        element: <AttendeceLogs />,
+      },
+
       {
         path: "/dashboard/billings",
         element: <Billings />,
