@@ -3,6 +3,7 @@ import {
   BackgroundIcon,
   DiskIcon,
   LightIcon,
+  RequestImageIcon,
   RetroBgIcon,
   RetroIcon,
 } from "../../assets";
@@ -10,12 +11,13 @@ import {
 export const Home = () => {
   return (
     <section
-      className="bg-black relative max-h-screen"
+      className="bg-black relative overflow-y-auto"
       style={{
         backgroundImage: `url( ${BackgroundIcon})`,
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
+        maxHeight: "calc(100vh - 4rem)",
       }}
     >
       <div className="flex">
@@ -37,17 +39,16 @@ export const Home = () => {
 
       {/* DJ */}
       <div
-        className="flex flex-col relative "
+        className="flex flex-col h-screen relative "
         style={{
           backgroundImage: `url( ${DiskIcon})`,
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
-          height: "60vh",
           opacity: 0.9,
         }}
       >
-        <div className="flex justify-center flex-col  py-5">
+        <div className="flex justify-center flex-col p-4">
           <h2 className="text-center text-white text-6xl font-bold">
             Our DJ Your Songs
           </h2>
@@ -56,18 +57,19 @@ export const Home = () => {
             <li className="text-white ">Rave</li>
             <li className="text-white ">Repeat</li>
           </ul>
-          <Link
-            to="/three-hours"
-            className="absolute bottom-0 w-[75%] right-0 rounded-md p-2 flex cursor-pointer flex-col items-center bg-[#000]"
-          >
-            <p className="text-white text-2xl font-bold">Change Mood</p>
-            <p className="text-white my-2 text-lg font-bold">(Request Song)</p>
-          </Link>
+          <div className="flex mt-20 items-center bg-[#000] w-full md:w-1/2 m-auto justify-center">
+            <Link
+              to="/polls"
+              className="rounded-md px-10 p-4 flex cursor-pointer flex-col items-center "
+            >
+              <p className="text-white text-2xl font-bold">Request Songs</p>
+            </Link>
+          </div>
         </div>
       </div>
       {/* Retro */}
       <div
-        className="p-4 flex  items-center flex-col md:flex-row"
+        className="p-4 flex  min-h-screen items-center flex-col md:flex-row"
         style={{
           backgroundImage: `url( ${RetroBgIcon})`,
           backgroundPosition: "center",
@@ -76,7 +78,7 @@ export const Home = () => {
           opacity: 0.9,
         }}
       >
-        <div className="w-full h-full">
+        <div className="w-full grid items-center h-full">
           <img src={RetroIcon} className="w-full object-cover" alt="" />
         </div>
         <h2 className="text-center text-2xl my-5 text-white">
@@ -87,9 +89,56 @@ export const Home = () => {
           Happiness with uh fav song and fav place with songwave
         </h2>
       </div>
+      {/* Food */}
+      <div
+        className="flex relative  flex-col justify-center  h-screen"
+        style={{
+          backgroundImage: `url("https://plus.unsplash.com/premium_photo-1674106347866-8282d8c19f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")`,
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="bg-[#76697a90] h-screen p-4 flex flex-col justify-center">
+          <h1 className="text-4xl font-bold text-white text-center">
+            Don't Play With Fire, Play With Taste.
+          </h1>
+          <div className="flex mt-20 bg-[#000] w-full md:w-1/2 m-auto items-center justify-center">
+            <Link
+              to="/category"
+              className="rounded-md  p-4 flex cursor-pointer flex-col items-center"
+            >
+              <p className="text-white text-2xl font-bold">Order Food</p>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Polls */}
+      <div
+        className="h-screen relative"
+        style={{
+          backgroundImage: `url("https://www.polly.ai/hubfs/Blog%20Images/Illustrations%20(white,%20svg)/Analyzing%20Results%20Fun%201.svg")`,
+          backgroundSize: "cover",
+        }}
+      >
+        <div className="bg-[#76697a90] p-4 h-screen flex flex-col justify-center">
+          <h1 className="text-4xl font-bold text-white text-center">
+            Fun poll questions help your meetings start with more humor and
+            connection. Try out these sample questions that will set a positive
+            tone for your team.
+          </h1>
+          <div className="flex mt-20 items-center bg-[#000] w-full md:w-1/2 m-auto justify-center">
+            <Link
+              to="/polls"
+              className="rounded-md px-10 p-4 flex cursor-pointer flex-col items-center "
+            >
+              <p className="text-white text-2xl font-bold">Polls</p>
+            </Link>
+          </div>
+        </div>
+      </div>
       {/* Example */}
       <div
-        className="p-4 flex  h-screen flex-col md:flex-row"
+        className="p-4 flex justify-center min-h-screen flex-col"
         style={{
           backgroundImage: `url( ${LightIcon})`,
           backgroundPosition: "center",
@@ -99,15 +148,53 @@ export const Home = () => {
         }}
       >
         <h1 className="text-5xl font-bold text-white text-center">
-          {" "}
-          Beat the Blues, Feel Renewed: Your Fav Song,
-          Your&nbsp;Happy&nbsp;Brew!
+          Beat the Blues, Feel Renewed: Your Fav Song, Your Happy Brew!
         </h1>
-        {/* <div className="">
-          <div className="w-full h-96 bg-[#333333]">
-            <h1>Request</h1>
+        <div className="flex justify-center gap-4  mt-9 flex-wrap">
+          <div className="w-full md:w-96 p-4 h-96 bg-[#76697ac8] rounded-lg">
+            <div className="flex justify-between">
+              <h1 className="text-4xl font-bold text-white">Request</h1>
+              <span className="w-28">
+                <img src={RequestImageIcon} alt="" />
+              </span>
+            </div>
+            <p className="text-lg mt-8 text-center text-white">
+              Whatever the scale and nature of your projects, our specialists
+              have the skills and experience necessary to successfully solve
+              your problems.
+            </p>
           </div>
-        </div> */}
+          <div className="w-full md:w-96 p-4 h-96 bg-[#76697ac8] rounded-lg">
+            <div className="flex justify-between">
+              <h1 className="text-4xl font-bold text-white">Rave</h1>
+              <span className="w-28">
+                <img src={RequestImageIcon} alt="" />
+              </span>
+            </div>
+            <p className="text-lg mt-8 text-center text-white">
+              Whatever the scale and nature of your projects, our specialists
+              have the skills and experience necessary to successfully solve
+              your problems.
+            </p>
+          </div>
+          <div className="w-full md:w-96 p-4 h-96 bg-[#76697ac8] rounded-lg">
+            <div className="flex justify-between">
+              <h1 className="text-4xl font-bold text-white">Repeat</h1>
+              <span className="w-28 object-contain">
+                <img
+                  src={RequestImageIcon}
+                  className="h-full w-full object-contain"
+                  alt=""
+                />
+              </span>
+            </div>
+            <p className="text-lg mt-8 text-center text-white">
+              Whatever the scale and nature of your projects, our specialists
+              have the skills and experience necessary to successfully solve
+              your problems.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
   );

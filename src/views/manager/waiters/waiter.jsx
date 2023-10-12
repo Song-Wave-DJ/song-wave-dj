@@ -22,6 +22,15 @@ const dataSource = [
     email: "john@gmail.com",
     password: "123456788",
     createdAt: "30-09-2023",
+    attendece: true,
+  },
+  {
+    id: "123345645678",
+    name: "John Lol",
+    email: "johnlo@gmail.com",
+    password: "123456788",
+    createdAt: "30-09-2023",
+    attendece: false,
   },
 ];
 
@@ -29,6 +38,9 @@ export const Waiters = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
+  const [isAttendece, setIsAttendece] = useState(false);
+
+  const todatDate = new Date().toLocaleString();
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
@@ -124,15 +136,35 @@ export const Waiters = () => {
     {
       title: "Action",
       dataIndex: "address",
+      width: 500,
       key: "Action",
-      render: (_, { id }) => (
-        <div className="flex flex-wrap gap-3">
+      render: (_, { id, attendece }) => (
+        <div className="flex flex-wrap items-center gap-3">
+          <div
+            className="bg-gray-50 rounded-full p-2 cursor-pointer"
+            onClick={() => setIsAttendece(true)}
+          >
+            <span>Mark Attendence</span>
+          </div>
+          {attendece ? (
+            <Link
+              to={`/dashboard/waiter/attendance/${id}`}
+              className="bg-gray-50 rounded-full px-2 py-1 cursor-pointer"
+            >
+              <span>Attendence Logs</span>
+            </Link>
+          ) : (
+            <div className="bg-primary text-white rounded-full px-2 py-1">
+              <span>Loged In</span>
+            </div>
+          )}
           <div
             className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-danger"
             onClick={() => onDeleteWaiter(id)}
           >
             <DeleteIcon color="#fff" />
           </div>
+
           <Tooltip placement="bottom" title="View total order">
             <Link
               to={`/dashboard/waiter/${id}`}
@@ -201,6 +233,27 @@ export const Waiters = () => {
         </div>
       </ModalComp>
 
+      <ModalComp open={isAttendece} handleCancel={() => setIsAttendece(false)}>
+        <>
+          <Title label="Mark Attendence" />
+          <div className="bg-gray-100 my-4 flex items-center justify-center h-12 rounded-lg">
+            <div className="text-2xl font-semibold">{todatDate}</div>
+          </div>
+          <div className="flex justify-between  mt-8 gap-4 w-full">
+            <Button
+              htmlType="button"
+              onClick={() => setIsAttendece(false)}
+              label="Cancel"
+              styles="!bg-danger flex-[.5]"
+            />
+            <Button
+              label="Confirm"
+              styles="flex-[.5]"
+              onClick={() => setIsAttendece(false)}
+            />
+          </div>
+        </>
+      </ModalComp>
       <Confirmation
         handleOpen={confirmationOpen}
         open={isConfirmationOpen}
