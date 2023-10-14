@@ -35,7 +35,14 @@ import RetroIcon from "./retro.png";
 import RetroBgIcon from "./retro-bg.jpg";
 import LightIcon from "./light.jpg";
 import RequestImageIcon from "./requestImage.png";
+import RaveIcon from "./rave.png";
+import RepaetIcon from "./repeat.png";
+import PrinterIcon from "./printer.png";
+
 export {
+  PrinterIcon,
+  RepaetIcon,
+  RaveIcon,
   RequestImageIcon,
   LightIcon,
   RetroBgIcon,

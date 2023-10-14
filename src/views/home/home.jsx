@@ -6,12 +6,20 @@ import {
   RequestImageIcon,
   RetroBgIcon,
   RetroIcon,
+  RaveIcon,
+  RepaetIcon,
 } from "../../assets";
+import { Button, TextInput } from "@/components";
+import { Form } from "antd";
+import { fieldSet } from "./fieldsData";
+import "./style.css";
 
 export const Home = () => {
+  const onFinishContact = (paylaod) => {};
+
   return (
     <section
-      className="bg-black relative overflow-y-auto"
+      className="bg-black relative home overflow-y-auto"
       style={{
         backgroundImage: `url( ${BackgroundIcon})`,
         backgroundPosition: "center",
@@ -169,7 +177,7 @@ export const Home = () => {
             <div className="flex justify-between">
               <h1 className="text-4xl font-bold text-white">Rave</h1>
               <span className="w-28">
-                <img src={RequestImageIcon} alt="" />
+                <img src={RaveIcon} alt="" />
               </span>
             </div>
             <p className="text-lg mt-8 text-center text-white">
@@ -183,7 +191,7 @@ export const Home = () => {
               <h1 className="text-4xl font-bold text-white">Repeat</h1>
               <span className="w-28 object-contain">
                 <img
-                  src={RequestImageIcon}
+                  src={RepaetIcon}
                   className="h-full w-full object-contain"
                   alt=""
                 />
@@ -195,6 +203,32 @@ export const Home = () => {
               your problems.
             </p>
           </div>
+        </div>
+      </div>
+
+      {/*Contact Us  */}
+      <div className="p-4">
+        <div className="w-full md:w-96 px-4 m-auto py-6 min-h-96 bg-[#76697a84] rounded-lg">
+          <h1 className="text-4xl text-center font-bold text-white">
+            Contact Us
+          </h1>
+          <Form
+            name="add-waiter"
+            requiredMark={false}
+            layout="vertical"
+            onFinish={onFinishContact}
+            key={Math.random()}
+          >
+            <TextInput name="name" {...fieldSet.name} />
+            <TextInput name="email" {...fieldSet.email} />
+            <TextInput name="phone" {...fieldSet.phone} />
+
+            <Form.Item>
+              <div className="flex justify-between  mt-4 gap-4 w-full">
+                <Button label="Save" styles="flex-1" />
+              </div>
+            </Form.Item>
+          </Form>
         </div>
       </div>
     </section>

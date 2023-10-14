@@ -5,6 +5,7 @@ import ViewMenu from "./view-menu";
 import { MenuCard } from "./menu-card";
 import { AddDashbardMenu } from "./add-menu";
 import { EmptyIcon } from "../../../assets";
+import { Link } from "react-router-dom";
 
 const DummyData = [
   {
@@ -194,13 +195,16 @@ export const Menus = () => {
     <main className="mx-4 p-4">
       <div className="flex flex-wrap justify-end items-center mb-4">
         <div className="flex justify-end items-center gap-2">
+          <Link to="/dashboard/table">
+            <Button label="Table" styles="rounded-lg" />
+          </Link>
           <Button
             isLoading={false}
             label="Add Menu"
-            styles="rounded-lg hover:"
+            styles="rounded-lg "
             onClick={onAddMenu}
           />
-          <Searching onChange={onChange} styles="flex-1 py-2" />
+          <Searching onChange={onChange} styles="py-2" />
         </div>
       </div>
       <AddDashbardMenu
