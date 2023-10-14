@@ -107,12 +107,17 @@ export const Waiters = () => {
   const columns = [
     {
       title: "S.No.",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "sNo",
+      key: "sNO",
       render: (_, record, index) => <p>{index + 1}</p>,
     },
     {
-      title: "name",
+      title: "Waiter Id",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Name",
       dataIndex: "name",
       key: "name",
     },

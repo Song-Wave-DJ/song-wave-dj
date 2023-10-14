@@ -26,6 +26,11 @@ import {
   Billings,
   TableBillings,
   OrderHistory,
+  AddPolls,
+  AdminPolls,
+  AttendeceLogs,
+  WaiterOrder,
+  ManagerPolls,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
@@ -36,7 +41,6 @@ import {
   ProtectedEmployeeRoute,
   ProtectedMangaerRoute,
 } from "../protected-route";
-import { AttendeceLogs, WaiterOrder } from "../views";
 
 const router = createBrowserRouter([
   {
@@ -149,6 +153,15 @@ const router = createBrowserRouter([
         element: <TableBillings />,
       },
       {
+        path: "/dashboard/polls",
+        element: <ManagerPolls />,
+      },
+      {
+        path: "/dashboard/polls/add",
+        element: <AddPolls />,
+      },
+
+      {
         path: "/dashboard/menus",
         element: <Menus />,
       },
@@ -222,6 +235,10 @@ const router = createBrowserRouter([
       {
         path: "/admin-dashboard/menus",
         element: <AdminMenus />,
+      },
+      {
+        path: "/admin-dashboard/polls",
+        element: <AdminPolls />,
       },
     ],
     errorElement: <NotFound />,

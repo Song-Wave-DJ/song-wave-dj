@@ -57,7 +57,12 @@ export const AdminManagers = () => {
       render: (_, record, index) => <p>{index + 1}</p>,
     },
     {
-      title: "name",
+      title: "Manger Id",
+      dataIndex: "id",
+      key: "id",
+    },
+    {
+      title: "Name",
       dataIndex: "name",
       key: "name",
     },

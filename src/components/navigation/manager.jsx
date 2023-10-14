@@ -1,13 +1,17 @@
-import { useMemo, useState } from "react";
-import { DashboardNavigation, EmployeeNavigation } from "./constants";
-import { Link, useLocation } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
+import { useMemo, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import DrawerComp from "../drawer";
+import { DashboardNavigation, EmployeeNavigation } from "./constants";
 
 export const ManagerNaviagtion = ({ isEmployee }) => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
-  const pathname = useMemo(() => location?.pathname, [location?.pathname]);
+
+  const pathname = useMemo(
+    () => location.pathname.split("/")[2] ?? "dashboard",
+    [location]
+  );
 
   const openDrawer = () => {
     setIsOpen((prev) => !prev);
@@ -27,7 +31,10 @@ export const ManagerNaviagtion = ({ isEmployee }) => {
                 key={item.id}
                 className="text-lg hidden md:flex hover:underline hover:text-primary"
                 style={{
-                  color: pathname === item.path ? "#43D396" : "",
+                  color:
+                    pathname.toUpperCase() === item.label.toUpperCase()
+                      ? "#43D396"
+                      : "",
                 }}
               >
                 {item.label}

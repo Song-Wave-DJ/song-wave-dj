@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import { CategoryCard } from "./component/category-card";
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import { useEffect, useMemo } from "react";
 
 const JSONData = [
   {
@@ -36,24 +36,35 @@ const JSONData = [
 
 export const Category = () => {
   const { search = "" } = useLocation();
+
   const restaurntId = useMemo(
     () => localStorage.getItem("resturantId") ?? search?.split("?")[1],
     [search]
   );
 
-  console.log(restaurntId);
+  const tableId = useMemo(
+    () => localStorage.getItem("tableId") ?? search?.split("=")[2],
+    [search]
+  );
+
   const naviagte = useNavigate();
 
   useEffect(() => {
-    if (!restaurntId) return naviagte("/");
+    if (!restaurntId || !tableId) return naviagte("/");
     localStorage.setItem("resturantId", restaurntId);
-  }, [restaurntId]);
+    localStorage.setItem("tableId", tableId);
+  }, [naviagte, restaurntId, tableId]);
 
   return (
     <div className="sm:w-[600px] w-full m-auto  p-4">
       <div className="flex flex-col items-center gap-6">
         {JSONData.map((el) => (
-          <CategoryCard {...el} key={el.id} restaurntId={restaurntId} />
+          <CategoryCard
+            {...el}
+            key={el.id}
+            tableId={tableId}
+            restaurntId={restaurntId}
+          />
         ))}
       </div>
     </div>

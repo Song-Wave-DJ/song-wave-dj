@@ -6,3 +6,4 @@ export * from "./waiters";
 export * from "./users";
 export * from "./menus";
 export * from "./billings";
+export * from "./polls";

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Searching, Title, Button } from "@/components";
+import { Title, Button } from "@/components";
 import { MusicCard } from "./components/music-card";
 import { MusicData } from "./constants";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,10 @@ export const ThreeHours = () => {
 
   useLayoutEffect(() => {
     const resturantId = localStorage.getItem("resturantId");
-    if (!resturantId) return navigation("/");
-    navigation(`?resturantId=${resturantId}`);
+    const tableId = localStorage.getItem("tableId");
+
+    if (!resturantId || !tableId) return navigation("/");
+    navigation(`?resturantId=${resturantId}&tableId=${tableId}`);
   }, [navigation]);
 
   async function getAccessToken() {}
