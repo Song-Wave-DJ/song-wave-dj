@@ -1,9 +1,17 @@
+/* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 
-export const CategoryCard = ({ name, imageUrl, type, restaurntId }) => {
+export const CategoryCard = ({
+  name,
+  imageUrl,
+  type,
+  tableId,
+  restaurntId,
+}) => {
   return (
     <Link
-      to={`/menu?category=${type}?restaurntId=${restaurntId}`}
+      to={`/menu?category=${type}?restaurntId=${restaurntId}&tableId=
+      ${tableId}`}
       className="shadow-lg min-h-[280px] w-full md:w-72"
     >
       <div className="h-56 w-full">

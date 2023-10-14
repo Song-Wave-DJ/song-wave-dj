@@ -17,10 +17,10 @@ export const Home = () => {
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        maxHeight: "calc(100vh - 4rem)",
+        maxHeight: "calc(100vh - 0rem)",
       }}
     >
-      <div className="flex">
+      <div className="grid content-center">
         <img
           className="w-full h-screen aspect-video"
           src={"https://media0.giphy.com/media/3oz8xur099boo4N9aU/giphy.gif"}
@@ -39,7 +39,7 @@ export const Home = () => {
 
       {/* DJ */}
       <div
-        className="flex flex-col h-screen relative "
+        className="flex-col h-screen  grid content-center relative "
         style={{
           backgroundImage: `url( ${DiskIcon})`,
           backgroundPosition: "center",
@@ -48,7 +48,7 @@ export const Home = () => {
           opacity: 0.9,
         }}
       >
-        <div className="flex justify-center flex-col p-4">
+        <div className="bg-[#76697a90] p-4 h-screen  grid content-center">
           <h2 className="text-center text-white text-6xl font-bold">
             Our DJ Your Songs
           </h2>
@@ -97,7 +97,7 @@ export const Home = () => {
           backgroundSize: "cover",
         }}
       >
-        <div className="bg-[#76697a90] h-screen p-4 flex flex-col justify-center">
+        <div className="bg-[#76697a90] h-screen p-4 grid content-center">
           <h1 className="text-4xl font-bold text-white text-center">
             Don't Play With Fire, Play With Taste.
           </h1>
@@ -114,18 +114,19 @@ export const Home = () => {
 
       {/* Polls */}
       <div
-        className="h-screen relative"
+        className="h-screen relative "
         style={{
           backgroundImage: `url("https://www.polly.ai/hubfs/Blog%20Images/Illustrations%20(white,%20svg)/Analyzing%20Results%20Fun%201.svg")`,
           backgroundSize: "cover",
         }}
       >
-        <div className="bg-[#76697a90] p-4 h-screen flex flex-col justify-center">
+        <div className="bg-[#76697a90] p-4 h-screen  grid content-center">
           <h1 className="text-4xl font-bold text-white text-center">
             Fun poll questions help your meetings start with more humor and
             connection. Try out these sample questions that will set a positive
             tone for your team.
           </h1>
+
           <div className="flex mt-20 items-center bg-[#000] w-full md:w-1/2 m-auto justify-center">
             <Link
               to="/polls"
@@ -138,7 +139,7 @@ export const Home = () => {
       </div>
       {/* Example */}
       <div
-        className="p-4 flex justify-center min-h-screen flex-col"
+        className="p-4  grid content-center min-h-screen"
         style={{
           backgroundImage: `url( ${LightIcon})`,
           backgroundPosition: "center",

@@ -10,18 +10,20 @@ const dataSource = [
   {
     date: "10/11/2023, 9:24:42 PM",
     stauts: "Approve",
+    loggedIn: "9:24:42 PM",
   },
   {
     date: "10/11/2023, 9:24:42 PM",
     stauts: "Weekly Leave",
+    loggedIn: "9:24:42 PM",
   },
   {
     date: "10/11/2023, 9:24:42 PM",
     stauts: "Leave",
+    loggedIn: "9:24:42 PM",
   },
 ];
 
-// eslint-disable-next-line react/prop-types
 export const AttendeceLogs = () => {
   const [data, setData] = useState(dataSource);
   const [dateRange, setDateRange] = useState(null);
@@ -38,7 +40,11 @@ export const AttendeceLogs = () => {
       key: "id",
       render: (_, record, index) => <p>{index + 1}</p>,
     },
-
+    {
+      title: "LoggedIn Time",
+      dataIndex: "loggedIn",
+      key: "loggedIn",
+    },
     {
       title: "Date & Time",
       dataIndex: "date",
@@ -50,7 +56,7 @@ export const AttendeceLogs = () => {
       key: "stauts",
       render: (_, { stauts }) => (
         <p
-          className="text-lg"
+          className="text-lg bg-gray-50 rounded-full w-40 text-center p-2 font-medium"
           style={{
             color: RenderColor[stauts],
           }}

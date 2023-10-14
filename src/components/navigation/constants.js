@@ -34,7 +34,7 @@ export const Navigation = [
 export const DashboardNavigation = [
   {
     id: 1,
-    label: "Dashbaord",
+    label: "Dashboard",
     path: "/dashboard",
   },
   {
@@ -43,7 +43,7 @@ export const DashboardNavigation = [
     path: "/dashboard/orders",
   },
   {
-    id: 5,
+    id: 123,
     label: "Billings",
     path: "/dashboard/billings",
   },
@@ -61,6 +61,11 @@ export const DashboardNavigation = [
     id: 5,
     label: "Music",
     path: "/dashboard/music",
+  },
+  {
+    id: 6,
+    label: "Polls",
+    path: "/dashboard/polls",
   },
 ];
 
@@ -88,13 +93,13 @@ export const DJNavigation = [
 export const AdminNavigation = [
   {
     id: 1,
-    label: "Dashbaord",
+    label: "Dashboard",
     path: "/admin-dashboard",
   },
 
   {
     id: 3,
-    label: "Managers",
+    label: "Mangers",
     path: "/admin-dashboard/mangers",
   },
   {
@@ -109,19 +114,24 @@ export const AdminNavigation = [
   },
 
   {
-    id: 6,
-    label: "Menu",
+    id: 9,
+    label: "Menus",
     path: "/admin-dashboard/menus",
   },
   {
     id: 4,
-    label: "Music",
+    label: "Musics",
     path: "/admin-dashboard/musics",
   },
   {
     id: 5,
     label: "Users",
     path: "/admin-dashboard/users",
+  },
+  {
+    id: 19,
+    label: "Polls",
+    path: "/admin-dashboard/polls",
   },
 ];
 

@@ -8,7 +8,10 @@ export const AdminNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const location = useLocation();
-  const pathname = useMemo(() => location?.pathname, [location?.pathname]);
+  const pathname = useMemo(
+    () => location.pathname.split("/")[2] ?? "dashboard",
+    [location]
+  );
 
   const openDrawer = () => {
     setIsOpen((prev) => !prev);
@@ -27,7 +30,10 @@ export const AdminNavigation = () => {
               key={item.id}
               className="text-lg hidden md:flex hover:underline hover:text-primary"
               style={{
-                color: pathname === item.path ? "#43D396" : "",
+                color:
+                  pathname.toUpperCase() === item.label.toUpperCase()
+                    ? "#43D396"
+                    : "",
               }}
             >
               {item.label}

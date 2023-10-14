@@ -7,3 +7,4 @@ export * from "./billings";
 export * from "./waiter-history";
 export * from "./table-billings";
 export * from "./attendence-log";
+export * from "./polls";
