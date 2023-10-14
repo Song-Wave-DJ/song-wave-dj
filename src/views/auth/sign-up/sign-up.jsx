@@ -26,6 +26,8 @@ export const SignUp = () => {
           onFinish={onFinish}
         >
           <TextInput name="email" {...fieldSet.email} />
+          <TextInput name="phone" {...fieldSet.phone} />
+
           <TextPassword {...fieldSet.password} />
 
           <Form.Item className="flex justify-end">

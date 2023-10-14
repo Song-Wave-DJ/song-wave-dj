@@ -1,4 +1,33 @@
 export const fieldSet = {
+  id: {
+    className: "!mb-4",
+    inputClassName: "py-2",
+    label: "Waiter Id",
+    suffix: false,
+    labelCol: {
+      className: "child:!text-xxs font-sans",
+    },
+    rules: [
+      {
+        required: false,
+        message: "Name is required!",
+      },
+      {
+        pattern: /^[0-9]+$/,
+        message: "Id should be number",
+      },
+      {
+        min: 2,
+        message: "Invalid number",
+      },
+      {
+        max: 64,
+        message: "Invalid number",
+      },
+    ],
+    placeholder: "Waiter Id",
+    prefix: false,
+  },
   name: {
     className: "!mb-4",
     inputClassName: "py-2",
@@ -47,6 +76,18 @@ export const fieldSet = {
         required: true,
         message: "Phone is required!",
       },
+      {
+        min: 10,
+        message: "Invalid Phone  number",
+      },
+      {
+        max: 15,
+        message: "Invalid Phone  number",
+      },
+      {
+        pattern: /^[0-9]+$/,
+        message: "Phone should be number",
+      },
     ],
     placeholder: "Phone",
   },
@@ -63,18 +104,12 @@ export const fieldSet = {
         message: "Password is required!",
       },
       {
-        min: 8,
-        message: "Password must be at least 8 characters",
+        min: 6,
+        message: "Password must be at least 6 characters",
       },
       {
         max: 64,
         message: "Password must be at most 64 characters",
-      },
-      {
-        pattern:
-          /^.*(?=.{8,64})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@^-_=*(){} "]).*$/,
-        message:
-          "Password must consist of 1 uppercase letter, 1 number, and 1 special character",
       },
     ],
     placeholder: "Password",
