@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
   IconButton,
   Searching,
@@ -13,6 +13,43 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import { DateRange } from "../../../components";
+import { Button } from "@/components";
+import { useReactToPrint } from "react-to-print";
+
+const Carts = [
+  {
+    id: "8f6a27c5-d79b-46ad-b339-67859d07a074",
+    title: "Parmesan Crusted Potatoes",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "d2b62d16-b203-4002-af80-24f542119664",
+    title: "Samosa Recipe",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "82fbef80-9870-4277-b514-8874af40adb8",
+    title: "Papdi Chaat (Dahi Papri Chaat)",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "04de4b8d-793c-4b99-95e8-17b69c1d089e",
+    title: "Samosa Recipe",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+];
 
 const dataSource = [
   {
@@ -44,7 +81,13 @@ export const TableBillings = ({ fromAdmin = false, isEmployee = false }) => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
   const [dateRange, setDateRange] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
 
+  const componentRef = useRef();
+
+  const onPrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
   const { id } = useParams();
 
   const backRoute = useMemo(() => {
@@ -107,7 +150,7 @@ export const TableBillings = ({ fromAdmin = false, isEmployee = false }) => {
             <span className="text-x px-2 text-white">Bill</span>
           </IconButton>
           {stauts === "Accepted" && (
-            <IconButton color="#f8d75dc1">
+            <IconButton color="#f8d75dc1" onClick={() => setIsOpen(true)}>
               <span className="text-x text-white">Print</span>
             </IconButton>
           )}
@@ -169,13 +212,9 @@ export const TableBillings = ({ fromAdmin = false, isEmployee = false }) => {
         pageSize={10}
       />
 
-      <ModalComp
-        open={isModalOpen}
-        handleOk={() => null}
-        handleCancel={handleCancel}
-      >
+      <ModalComp open={isModalOpen} width={1024} handleCancel={handleCancel}>
         <>
-          <h2 className="text-lg font-semibold my-2">Order Summary</h2>
+          <h2 className="text-xl font-semibold my-2">Order Summary</h2>
           <h2 className="text-lg">GST No. : 1234567</h2>
           <div className="my-4 flex justify-between">
             <span className=" text-xs font-semibold">Name</span>
@@ -183,7 +222,36 @@ export const TableBillings = ({ fromAdmin = false, isEmployee = false }) => {
             <span className=" text-xs font-semibold">Price</span>
           </div>
 
-          <Summary carts={[]} tax={10} gst={10} offer={300} total={400} />
+          <Summary carts={Carts} tax={10} gst={10} offer={10} total={400} />
+        </>
+      </ModalComp>
+
+      <ModalComp
+        width={1024}
+        open={isOpen}
+        handleCancel={() => setIsOpen(false)}
+      >
+        <>
+          <div ref={componentRef} className="px-4">
+            <h2 className="text-lg font-semibold my-2">Order Summary</h2>
+            <div className="p-2">
+              <h2 className="text-lg">Transation Id : 1234567</h2>
+              <h2 className="text-lg">GST No. : 1234567</h2>
+              <div className="my-4 flex justify-between">
+                <span className="text-xs font-semibold w-[33%]">Name</span>
+                <span className="text-xs font-semibold w-[33%]">Quantity</span>
+                <span className="text-xs font-semibold">Price</span>
+              </div>
+
+              <Summary carts={Carts} tax={10} gst={10} offer={10} total={400} />
+            </div>
+          </div>
+          <Button
+            isLoading={false}
+            label="Print Bill"
+            styles="rounded-lg mt-4 w-full"
+            onClick={onPrint}
+          />
         </>
       </ModalComp>
 

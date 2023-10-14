@@ -1,12 +1,48 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { IconButton, TableComponent } from "@/components";
 import ModalComp from "@/components/modal";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
-import { DateRange, Searching } from "../../../components";
+import { useReactToPrint } from "react-to-print";
+import { Button } from "@/components";
 import { Summary } from "../../menu/components/summary";
-import { RenderColor } from "../constanst";
+import { RenderColor } from "../../../constants";
+import { DateRange, Searching } from "../../../components";
+const Carts = [
+  {
+    id: "8f6a27c5-d79b-46ad-b339-67859d07a074",
+    title: "Parmesan Crusted Potatoes",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "d2b62d16-b203-4002-af80-24f542119664",
+    title: "Samosa Recipe",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "82fbef80-9870-4277-b514-8874af40adb8",
+    title: "Papdi Chaat (Dahi Papri Chaat)",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+  {
+    id: "04de4b8d-793c-4b99-95e8-17b69c1d089e",
+    title: "Samosa Recipe",
+    price: 234,
+    qty: 1,
+    type: "veg",
+    ml: null,
+  },
+];
 
 const dataSource = [
   {
@@ -37,11 +73,13 @@ const dataSource = [
 
 export const AdminBillingHistory = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [dateRange, setDateRange] = useState(null);
+  const componentRef = useRef();
 
-  const handleCancel = () => {
-    setIsModalOpen((prev) => !prev);
-  };
+  const onPrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
   const onChangeDateRange = (val) => {
     setDateRange(val);
@@ -50,6 +88,11 @@ export const AdminBillingHistory = () => {
   const onChange = (e) => {
     console.log(e);
   };
+
+  const handleCancel = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
   const columns = [
     {
       title: "Order Id",
@@ -103,7 +146,7 @@ export const AdminBillingHistory = () => {
             <span className="text-x px-2 text-white">Bill</span>
           </IconButton>
           {stauts === "Accepted" && (
-            <IconButton color="#f8d75dc1">
+            <IconButton color="#f8d75dc1" onClick={() => setIsOpen(true)}>
               <span className="text-x text-white">Print</span>
             </IconButton>
           )}
@@ -129,13 +172,14 @@ export const AdminBillingHistory = () => {
         </p>
 
         <div className="flex   items-center gap-4">
-          <Searching onChange={onChange} />
+          <Searching onChange={onChange} styles="py-2" />
           <DateRange
             onChangeDateRange={onChangeDateRange}
             dateRange={dateRange}
           />
         </div>
       </div>
+
       <TableComponent
         loading={false}
         columns={columns}
@@ -144,20 +188,45 @@ export const AdminBillingHistory = () => {
         pageSize={10}
       />
 
-      <ModalComp
-        open={isModalOpen}
-        handleOk={() => null}
-        handleCancel={handleCancel}
-      >
+      <ModalComp open={isModalOpen} width={1024} handleCancel={handleCancel}>
         <>
-          <h2 className="text-s">Order Summary</h2>
+          <h2 className="text-xl">Order Summary</h2>
           <div className="my-4 flex justify-between">
-            <span className=" text-xs font-semibold">Name</span>
-            <span className=" text-xs font-semibold">Quantity</span>
+            <span className="text-xs font-semibold w-[33%]">Name</span>
+            <span className="text-xs font-semibold w-[33%]">Quantity</span>
             <span className=" text-xs font-semibold">Price</span>
           </div>
 
-          <Summary carts={[]} tax={10} gst={10} offer={300} total={400} />
+          <Summary carts={Carts} tax={10} gst={10} offer={10} total={400} />
+        </>
+      </ModalComp>
+
+      <ModalComp
+        width={1024}
+        open={isOpen}
+        handleCancel={() => setIsOpen(false)}
+      >
+        <>
+          <div ref={componentRef} className="px-4">
+            <h2 className="text-lg font-semibold my-2">Order Summary</h2>
+            <div className="p-2">
+              <h2 className="text-lg">Transation Id : 1234567</h2>
+              <h2 className="text-lg">GST No. : 1234567</h2>
+              <div className="my-4 flex justify-between">
+                <span className="text-xs font-semibold w-[33%]">Name</span>
+                <span className="text-xs font-semibold w-[33%]">Quantity</span>
+                <span className="text-xs font-semibold">Price</span>
+              </div>
+
+              <Summary carts={Carts} tax={10} gst={10} offer={10} total={400} />
+            </div>
+          </div>
+          <Button
+            isLoading={false}
+            label="Print Bill"
+            styles="rounded-lg mt-4 w-full"
+            onClick={onPrint}
+          />
         </>
       </ModalComp>
     </main>
