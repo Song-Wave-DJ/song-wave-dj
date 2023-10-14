@@ -31,6 +31,7 @@ import {
   AttendeceLogs,
   WaiterOrder,
   ManagerPolls,
+  Table,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
@@ -151,6 +152,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/billings/:id",
         element: <TableBillings />,
+      },
+      {
+        path: "/dashboard/table",
+        element: <Table />,
       },
       {
         path: "/dashboard/polls",

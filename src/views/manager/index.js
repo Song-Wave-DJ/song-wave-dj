@@ -8,3 +8,4 @@ export * from "./waiter-history";
 export * from "./table-billings";
 export * from "./attendence-log";
 export * from "./polls";
+export * from "./table";
