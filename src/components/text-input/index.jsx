@@ -11,6 +11,7 @@ const TextInput = ({
   inputClassName = "",
   name,
   className,
+  type = "text",
 }) => {
   return (
     <Form.Item
@@ -27,6 +28,7 @@ const TextInput = ({
         prefix={false}
         placeholder={placeholder}
         className={inputClassName}
+        type={type}
         suffix={suffix && <MailOutlined />}
       />
     </Form.Item>

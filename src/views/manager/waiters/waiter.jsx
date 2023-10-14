@@ -67,10 +67,15 @@ export const Waiters = () => {
       setData((prev) => {
         const prevObj = structuredClone(prev);
         const filterData = prevObj.filter((item) => {
-          const queryTabel = item.name.toString();
-          const queryPrice = item.email.toString();
+          const queryName = item.name.toString();
+          const queryEmail = item.email.toString();
+          const queryId = item.id.toString();
           const query = value.toLowerCase();
-          return queryTabel.includes(query) || queryPrice.includes(query);
+          return (
+            queryName.includes(query) ||
+            queryId.includes(query) ||
+            queryEmail.includes(query)
+          );
         });
         return filterData;
       });
@@ -91,7 +96,7 @@ export const Waiters = () => {
       const prevObj = structuredClone(prev);
       const payData = {
         ...payload,
-        id: self.crypto.randomUUID(),
+        id: payload?.id ?? self.crypto.randomUUID(),
         createdAt: currentDate,
       };
       prevObj.unshift(payData);
@@ -218,6 +223,7 @@ export const Waiters = () => {
             onFinish={onFinish}
             key={Math.random()}
           >
+            <TextInput name="id" {...fieldSet.id} />
             <TextInput name="name" {...fieldSet.name} />
             <TextInput name="email" {...fieldSet.email} />
             <TextInput name="phone" {...fieldSet.phone} />

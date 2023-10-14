@@ -1,11 +1,20 @@
 import { useState } from "react";
 
-import { Button, Confirmation, Searching } from "../../../components";
+import {
+  Button,
+  Confirmation,
+  Modal,
+  Searching,
+  TextInput,
+  Title,
+} from "../../../components";
 import ViewMenu from "./view-menu";
 import { MenuCard } from "./menu-card";
 import { AddDashbardMenu } from "./add-menu";
 import { EmptyIcon } from "../../../assets";
 import { Link } from "react-router-dom";
+import { Form } from "antd";
+import { TaxfieldSet } from "./tax-fieldsData";
 
 const DummyData = [
   {
@@ -61,6 +70,12 @@ const DummyData = [
 export const Menus = () => {
   const [values, setValues] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [taxes, setTaxes] = useState({
+    tax: 12,
+    gst: 123,
+    offer: 13,
+  });
+  const [isTaxOpen, setIsTaxOpen] = useState(false);
 
   const [editData, setEditData] = useState({
     name: "",
@@ -191,10 +206,20 @@ export const Menus = () => {
     });
   };
 
+  const onSaveTax = (payload) => {
+    setTaxes(payload);
+    setIsTaxOpen(false);
+  };
+
   return (
     <main className="mx-4 p-4">
       <div className="flex flex-wrap justify-end items-center mb-4">
         <div className="flex justify-end items-center gap-2">
+          <Button
+            label="Taxes"
+            onClick={() => setIsTaxOpen(true)}
+            styles="rounded-lg"
+          />
           <Link to="/dashboard/table">
             <Button label="Table" styles="rounded-lg" />
           </Link>
@@ -238,6 +263,34 @@ export const Menus = () => {
         handleCancelModal={handleCancelModal}
         {...values}
       />
+
+      <Modal open={isTaxOpen} handleCancel={() => setIsTaxOpen(false)}>
+        <div className="flex flex-col justify-center  p-2">
+          <Title label="Taxes" />
+          <Form
+            requiredMark={false}
+            layout="vertical"
+            initialValues={taxes}
+            onFinish={onSaveTax}
+            className=""
+          >
+            <TextInput {...TaxfieldSet.tax} />
+            <TextInput {...TaxfieldSet.gst} />
+            <TextInput {...TaxfieldSet.offer} />
+            <div className="grid grid-cols-1 mt-4  md:grid-cols-2 lg:grid-cols-2 gap-6">
+              <Button
+                isLoading={false}
+                label="Cancel"
+                styles="text-x text-center !bg-danger"
+                htmlType="button"
+                onClick={() => setIsTaxOpen(false)}
+              />
+              <Button isLoading={false} label="Save" styles="flex-1" />
+            </div>
+          </Form>
+        </div>
+      </Modal>
+
       <Confirmation
         handleOpen={onCancel}
         open={false}

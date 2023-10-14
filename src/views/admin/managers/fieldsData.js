@@ -47,18 +47,12 @@ export const fieldSet = {
         message: "Password is required!",
       },
       {
-        min: 8,
-        message: "Password must be at least 8 characters",
+        min: 6,
+        message: "Password must be at least 6 characters",
       },
       {
         max: 64,
         message: "Password must be at most 64 characters",
-      },
-      {
-        pattern:
-          /^.*(?=.{8,64})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&?@^-_=*(){} "]).*$/,
-        message:
-          "Password must consist of 1 uppercase letter, 1 number, and 1 special character",
       },
     ],
     placeholder: "Password",
