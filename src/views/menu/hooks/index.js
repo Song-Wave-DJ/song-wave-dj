@@ -6,7 +6,13 @@ import useNotification from "antd/es/notification/useNotification";
 const user = false;
 export const useMenuOrder = () => {
   const [filterItem, setFilterItem] = useState("All");
-  const [carts, setCarts] = useState([]);
+
+  const cartData = useMemo(
+    () => JSON.parse(localStorage.getItem("items") ?? []),
+    []
+  );
+
+  const [carts, setCarts] = useState(cartData ?? []);
   const [open, setOpen] = useState(false);
   const [loaded, setLoaded] = useState(true);
   const [categories, setCotegories] = useState(AllData);
@@ -35,6 +41,10 @@ export const useMenuOrder = () => {
 
   const isBar = useMemo(() => categoryType === "bar", [categoryType]);
   const { contextHolder } = useNotification();
+
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(carts));
+  }, [carts]);
 
   useEffect(() => {
     if (isBar) {
@@ -117,6 +127,7 @@ export const useMenuOrder = () => {
 
     onClose();
     setCarts([]);
+    localStorage.removeItem("items");
     setIsPlacedOrder(true);
   };
 

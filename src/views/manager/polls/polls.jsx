@@ -138,7 +138,7 @@ export const ManagerPolls = () => {
               styles="rounded-lg hover:"
             />
           </Link>
-          <Searching onChange={onChange} styles="" />
+          <Searching onChange={onChange} styles="py-2" />
         </div>
       </div>
       <TableComponent

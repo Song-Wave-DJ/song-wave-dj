@@ -90,7 +90,7 @@ export const MenuDrawer = ({
         )}
       </DrawerComp>
 
-      <ModalComp open={isModalOpen} handleCancel={handleCancel}>
+      <ModalComp width={1024} open={isModalOpen} handleCancel={handleCancel}>
         {renderBody}
       </ModalComp>
     </>

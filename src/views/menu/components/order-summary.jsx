@@ -12,7 +12,7 @@ export const OrderSummary = ({
 }) => {
   return (
     <>
-      <h2 className="text-s">Order Summary</h2>
+      <h2 className="text-xl font-semibold">Order Summary</h2>
       <div className="my-4 flex justify-between">
         <span className=" text-xs font-semibold">Name</span>
         <span className=" text-xs font-semibold">Quantity</span>
@@ -21,7 +21,7 @@ export const OrderSummary = ({
 
       <Summary carts={carts} tax={tax} gst={gst} offer={offer} total={total} />
       <div className="mt-8 w-full">
-        <Button label="Placeed Order" styles="w-full" onClick={onPlacedOrder} />
+        <Button label="Place Order" styles="w-full" onClick={onPlacedOrder} />
       </div>
     </>
   );

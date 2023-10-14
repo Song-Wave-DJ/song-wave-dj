@@ -120,13 +120,13 @@ export const AdminPolls = () => {
 
   return (
     <main className="mx-4 p-4">
-      <div className="flex justify-between mb-4 items-center">
+      <div className="flex flex-col md:flex-row gap-4 justify-between mb-4 items-center">
         <p className="bg-[#FAFAFA]  px-4 py-2 rounded-sm text-xs">
           Total orders items{"   "}{" "}
           <span className="text-[#3CB5E5]">{data.length ?? 0}</span>
         </p>
-        <div className="flex gap-2">
-          <Searching onChange={onChange} styles="" />
+        <div className="flex flex-1 md:flex-[.25] gap-2">
+          <Searching onChange={onChange} styles="py-2" />
         </div>
       </div>
       <TableComponent
