@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from "react-router";
 import { CategoryCard } from "./component/category-card";
-import { useEffect, useMemo } from "react";
+import { useEffect, useLayoutEffect, useMemo } from "react";
 
 const JSONData = [
   {
@@ -35,25 +35,15 @@ const JSONData = [
 ];
 
 export const Category = () => {
-  const { search = "" } = useLocation();
+  const navigation = useNavigate();
 
-  const restaurntId = useMemo(
-    () => localStorage.getItem("resturantId") ?? search?.split("?")[1],
-    [search]
-  );
+  const restaurantId = localStorage.getItem("restaurantId");
+  const tableId = localStorage.getItem("tableId");
 
-  const tableId = useMemo(
-    () => localStorage.getItem("tableId") ?? search?.split("=")[2],
-    [search]
-  );
-
-  const naviagte = useNavigate();
-
-  useEffect(() => {
-    if (!restaurntId || !tableId) return naviagte("/");
-    localStorage.setItem("resturantId", restaurntId);
-    localStorage.setItem("tableId", tableId);
-  }, [naviagte, restaurntId, tableId]);
+  useLayoutEffect(() => {
+    if (!restaurantId || !tableId) return navigation("/");
+    navigation(`?resturantId=${restaurantId}&tableId=${tableId}`);
+  }, [navigation, restaurantId, tableId]);
 
   return (
     <div className="sm:w-[600px] w-full m-auto  p-4">
@@ -63,7 +53,7 @@ export const Category = () => {
             {...el}
             key={el.id}
             tableId={tableId}
-            restaurntId={restaurntId}
+            resturantId={restaurantId}
           />
         ))}
       </div>

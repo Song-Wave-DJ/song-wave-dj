@@ -140,11 +140,14 @@ export const Waiters = () => {
       dataIndex: "address",
       width: 500,
       key: "Action",
-      render: (_, { id, attendece }) => (
+      render: (_, { id, attendece, name }) => (
         <div className="flex flex-wrap items-center gap-3">
           <Link
             to={`/dashboard/waiter/attendance/${id}`}
             className="bg-gray-50 rounded-full px-2 py-1 cursor-pointer"
+            state={{
+              name,
+            }}
           >
             <span>Attendence Logs</span>
           </Link>
@@ -172,6 +175,9 @@ export const Waiters = () => {
             <Link
               to={`/dashboard/waiter/${id}`}
               className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
+              state={{
+                name,
+              }}
             >
               <RightOutlined />
             </Link>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   Button,
@@ -13,63 +13,16 @@ import { MenuCard } from "./menu-card";
 import { AddDashbardMenu } from "./add-menu";
 import { EmptyIcon } from "../../../assets";
 import { Link } from "react-router-dom";
-import { Form } from "antd";
+import { Form, Spin } from "antd";
 import { TaxfieldSet } from "./tax-fieldsData";
-
-const DummyData = [
-  {
-    id: self.crypto.randomUUID(),
-    name: "Chicken",
-    category: "Non-veg",
-    price: 234,
-    discount: 0,
-    description:
-      "Savor the deliciousness of tender chicken cooked to perfection. This mouthwatering dish is a favorite among meat lovers, offering a delightful blend of flavors and spices. ",
-    type: "veg",
-    imageUrl:
-      "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
-  },
-  {
-    id: self.crypto.randomUUID(),
-    name: "Pizza",
-    category: "Veg",
-    price: 234,
-    discount: 0,
-    description:
-      "A pizza topped with a variety of vegetables like bell peppers, onions, mushrooms, and olives",
-    type: "Veg",
-    imageUrl:
-      "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
-  },
-  {
-    id: self.crypto.randomUUID(),
-    name: "Crispy and golden potato fries that are a staple",
-    category: "Veg",
-    price: 234,
-    discount: 0,
-    description:
-      "Crispy and golden potato fries that are a staple at fast food restaurants",
-    type: "non-veg",
-    imageUrl:
-      "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
-  },
-  {
-    id: self.crypto.randomUUID(),
-    name: "Chicken",
-    category: "Non-veg",
-    price: 234,
-    discount: 0,
-    description:
-      "Savor the deliciousness of tender chicken cooked to perfection. This mouthwatering dish is a favorite among meat lovers, offering a delightful blend of flavors and spices. Whether grilled, fried, or served in a rich sauce, our chicken dish is sure to satisfy your cravings. Enjoy the savory taste of non-veg cuisine!",
-    type: "non-veg",
-    imageUrl:
-      "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
-  },
-];
+import { getMethod, postMethod } from "../../../services";
 
 export const Menus = () => {
   const [values, setValues] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
+  const [isLoading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
+
   const [taxes, setTaxes] = useState({
     tax: 12,
     gst: 123,
@@ -85,8 +38,21 @@ export const Menus = () => {
     price: "",
     available: true,
   });
-  const [datas, setData] = useState(DummyData);
+  const [datas, setData] = useState([]);
   // Hooks
+
+  const fetchMenu = async () => {
+    const resp = await getMethod("get_menu");
+    if (resp.message === "ok") {
+      const { data = [] } = resp;
+      setData(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchMenu();
+  }, []);
 
   const onCancel = () => {
     setValues(null);
@@ -107,9 +73,7 @@ export const Menus = () => {
           category.includes(query)
         );
       });
-      setData(searchData);
-    } else {
-      setData(DummyData);
+      setData(searchData ?? []);
     }
   };
 
@@ -151,39 +115,59 @@ export const Menus = () => {
   const handleCancelModal = () => {
     setValues(null);
   };
-
-  const onSaveMenu = (payload, id) => {
-    if (id) {
-      setData((prev) => {
-        const prevObj = structuredClone(prev);
-        const data = prevObj.find((el) => el.id === id);
-        const idx = prevObj.findIndex((el) => el.id === id);
-        if (idx !== -1) {
-          const newData = {
-            ...data,
-            ...payload,
-            type: payload?.type ? "Veg" : "Non-Veg",
-            id,
-          };
-          prevObj.splice(idx, 1, newData);
-        }
-
-        return prevObj;
-      });
-    } else {
-      setData((prev) => {
-        const prevObj = structuredClone(prev);
-        const newData = {
-          ...payload,
-          type: payload?.type ? "Veg" : "Non-Veg",
-          id: self.crypto.randomUUID(),
-          imageUrl:
-            "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
-        };
-        prevObj.unshift(newData);
-        return prevObj;
-      });
+  const addMenu = async (data) => {
+    setLoaded(true);
+    const { category, name, price, discount, description, type, available } =
+      data ?? {};
+    const payload = {
+      category,
+      name,
+      discount,
+      description,
+      type: type ? "veg" : "nonveg",
+      available,
+      price,
+    };
+    const resp = await postMethod("add_menu", payload);
+    if (resp.message === "ok") {
+      fetchMenu();
     }
+    setModalOpen((prev) => !prev);
+  };
+  const onSaveMenu = (payload, id) => {
+    addMenu(payload);
+
+    // if (id) {
+    //   setData((prev) => {
+    //     const prevObj = structuredClone(prev);
+    //     const data = prevObj.find((el) => el.id === id);
+    //     const idx = prevObj.findIndex((el) => el.id === id);
+    //     if (idx !== -1) {
+    //       const newData = {
+    //         ...data,
+    //         ...payload,
+    //         type: payload?.type ? "Veg" : "Non-Veg",
+    //         id,
+    //       };
+    //       prevObj.splice(idx, 1, newData);
+    //     }
+
+    //     return prevObj;
+    //   });
+    // } else {
+    //   setData((prev) => {
+    //     const prevObj = structuredClone(prev);
+    //     const newData = {
+    //       ...payload,
+    //       type: payload?.type ? "Veg" : "Non-Veg",
+    //       id: self.crypto.randomUUID(),
+    //       imageUrl:
+    //         "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
+    //     };
+    //     prevObj.unshift(newData);
+    //     return prevObj;
+    //   });
+    // }
     setEditData({
       name: "",
       type: true,
@@ -191,7 +175,6 @@ export const Menus = () => {
       description: "",
       price: "",
     });
-    setModalOpen((prev) => !prev);
   };
 
   const onAddMenu = () => {
@@ -210,6 +193,14 @@ export const Menus = () => {
     setTaxes(payload);
     setIsTaxOpen(false);
   };
+
+  if (isLoading)
+    return (
+      <div className="h-screen grid content-center">
+        {" "}
+        <Spin />
+      </div>
+    );
 
   return (
     <main className="mx-4 p-4">
@@ -251,9 +242,16 @@ export const Menus = () => {
             />
           ))
         ) : (
-          <div className="flex flex-col items-center">
-            <img className="w-40 object-contain" src={EmptyIcon} />
-            <p className="text-lg">No data available!</p>
+          <div
+            className=" grid content-center"
+            style={{
+              height: "calc(100vh - 30vh)",
+            }}
+          >
+            <div className="flex flex-col items-center">
+              <img className="w-40 object-contain" src={EmptyIcon} />
+              <p className="text-lg">No data available!</p>
+            </div>
           </div>
         )}
       </div>
@@ -279,13 +277,17 @@ export const Menus = () => {
             <TextInput {...TaxfieldSet.offer} />
             <div className="grid grid-cols-1 mt-4  md:grid-cols-2 lg:grid-cols-2 gap-6">
               <Button
-                isLoading={false}
                 label="Cancel"
                 styles="text-x text-center !bg-danger"
                 htmlType="button"
                 onClick={() => setIsTaxOpen(false)}
               />
-              <Button isLoading={false} label="Save" styles="flex-1" />
+              <Button
+                disabled={loaded}
+                isLoading={loaded}
+                label="Save"
+                styles="flex-1"
+              />
             </div>
           </Form>
         </div>

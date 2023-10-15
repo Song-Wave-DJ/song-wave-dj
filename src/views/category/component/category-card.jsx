@@ -6,11 +6,11 @@ export const CategoryCard = ({
   imageUrl,
   type,
   tableId,
-  restaurntId,
+  restaurantId,
 }) => {
   return (
     <Link
-      to={`/menu?category=${type}?restaurntId=${restaurntId}&tableId=
+      to={`/menu?category=${type}?restaurantId=${restaurantId}&tableId=
       ${tableId}`}
       className="shadow-lg min-h-[280px] w-full md:w-72"
     >

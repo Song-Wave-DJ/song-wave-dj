@@ -7,14 +7,13 @@ import { useNavigate } from "react-router-dom";
 export const ThreeHours = () => {
   const [reqMusics, setReqMusic] = useState([]);
   const navigation = useNavigate();
+  const restaurantId = localStorage.getItem("restaurantId");
+  const tableId = localStorage.getItem("tableId");
 
   useLayoutEffect(() => {
-    const resturantId = localStorage.getItem("resturantId");
-    const tableId = localStorage.getItem("tableId");
-
-    if (!resturantId || !tableId) return navigation("/");
-    navigation(`?resturantId=${resturantId}&tableId=${tableId}`);
-  }, [navigation]);
+    if (!restaurantId || !tableId) return navigation("/");
+    navigation(`?restaurantId=${restaurantId}&tableId=${tableId}`);
+  }, [navigation, restaurantId, tableId]);
 
   async function getAccessToken() {}
 

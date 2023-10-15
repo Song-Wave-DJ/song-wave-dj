@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   BackgroundIcon,
   DiskIcon,
@@ -13,8 +13,29 @@ import { Button, TextInput } from "@/components";
 import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
 import "./style.css";
+import { useEffect, useMemo } from "react";
 
 export const Home = () => {
+  const { search = "" } = useLocation();
+
+  const restaurantId = useMemo(
+    () => localStorage.getItem("restaurantId") ?? search?.split("?")[1],
+    [search]
+  );
+
+  const tableId = useMemo(
+    () => localStorage.getItem("tableId") ?? search?.split("=")[2],
+    [search]
+  );
+
+  const naviagte = useNavigate();
+
+  useEffect(() => {
+    if (!restaurantId || !tableId) return naviagte("/");
+    localStorage.setItem("restaurantId", restaurantId?.trim());
+    localStorage.setItem("tableId", tableId?.trim());
+  }, [naviagte, restaurantId, tableId]);
+
   const onFinishContact = (paylaod) => {};
 
   return (

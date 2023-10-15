@@ -19,7 +19,7 @@ export const MenuCard = ({
   price,
   category,
   type,
-  imageUrl,
+  imageUrl = "https://media.istockphoto.com/id/508345848/photo/grilled-chicken-legs.jpg?s=612x612&w=0&k=20&c=udlSRhW1K7kprBSxSjZ9HoO5YeCYUNOHqY3-BTGpXWI=",
   id,
 }) => {
   return (

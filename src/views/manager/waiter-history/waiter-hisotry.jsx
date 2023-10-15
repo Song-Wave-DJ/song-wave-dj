@@ -8,7 +8,7 @@ import ModalComp from "@/components/modal";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../../admin/constanst";
 import { Tooltip } from "antd";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { DateRange } from "../../../components";
 import { useState } from "react";
@@ -43,6 +43,7 @@ export const WaiterOrder = () => {
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
   const [data, setData] = useState(dataSource);
   const [dateRange, setDateRange] = useState(null);
+  const { state = {} } = useLocation();
 
   const { id } = useParams();
 
@@ -151,8 +152,8 @@ export const WaiterOrder = () => {
               <ArrowLeftOutlined />
             </Link>
           </Tooltip>
-          <p className="bg-[#FAFAFA] px-4 py-2 rounded-md text-lg font-semibold ">
-            John deo
+          <p className="bg-[#FAFAFA] capitalize px-4 py-2 rounded-md text-lg font-semibold ">
+            {state?.name ?? "--"}
           </p>
         </div>
 
