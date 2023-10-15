@@ -3,8 +3,8 @@ import { UserType } from "../constants";
 
 // eslint-disable-next-line react/prop-types
 export const ProtectedEmployeeRoute = ({ children }) => {
-  const role = "EMPLOYEE";
+  const role = "WAITER";
 
-  if (role === UserType.Employee) return <>{children} </>;
+  if (role === UserType.Waiter) return <>{children} </>;
   else return <Navigate to="/login" />;
 };

@@ -1,12 +1,29 @@
 import { Button, TextInput, TextPassword, Title } from "@/components";
-import { Form } from "antd";
+import { Form, message } from "antd";
 import { fieldSet } from "./fieldsData";
 import { Link, useNavigate } from "react-router-dom";
+import { postMethod } from "../../../services";
+import { useState } from "react";
 
 export const Login = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigate();
-  const onFinish = () => {
-    navigation("/dashboard");
+
+  const userLogin = async (paylaod) => {
+    const resp = await postMethod("check_username", paylaod);
+    if (resp.message === "ok") {
+      const { data } = resp;
+      if (data?.exists) {
+        navigation("/dashboard");
+      }
+      message.success("Logged In");
+    }
+    setIsLoading(false);
+  };
+
+  const onFinish = (paylaod) => {
+    setIsLoading(true);
+    userLogin(paylaod);
   };
 
   return (
@@ -33,7 +50,7 @@ export const Login = () => {
             </Link>
           </Form.Item>
           <Form.Item className="mt-4">
-            <Button label="Sign In to your account" />
+            <Button label="Sign In to your account" isLoading={isLoading} />
           </Form.Item>
         </Form>
       </div>

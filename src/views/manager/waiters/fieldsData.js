@@ -9,8 +9,8 @@ export const fieldSet = {
     },
     rules: [
       {
-        required: false,
-        message: "Name is required!",
+        required: true,
+        message: "Id is required!",
       },
       {
         pattern: /^[0-9]+$/,
@@ -77,7 +77,7 @@ export const fieldSet = {
         message: "Phone is required!",
       },
       {
-        min: 10,
+        min: 1,
         message: "Invalid Phone  number",
       },
       {
