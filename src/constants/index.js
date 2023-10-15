@@ -47,7 +47,7 @@ export const MobileNavigation = [
 export const UserType = {
   Manager: "MANAGER",
   Admin: "ADMIN",
-  Employee: "EMPLOYEE",
+  Waiter: "WAITER",
   DJUSer: "DJUSER",
 };
 

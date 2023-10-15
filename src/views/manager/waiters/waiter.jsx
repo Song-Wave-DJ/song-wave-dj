@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Searching,
   TableComponent,
@@ -14,31 +14,14 @@ import { fieldSet } from "./fieldsData";
 import { DeleteIcon } from "@/assets";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
-
-const dataSource = [
-  {
-    id: "12345678",
-    name: "John Deo",
-    email: "john@gmail.com",
-    password: "123456788",
-    createdAt: "30-09-2023",
-    attendece: true,
-  },
-  {
-    id: "123345645678",
-    name: "John Lol",
-    email: "johnlo@gmail.com",
-    password: "123456788",
-    createdAt: "30-09-2023",
-    attendece: false,
-  },
-];
+import { getMethod, postMethod } from "../../../services";
 
 export const Waiters = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-  const [data, setData] = useState(dataSource);
+  const [data, setData] = useState([]);
   const [isAttendece, setIsAttendece] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const todatDate = new Date().toLocaleString();
 
@@ -49,6 +32,18 @@ export const Waiters = () => {
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
+
+  const fetchWaiter = async () => {
+    const resp = await getMethod("get_waiter");
+    if (resp.message == "ok") {
+      setData(resp.data ?? []);
+    }
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    fetchWaiter();
+  }, []);
 
   const onDeleteWaiter = (id) => {
     setData((prev) => {
@@ -77,32 +72,29 @@ export const Waiters = () => {
             queryEmail.includes(query)
           );
         });
-        return filterData;
+        return filterData ?? [];
       });
-    } else {
-      setData(dataSource);
     }
   };
 
-  const onFinish = (payload) => {
-    const date = new Date();
-    let currentDay = String(date.getDate()).padStart(2, "0");
-    let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
-    let currentYear = date.getFullYear();
-
-    // we will display the date as DD-MM-YYYY
-    let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const payData = {
-        ...payload,
-        id: payload?.id ?? self.crypto.randomUUID(),
-        createdAt: currentDate,
-      };
-      prevObj.unshift(payData);
-      return prevObj;
-    });
+  const addWaiter = async (data) => {
+    const { id, name, phone, password, email } = data;
+    const payload = {
+      waiter_id: id,
+      name,
+      email,
+      password,
+      phone,
+    };
+    const resp = await postMethod("set_waiter", payload);
+    if (resp.message === "ok") {
+      fetchWaiter();
+    }
     setIsModalOpen(false);
+  };
+
+  const onFinish = (payload) => {
+    addWaiter(payload);
   };
 
   const onAddWaiter = () => {
@@ -150,19 +142,20 @@ export const Waiters = () => {
       key: "Action",
       render: (_, { id, attendece }) => (
         <div className="flex flex-wrap items-center gap-3">
-          <div
-            className="bg-gray-50 rounded-full p-2 cursor-pointer"
-            onClick={() => setIsAttendece(true)}
+          <Link
+            to={`/dashboard/waiter/attendance/${id}`}
+            className="bg-gray-50 rounded-full px-2 py-1 cursor-pointer"
           >
-            <span>Mark Attendence</span>
-          </div>
+            <span>Attendence Logs</span>
+          </Link>
+
           {attendece ? (
-            <Link
-              to={`/dashboard/waiter/attendance/${id}`}
-              className="bg-gray-50 rounded-full px-2 py-1 cursor-pointer"
+            <div
+              className="bg-gray-50 rounded-full p-2 cursor-pointer"
+              onClick={() => setIsAttendece(true)}
             >
-              <span>Attendence Logs</span>
-            </Link>
+              <span>Mark Attendence</span>
+            </div>
           ) : (
             <div className="bg-primary text-white rounded-full px-2 py-1">
               <span>Loged In</span>
@@ -196,17 +189,12 @@ export const Waiters = () => {
           <span className="text-[#3CB5E5] text-lg">{data?.length}</span>
         </p>
         <div className="flex flex-1 justify-end gap-4">
-          <Button
-            isLoading={false}
-            label="Add Waiter"
-            styles="rounded-"
-            onClick={onAddWaiter}
-          />
+          <Button label="Add Waiter" styles="rounded-" onClick={onAddWaiter} />
           <Searching onChange={onChange} styles="flex-[.9] md:flex-[.2] py-2" />
         </div>
       </div>
       <TableComponent
-        loading={false}
+        loading={isLoading}
         columns={columns}
         dataSource={data || []}
         total={10}
@@ -237,7 +225,7 @@ export const Waiters = () => {
                   label="Cancel"
                   styles="!bg-danger flex-[.5]"
                 />
-                <Button label="Add" styles="flex-[.5]" />
+                <Button label="Add" isLoading={isLoading} styles="flex-[.5]" />
               </div>
             </Form.Item>
           </Form>
