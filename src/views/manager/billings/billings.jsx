@@ -12,6 +12,8 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useMemo } from "react";
 import { dataLive, pastLive } from "./constants";
+import { getMethod } from "../../../services";
+import { Spin } from "antd";
 
 export const Billings = ({ isEmployee = false }) => {
   // State
@@ -22,12 +24,29 @@ export const Billings = ({ isEmployee = false }) => {
   const [showQR, setShowQR] = useState(false);
   const [isMoveTable, setIsMoveTable] = useState(false);
   const [dateRange, setDateRange] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   // Hooks
   const location = useLocation();
   const search = useMemo(
     () => location?.search?.split("=")[1] ?? "",
     [location]
   );
+
+  const initBillingHistory = async () => {
+    const resp = await getMethod("live-billing-history");
+    console.log(resp);
+
+    if (resp.message === "ok") {
+      const { data = [] } = resp;
+      setData(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    initBillingHistory();
+  }, []);
 
   // Method
   const handleSearch = ({ target }) => {
@@ -108,6 +127,14 @@ export const Billings = ({ isEmployee = false }) => {
     }
   }, [search]);
 
+  if (loading)
+    return (
+      <div className="h-screen grid content-center">
+        {" "}
+        <Spin />
+      </div>
+    );
+
   return (
     <main className="mx-4 p-4">
       {/* Header */}
@@ -124,7 +151,18 @@ export const Billings = ({ isEmployee = false }) => {
         {!isLive ? (
           <BillingHistory isEmployee={isEmployee} />
         ) : (
-          <LiveBilling data={data} onClickBottomDrawer={onClickBottomDrawer} />
+          <LiveBilling
+            data={[
+              {
+                billNo: "123456",
+                time: "123456",
+                waiterPhone: "123456789",
+                table: "23456",
+                isActive: true,
+              },
+            ]}
+            onClickBottomDrawer={onClickBottomDrawer}
+          />
         )}
       </div>
 

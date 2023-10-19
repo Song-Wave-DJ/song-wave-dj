@@ -11,7 +11,7 @@ export const fieldSet = {
         required: true,
         message: "Email is required!",
       },
-      { type: "email", message: "Invalid email address!" },
+      { type: "text", message: "Invalid email address!" },
     ],
     placeholder: "Email Address",
   },

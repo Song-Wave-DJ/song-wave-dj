@@ -18,6 +18,7 @@ export const AddDashbardMenu = ({
   onAddMenu,
   editData,
   modalOpen,
+  isLoading,
 }) => {
   const initialValue = useMemo(() => editData, [editData]);
 
@@ -25,7 +26,7 @@ export const AddDashbardMenu = ({
     <Modal open={modalOpen} width={800} handleCancel={onAddMenu}>
       <Title label={initialValue?.id ? "Update Menu" : "Add Menu"} />
       <Form
-        key={initialValue?.id}
+        key={Math.random()}
         id={initialValue?.id}
         requiredMark={false}
         layout="vertical"
@@ -74,7 +75,7 @@ export const AddDashbardMenu = ({
             htmlType="button"
             onClick={onAddMenu}
           />
-          <Button isLoading={false} label="Save" styles="flex-1" />
+          <Button isLoading={isLoading} label="Save" styles="flex-1" />
         </div>
       </Form>
     </Modal>

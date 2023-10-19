@@ -113,15 +113,20 @@ export const AdminNavigation = [
     path: "/admin-dashboard/billings",
   },
 
-  {
-    id: 9,
-    label: "Menus",
-    path: "/admin-dashboard/menus",
-  },
+  // {
+  //   id: 9,
+  //   label: "Menus",
+  //   path: "/admin-dashboard/menus",
+  // },
   {
     id: 4,
-    label: "Musics",
+    label: "DJ User",
     path: "/admin-dashboard/musics",
+  },
+  {
+    id: 199,
+    label: "Restaurant",
+    path: "/admin-dashboard/restaurant",
   },
   {
     id: 5,

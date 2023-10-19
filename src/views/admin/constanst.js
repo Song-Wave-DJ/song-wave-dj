@@ -1,7 +1,7 @@
 export const RenderColor = {
-  Approved: "#43D396",
+  approved: "#43D396",
   Accepted: "#43D396",
-  Pending: "#f8d75dc1",
-  Rejected: "#FF4B4B",
-  Decline: "#FF4B4B",
+  pending: "#f8d75dc1",
+  rejected: "#FF4B4B",
+  decline: "#FF4B4B",
 };

@@ -23,7 +23,7 @@ const TableComponent = ({
 }) => {
   let locale = {
     emptyText: (
-      <div className=" flex p-10 justify-center flex-col items-center x ">
+      <div className="flex p-10 h-[60vh] justify-center flex-col items-center x ">
         <div>
           <img src={EmptyIcon} className="w-36 object-contain" />
           <span className="text-lg">No data available!</span>

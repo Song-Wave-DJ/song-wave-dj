@@ -70,7 +70,7 @@ export const MenuCard = ({
         <Tooltip placement="bottom" title="Delete">
           <div
             className="w-10 h-10 flex shadow-md justify-center  items-center cursor-pointer rounded-full  bg-red-50"
-            onClick={() => handleDelete(id)}
+            onClick={() => handleDelete(id, name)}
           >
             <DeleteIcon />
           </div>

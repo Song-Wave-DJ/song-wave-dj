@@ -8,11 +8,9 @@ import {
   TextPassword,
 } from "@/components";
 import ModalComp from "@/components/modal";
-import { Form, Tooltip } from "antd";
+import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
 import { DeleteIcon, EditIcon } from "@/assets";
-import { Link } from "react-router-dom";
-import { RightOutlined } from "@ant-design/icons";
 
 const dataSource = [
   {
@@ -25,11 +23,12 @@ const dataSource = [
     state: "US",
     phone: "+91234567890",
     password: "123456788",
+    gstNo: "1234567890",
     createdAt: "30-09-2023",
   },
 ];
 
-export const AdminMusic = () => {
+export const Restaurant = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [data, setData] = useState(dataSource);
 
@@ -60,7 +59,11 @@ export const AdminMusic = () => {
       dataIndex: "id",
       key: "id",
     },
-
+    {
+      title: "GST No",
+      dataIndex: "gstNo",
+      key: "gstNo",
+    },
     {
       title: "Owner Name",
       dataIndex: "name",
@@ -107,7 +110,7 @@ export const AdminMusic = () => {
       title: "Action",
       dataIndex: "address",
       key: "Action",
-      render: (_, { id, name }) => (
+      render: (_, { id }) => (
         <div className="flex flex-wrap gap-3">
           <div
             className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
@@ -121,17 +124,6 @@ export const AdminMusic = () => {
           >
             <EditIcon />
           </div>
-          <Tooltip placement="bottom" title="View history">
-            <Link
-              className="h-10 w-10 cursor-pointer rounded-full flex items-center justify-center p-2 bg-[#FAFAFA]"
-              to={`/admin-dashboard/musics/${id}`}
-              state={{
-                name,
-              }}
-            >
-              <RightOutlined />
-            </Link>
-          </Tooltip>
         </div>
       ),
     },
@@ -145,12 +137,14 @@ export const AdminMusic = () => {
         const filterData = prevObj.filter((item) => {
           const queryName = item.name.toLowerCase();
           const queryEmail = item.email.toLowerCase();
+          const gstNo = item.gstNo.toLowerCase();
           const address = item.address.toLowerCase();
           const phone = item.phone.toLowerCase();
           const query = value.toLowerCase();
           return (
             queryName.includes(query) ||
             queryEmail.includes(query) ||
+            gstNo.includes(query) ||
             address.includes(query) ||
             phone.includes(query)
           );
@@ -196,7 +190,7 @@ export const AdminMusic = () => {
         <div className="flex flex-1 justify-end gap-4">
           <Button
             isLoading={false}
-            label="Add DJ User"
+            label="Add Restaurant"
             styles="rounded-lg hover:"
             onClick={onAddUsers}
           />
@@ -216,7 +210,7 @@ export const AdminMusic = () => {
 
       <ModalComp width={1024} open={isModalOpen} handleCancel={handleCancel}>
         <div className="p-4 w-full">
-          <Title label="Add  DJ User"></Title>
+          <Title label="Add Restaurant"></Title>
           <Form
             name="add-users"
             requiredMark={false}
@@ -228,6 +222,7 @@ export const AdminMusic = () => {
             <TextInput name="name" {...fieldSet.name} />
             <TextInput name="email" {...fieldSet.email} />
             <TextPassword {...fieldSet.password} />
+            <TextInput name="gstNo" {...fieldSet.gstNo} />
             <TextInput name="phone" {...fieldSet.phone} />
             <TextInput name="address" {...fieldSet.address} />
             <TextInput name="address2" {...fieldSet.address2} />

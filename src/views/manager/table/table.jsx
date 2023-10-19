@@ -1,11 +1,12 @@
 import { EmptyIcon, PrinterIcon } from "@/assets";
 import { Button, TextInput, Title } from "../../../components";
-import { Form, QRCode, Space, Tooltip, message } from "antd";
-import { useRef, useState } from "react";
+import { Form, QRCode, Space, Tooltip } from "antd";
+import { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Link } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import ModalComp from "../../../components/modal";
+import { getMethod, postMethod } from "../../../services";
 
 const FieldData = {
   inputClassName: "py-2",
@@ -26,54 +27,48 @@ const FieldData = {
 };
 
 export const Table = () => {
-  const [tables, setTables] = useState([
-    {
-      id: self.crypto.randomUUID(),
-      table: "1234",
-      url: "https://ant.design/",
-    },
-    {
-      id: self.crypto.randomUUID(),
-      table: "1234534",
-      url: "https://ant.design/",
-    },
-  ]);
+  const [tables, setTables] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const componentRef = useRef();
+  const fetchTable = async () => {
+    const resp = await getMethod("get_table");
+    if (resp.message === "ok") {
+      const { data = [] } = resp;
+      setTables(data ?? []);
+    }
+  };
 
+  useEffect(() => {
+    fetchTable();
+  }, []);
+
+  const componentRef = useRef();
   const onPrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  const onDeleteTable = (id) => {
-    setTables((prev) => {
-      const prevObj = structuredClone(prev);
-      const index = prevObj.findIndex((el) => el.id === id);
-      if (index !== -1) {
-        prevObj.splice(index, 1);
-      }
-      return prevObj;
-    });
+  const onDeleteTable = async (table_no) => {
+    const resp = await postMethod("remove_table", { table_no });
+    if (resp?.message === "ok") {
+      setTables((prev) => {
+        const prevObj = structuredClone(prev);
+        const index = prevObj.findIndex((el) => el.table_no === table_no);
+        if (index !== -1) {
+          prevObj.splice(index, 1);
+        }
+        return prevObj;
+      });
+    }
   };
 
-  const onAddTable = ({ table }) => {
-    setTables((prev) => {
-      const prevObj = structuredClone(prev);
-      const isExist = prevObj.findIndex((el) => el.table === table);
-      if (isExist === -1) {
-        const payload = {
-          id: self.crypto.randomUUID(),
-          table: table,
-          url: "https://ant.design/",
-        };
-        prevObj.unshift(payload);
-      } else {
-        message.warning("Already Exist!");
-      }
-
-      return prevObj;
+  const onAddTable = async ({ table }) => {
+    const resp = await postMethod("set_table", {
+      table_no: table,
     });
+
+    if (resp?.message === "ok") {
+      fetchTable();
+    }
     setIsModalOpen(false);
   };
 
@@ -103,7 +98,7 @@ export const Table = () => {
               className="py-4 w-80 h-96 px-2 flex flex-col justify-start  rounded-lg border  cursor-pointer hover:shadow-lg relative"
             >
               <p
-                onClick={() => onDeleteTable(item.id)}
+                onClick={() => onDeleteTable(item.table_no)}
                 className="bg-danger absolute text-white text-center right-2 rounded-full w-6 h-6 top-1 "
               >
                 x
@@ -113,7 +108,7 @@ export const Table = () => {
                   <QRCode size={200} value={item.url || "-"} />
                 </Space>
                 <h1 className="text-2xl mt-6 text-center font-semibold">
-                  Table No: {item.table}
+                  Table No: {item.table_no}
                 </h1>
               </div>
 
