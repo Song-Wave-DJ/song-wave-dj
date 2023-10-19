@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { IconButton, TableComponent } from "@/components";
 import ModalComp from "@/components/modal";
 import { Link } from "react-router-dom";
@@ -8,6 +8,7 @@ import { Summary } from "../../../menu/components/summary";
 import { RenderColor } from "../../../admin/constanst";
 import { useReactToPrint } from "react-to-print";
 import { Button } from "@/components";
+import { getMethod } from "../../../../services";
 
 const Carts = [
   {
@@ -44,38 +45,29 @@ const Carts = [
   },
 ];
 
-const dataSource = [
-  {
-    id: "12378",
-    table: 212,
-    price: 1230,
-    createdAt: "12/12/2023",
-    stauts: "Accepted",
-    transactionId: "123456734",
-  },
-  {
-    id: "12345673238",
-    table: 13452,
-    price: 1230,
-    createdAt: "12/12/2023",
-    stauts: "Accepted",
-    transactionId: "123456734",
-  },
-  {
-    id: "123453673238",
-    table: 134562,
-    price: 1230,
-    transactionId: "123456734",
-    createdAt: "12/12/2023",
-    stauts: "Rejected",
-  },
-];
-
 export const BillingHistory = ({ isEmployee }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const [data, setData] = useState([]);
 
   const componentRef = useRef();
+
+  const initBillingHistory = async () => {
+    const resp = await getMethod("billing-history");
+    console.log(resp);
+
+    if (resp.message === "ok") {
+      const { data } = resp;
+      setData(data?.billing_history);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    initBillingHistory();
+  }, []);
 
   const onPrint = useReactToPrint({
     content: () => componentRef.current,
@@ -162,9 +154,9 @@ export const BillingHistory = ({ isEmployee }) => {
   return (
     <main className="w-full">
       <TableComponent
-        loading={false}
+        loading={loading}
         columns={columns}
-        dataSource={dataSource || []}
+        dataSource={data || []}
         total={10}
         pageSize={10}
       />

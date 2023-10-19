@@ -13,8 +13,13 @@ export const Login = () => {
     const resp = await postMethod("check_username", paylaod);
     if (resp.message === "ok") {
       const { data } = resp;
-      if (data?.exists) {
-        navigation("/dashboard");
+      if (data) {
+        localStorage.setItem("token", data.token);
+        switch (data?.role) {
+          case "manager":
+            navigation("/dashboard");
+            break;
+        }
       }
       message.success("Logged In");
     }

@@ -45,15 +45,20 @@ export const Waiters = () => {
     fetchWaiter();
   }, []);
 
-  const onDeleteWaiter = (id) => {
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const idx = prevObj.findIndex((el) => el.id === id);
-      if (idx !== -1) {
-        prevObj.shift(idx, 1);
-      }
-      return prevObj;
-    });
+  const onDeleteWaiter = async (id) => {
+    setIsLoading(true);
+    const resp = await postMethod("delete_waiter_manager", { waiter_id: id });
+    if (resp?.message === "ok") {
+      setData((prev) => {
+        const prevObj = structuredClone(prev);
+        const idx = prevObj.findIndex((el) => el.id === id);
+        if (idx !== -1) {
+          prevObj.shift(idx, 1);
+        }
+        return prevObj;
+      });
+    }
+    setIsLoading(false);
   };
 
   const onChange = ({ target }) => {

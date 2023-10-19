@@ -32,10 +32,12 @@ import {
   WaiterOrder,
   ManagerPolls,
   Table,
+  AdminBillingHistory,
+  Restaurant,
+  MusicHistory,
 } from "@/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
-import { AdminBillingHistory } from "../views/admin";
 import {
   ProtectedAdminRoute,
   ProtectedDJUserRoute,
@@ -222,6 +224,11 @@ const router = createBrowserRouter([
         element: <AdminMusic />,
       },
       {
+        path: "/admin-dashboard/musics/:id",
+        element: <MusicHistory />,
+      },
+
+      {
         path: "/admin-dashboard/mangers/:id",
         element: <AdminWaiter />,
       },
@@ -241,6 +248,11 @@ const router = createBrowserRouter([
         path: "/admin-dashboard/menus",
         element: <AdminMenus />,
       },
+      {
+        path: "/admin-dashboard/restaurant",
+        element: <Restaurant />,
+      },
+
       {
         path: "/admin-dashboard/polls",
         element: <AdminPolls />,

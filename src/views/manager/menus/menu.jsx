@@ -44,8 +44,8 @@ export const Menus = () => {
   const fetchMenu = async () => {
     const resp = await getMethod("get_menu");
     if (resp.message === "ok") {
-      const { data = [] } = resp;
-      setData(data);
+      const { data } = resp;
+      setData(data?.menu);
     }
     setLoading(false);
   };
@@ -77,15 +77,18 @@ export const Menus = () => {
     }
   };
 
-  const handleDelete = (id) => {
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const idx = prevObj.findIndex((el) => el.id === id);
-      if (idx !== -1) {
-        prevObj.splice(idx, 1);
-      }
-      return prevObj;
-    });
+  const handleDelete = async (id, name) => {
+    const resp = await postMethod("delete_menu", { name });
+    if (resp?.message === "ok") {
+      setData((prev) => {
+        const prevObj = structuredClone(prev);
+        const idx = prevObj.findIndex((el) => el.id === id);
+        if (idx !== -1) {
+          prevObj.splice(idx, 1);
+        }
+        return prevObj;
+      });
+    }
   };
 
   const handleView = (id) => {
@@ -120,7 +123,7 @@ export const Menus = () => {
     const { category, name, price, discount, description, type, available } =
       data ?? {};
     const payload = {
-      category,
+      category: category,
       name,
       discount,
       description,
@@ -128,10 +131,12 @@ export const Menus = () => {
       available,
       price,
     };
-    const resp = await postMethod("add_menu", payload);
+    const resp = await postMethod("set_menu", payload);
     if (resp.message === "ok") {
       fetchMenu();
     }
+    setLoaded(false);
+
     setModalOpen((prev) => !prev);
   };
   const onSaveMenu = (payload, id) => {
@@ -228,6 +233,7 @@ export const Menus = () => {
         editData={editData}
         onAddMenu={onAddMenu}
         modalOpen={modalOpen}
+        isLoading={loaded}
       />
       <div className="flex  flex-wrap justify-center gap-6 my-6">
         {datas.length > 0 ? (

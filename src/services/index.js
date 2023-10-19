@@ -2,13 +2,13 @@ import axios from "axios";
 
 const URL = "http://damp-silence-67221.pktriot.net/api/";
 
-const token = "";
+const token = localStorage.getItem("token");
 export const getMethod = async (endpoint) => {
   try {
     const resp = await axios(URL + endpoint, {
       headers: {
-        Accept: "application/json",
-        Authorization: `Beraer ${token}`,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       method: "GET",
     });
@@ -31,8 +31,8 @@ export const postMethod = async (endpoint, data) => {
   try {
     const resp = await axios(URL + endpoint, {
       headers: {
-        Accept: "application/json",
-        Authorization: `Beraer ${token}`,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
       },
       method: "POST",
       data,
