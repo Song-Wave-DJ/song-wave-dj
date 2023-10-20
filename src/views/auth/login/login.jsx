@@ -14,7 +14,7 @@ export const Login = () => {
     if (resp.message === "ok") {
       const { data } = resp;
       if (data) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.access_token);
         switch (data?.role) {
           case "manager":
             navigation("/dashboard");
