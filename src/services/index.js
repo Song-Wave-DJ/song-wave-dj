@@ -2,9 +2,9 @@ import axios from "axios";
 
 const URL = "http://damp-silence-67221.pktriot.net/api/";
 
-const token = localStorage.getItem("token");
 export const getMethod = async (endpoint) => {
   try {
+    const token = localStorage.getItem("token");
     const resp = await axios(URL + endpoint, {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -29,6 +29,8 @@ export const getMethod = async (endpoint) => {
 
 export const postMethod = async (endpoint, data) => {
   try {
+    const token = localStorage.getItem("token");
+
     const resp = await axios(URL + endpoint, {
       headers: {
         Authorization: `Bearer ${token}`,
