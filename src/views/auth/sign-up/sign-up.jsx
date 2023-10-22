@@ -1,12 +1,35 @@
 import { Button, TextInput, TextPassword, Title } from "@/components";
-import { Form } from "antd";
+import { Form, message } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import { fieldSet } from "./fieldsData";
+import { postMethod } from "../../../services";
+import { useState } from "react";
 
 export const SignUp = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
   const navigation = useNavigate();
-  const onFinish = () => {
-    navigation("/dashboard");
+  const onFinish = async (data) => {
+    setIsLoading(true);
+    const paylaod = {
+      email: data.email,
+      password: data.password,
+      name: "New",
+      phone: data.phone,
+    };
+    const resp = await postMethod("create_user", paylaod);
+    if (resp.message === "ok") {
+      const { data } = resp;
+      if (data) {
+        switch (data?.role) {
+          case "manager":
+            navigation("/dashboard");
+            break;
+        }
+      }
+      message.success("Logged In");
+    }
+    setIsLoading(false);
   };
 
   return (
@@ -25,9 +48,9 @@ export const SignUp = () => {
           layout="vertical"
           onFinish={onFinish}
         >
+          <TextInput name="name" {...fieldSet.name} />
           <TextInput name="email" {...fieldSet.email} />
           <TextInput name="phone" {...fieldSet.phone} />
-
           <TextPassword {...fieldSet.password} />
 
           <Form.Item className="flex justify-end">
@@ -36,7 +59,7 @@ export const SignUp = () => {
             </Link>
           </Form.Item>
           <Form.Item className="mt-4">
-            <Button label="Sign up to your account" />
+            <Button label="Sign up to your account" isLoading={isLoading} />
           </Form.Item>
         </Form>
       </div>

@@ -19,6 +19,9 @@ export const Login = () => {
           case "manager":
             navigation("/dashboard");
             break;
+          case "admin":
+            navigation("/admin-dashboard");
+            break;
         }
       }
       message.success("Logged In");

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Searching,
   TableComponent,
@@ -14,39 +14,51 @@ import { fieldSet } from "./fieldsData";
 import { DeleteIcon } from "@/assets";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
-
-const dataSource = [
-  {
-    id: "12345678",
-    name: "John Deo",
-    email: "john@gmail.com",
-    password: "123456788",
-    createdAt: "30-09-2023",
-  },
-];
+import { getMethod, postMethod } from "../../../services";
 
 export const AdminManagers = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setLoading] = useState(false);
+
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-  const [data, setData] = useState(dataSource);
+  const [data, setData] = useState([]);
 
   const handleCancel = () => {
     setIsModalOpen((prev) => !prev);
   };
 
+  const fetchManager = async () => {
+    setLoading(true);
+    const resp = await getMethod("admin_manager_list");
+    if (resp.message === "ok") {
+      const { data } = resp;
+      setData(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchManager();
+  }, []);
+
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
 
-  const onDeleteWaiter = (id) => {
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const idx = prevObj.findIndex((el) => el.id === id);
-      if (idx !== -1) {
-        prevObj.shift(idx, 1);
-      }
-      return prevObj;
-    });
+  const onDeleteWaiter = async (id) => {
+    setLoading(true);
+    const resp = await postMethod("admin_remove_manager", { id });
+    if (resp.message === "ok") {
+      setData((prev) => {
+        const prevObj = structuredClone(prev);
+        const idx = prevObj.findIndex((el) => el.id === id);
+        if (idx !== -1) {
+          prevObj.shift(idx, 1);
+        }
+        return prevObj;
+      });
+    }
+    setLoading(false);
   };
 
   const columns = [
@@ -71,6 +83,12 @@ export const AdminManagers = () => {
       dataIndex: "email",
       key: "email",
     },
+    {
+      title: "Phone",
+      dataIndex: "phone_number",
+      key: "phone_number",
+    },
+
     {
       title: "Password",
       dataIndex: "password",
@@ -117,14 +135,20 @@ export const AdminManagers = () => {
           const query = value.toLowerCase();
           return queryTabel.includes(query) || queryPrice.includes(query);
         });
-        return filterData;
+        return filterData ?? [];
       });
-    } else {
-      setData(dataSource);
     }
   };
 
-  const onFinish = (payload) => {
+  const onFinish = async (payload) => {
+    const resp = await postMethod("add_manager", {
+      email: "ravi@gmail.com",
+      password: "ravi1234",
+      phone: "13242323",
+      name: "ravi",
+    });
+
+    console.log(resp);
     const date = new Date();
     let currentDay = String(date.getDate()).padStart(2, "0");
     let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
@@ -167,7 +191,7 @@ export const AdminManagers = () => {
         </div>
       </div>
       <TableComponent
-        loading={false}
+        loading={isLoading}
         columns={columns}
         dataSource={data || []}
         total={10}
@@ -186,6 +210,8 @@ export const AdminManagers = () => {
           >
             <TextInput name="name" {...fieldSet.name} />
             <TextInput name="email" {...fieldSet.email} />
+            <TextInput name="phone" {...fieldSet.phone} />
+
             <TextPassword {...fieldSet.password} />
             <Form.Item>
               <div className="flex justify-between  mt-4 gap-4 w-full">

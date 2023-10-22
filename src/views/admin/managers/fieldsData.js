@@ -17,6 +17,34 @@ export const fieldSet = {
     placeholder: "Full Name",
     prefix: false,
   },
+  phone: {
+    className: "!mb-4",
+    inputClassName: "py-2",
+    suffix: false,
+    label: "Phone",
+    labelCol: {
+      className: "child:!text-xxs font-sans",
+    },
+    rules: [
+      {
+        required: true,
+        message: "Phone is required!",
+      },
+      {
+        min: 10,
+        message: "Invalid Phone  number",
+      },
+      {
+        max: 15,
+        message: "Invalid Phone  number",
+      },
+      {
+        pattern: /^[0-9]+$/,
+        message: "Phone should be number",
+      },
+    ],
+    placeholder: "Phone",
+  },
   email: {
     className: "!mb-4",
     inputClassName: "py-2",
