@@ -1,59 +1,52 @@
-import { useState } from "react";
-import {
-  Searching,
-  TableComponent,
-  Confirmation,
-  Button,
-  Title,
-  TextInput,
-  TextPassword,
-  Select,
-} from "@/components";
-import ModalComp from "@/components/modal";
-import { Form } from "antd";
-import { fieldSet } from "./fieldsData";
+import { useEffect, useState } from "react";
+import { Searching, TableComponent, Confirmation } from "@/components";
 import { DeleteIcon } from "@/assets";
-
-const dataSource = [
-  {
-    id: "12345678",
-    name: "John Deo",
-    email: "john@gmail.com",
-    userType: "DJUSER",
-    password: "123456788",
-    createdAt: "30-09-2023",
-  },
-];
+import { getMethod, postMethod } from "../../../services";
 
 export const Users = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isConfirmationOpen, setIsConfirmationOpen] = useState(false);
-  const [data, setData] = useState(dataSource);
-
-  const handleCancel = () => {
-    setIsModalOpen((prev) => !prev);
-  };
+  const [data, setData] = useState([]);
+  const [isLoading, setLoading] = useState(false);
 
   const confirmationOpen = () => {
     setIsConfirmationOpen((prev) => !prev);
   };
 
-  const onDeleteWaiter = (id) => {
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const idx = prevObj.findIndex((el) => el.id === id);
-      if (idx !== -1) {
-        prevObj.shift(idx, 1);
-      }
-      return prevObj;
-    });
+  const fetchUsers = async () => {
+    setLoading(true);
+    const resp = await getMethod("admin_user_list");
+    if (resp.message === "ok") {
+      const { data } = resp;
+      setData(data);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const onDeleteWaiter = async (id) => {
+    setLoading(true);
+    const resp = await postMethod("admin_remove_user", { id });
+    if (resp.message === "ok") {
+      setData((prev) => {
+        const prevObj = structuredClone(prev);
+        const idx = prevObj.findIndex((el) => el.id === id);
+        if (idx !== -1) {
+          prevObj.shift(idx, 1);
+        }
+        return prevObj;
+      });
+    }
+    setLoading(false);
   };
 
   const columns = [
     {
       title: "S.No.",
-      dataIndex: "id",
-      key: "id",
+      dataIndex: "Sid",
+      key: "Sid",
       render: (_, record, index) => <p>{index + 1}</p>,
     },
     {
@@ -78,8 +71,8 @@ export const Users = () => {
     },
     {
       title: "UserType",
-      dataIndex: "userType",
-      key: "userType",
+      dataIndex: "role",
+      key: "role",
     },
 
     {
@@ -121,36 +114,9 @@ export const Users = () => {
             queryuserType.includes(query)
           );
         });
-        return filterData;
+        return filterData ?? [];
       });
-    } else {
-      setData(dataSource);
     }
-  };
-
-  const onFinish = (payload) => {
-    const date = new Date();
-    let currentDay = String(date.getDate()).padStart(2, "0");
-    let currentMonth = String(date.getMonth() + 1).padStart(2, "0");
-    let currentYear = date.getFullYear();
-
-    // we will display the date as DD-MM-YYYY
-    let currentDate = `${currentDay}-${currentMonth}-${currentYear}`;
-    setData((prev) => {
-      const prevObj = structuredClone(prev);
-      const payData = {
-        ...payload,
-        id: self.crypto.randomUUID(),
-        createdAt: currentDate,
-      };
-      prevObj.unshift(payData);
-      return prevObj;
-    });
-    setIsModalOpen(false);
-  };
-
-  const onAddUsers = () => {
-    setIsModalOpen(true);
   };
 
   return (
@@ -161,12 +127,6 @@ export const Users = () => {
           <span className="text-[#3CB5E5] text-lg">{data?.length}</span>
         </p>
         <div className="flex flex-1 justify-end gap-4">
-          <Button
-            isLoading={false}
-            label="Add Users"
-            styles="rounded-lg hover:"
-            onClick={onAddUsers}
-          />
           <Searching
             onChange={onChangeSearch}
             styles="flex-[.9] md:flex-[.2] py-2"
@@ -174,57 +134,12 @@ export const Users = () => {
         </div>
       </div>
       <TableComponent
-        loading={false}
+        loading={isLoading}
         columns={columns}
         dataSource={data || []}
         total={10}
         pageSize={10}
       />
-
-      <ModalComp open={isModalOpen} handleCancel={handleCancel}>
-        <div className="p-4 w-full">
-          <Title label="Add New Users"></Title>
-          <Form
-            name="add-users"
-            requiredMark={false}
-            layout="vertical"
-            onFinish={onFinish}
-            key={Math.random()}
-          >
-            <TextInput name="name" {...fieldSet.name} />
-            <TextInput name="email" {...fieldSet.email} />
-            <TextPassword {...fieldSet.password} />
-            <Select
-              options={[
-                {
-                  label: "Admin",
-                  value: "ADMIN",
-                },
-                {
-                  label: "DJ User",
-                  value: "DJUSER",
-                },
-                {
-                  label: "User",
-                  value: "USER",
-                },
-              ]}
-              {...fieldSet.userType}
-            />
-            <Form.Item>
-              <div className="flex justify-between  mt-8 gap-4 w-full">
-                <Button
-                  htmlType="button"
-                  onClick={handleCancel}
-                  label="Cancel"
-                  styles="!bg-danger flex-[.5]"
-                />
-                <Button label="Add" styles="flex-[.5]" />
-              </div>
-            </Form.Item>
-          </Form>
-        </div>
-      </ModalComp>
 
       <Confirmation
         handleOpen={confirmationOpen}

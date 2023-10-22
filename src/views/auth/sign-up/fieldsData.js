@@ -1,4 +1,20 @@
 export const fieldSet = {
+  name: {
+    className: "!mb-4",
+    inputClassName: "py-2",
+    label: "Full Name",
+    labelCol: {
+      className: "child:!text-xxs font-sans",
+    },
+    rules: [
+      {
+        required: true,
+        message: "Full name is required!",
+      },
+      { type: "text", message: "Invalid name address!" },
+    ],
+    placeholder: "Full Name",
+  },
   email: {
     className: "!mb-4",
     inputClassName: "py-2",

@@ -19,6 +19,7 @@ export const useMenuOrder = () => {
   const [isPaynow, setIsPaynow] = useState(false);
   const [isPlacedOrder, setIsPlacedOrder] = useState(false);
 
+  console.log(categories);
   const [navigate, setNavigate] = useState("PaymentChoose");
   const [selectedMethod, setSelectedMethod] = useState("QR");
   const navigation = useNavigate();
