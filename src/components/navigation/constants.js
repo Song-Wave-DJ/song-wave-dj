@@ -80,6 +80,11 @@ export const EmployeeNavigation = [
     label: "Billings",
     path: "/employee/billings",
   },
+  {
+    id: 3,
+    label: "Food Order",
+    path: "/employee/food-order",
+  },
 ];
 
 export const DJNavigation = [

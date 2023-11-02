@@ -1,25 +1,42 @@
-import { Button } from "../../../components";
+import { useEffect } from "react";
+import { RetroBgIcon, RetroIcon } from "../../../assets";
+import "aos/dist/aos.css";
+import Aos from "aos";
 
 export const RequestedSongs = () => {
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      Aos.init({
+        duration: 1000,
+        offset: 100,
+      });
+    });
+  }, []);
+
   return (
-    <div className="py-10 px-8 bg-purpal ">
-      <div className="flex justify-center flex-wrap gap-8 relative items-center">
-        {/* left */}
-        <div className="">
-          <img
-            className="object-cover"
-            src="https://static.wixstatic.com/media/c142e99712d4bb42acc2632cc16bb5bd.jpg/v1/crop/x_461,y_0,w_850,h_998/fill/w_575,h_675,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/RockinDJ.jpg"
-            alt=""
-          />
-        </div>
-        {/* right */}
-        <div className="flex flex-col gap-4 absolute sm:static transition p-4">
-          <h1 className="text-white text-5xl text-wrap font-bold">
-            Request Your Favorite Songs Live
-          </h1>
-          <Button label="Request for Music" onClick={() => null} />
-        </div>
+    <div
+      className="p-4 flex  min-h-screen items-center flex-col md:flex-row"
+      style={{
+        backgroundImage: `url( ${RetroBgIcon})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        opacity: 0.9,
+      }}
+    >
+      <div className="w-full animate-spin rounded-full p-6 grid items-center h-full">
+        <img src={RetroIcon} className="w-full object-cover" alt="" />
       </div>
+      <h2
+        data-aos="fade-down"
+        className="text-center z-10 text-2xl my-5 text-white"
+      >
+        "Handpick your favorite beat and send it to&nbsp;the&nbsp;DJ!" Suggest
+        your favorite songs, from chart-toppers to hidden gems, and let our DJs
+        know exactly what gets&nbsp;you&nbsp;moving. "GROOVE ON DEMAND".now
+        impress your loved once with thier fav song Tune into Happiness with uh
+        fav song and fav place with songwave
+      </h2>
     </div>
   );
 };

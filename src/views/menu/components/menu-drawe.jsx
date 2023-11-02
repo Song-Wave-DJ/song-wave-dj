@@ -6,6 +6,9 @@ import ModalComp from "@/components/modal";
 import { useEffect, useMemo, useState } from "react";
 import { CartMenuCard } from "./cart-menu";
 import { OrderSummary } from "./order-summary";
+import { Form } from "antd";
+import { TextInput } from "../../../components";
+import { fieldSet } from "../../auth/sign-up/fieldsData";
 
 export const MenuDrawer = ({
   onClose,
@@ -13,6 +16,7 @@ export const MenuDrawer = ({
   carts = [],
   setCarts,
   onPlacedOrder,
+  fromEmployee,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tax] = useState(10);
@@ -23,6 +27,9 @@ export const MenuDrawer = ({
     setIsModalOpen((prev) => !prev);
   };
 
+  const onFinish = () => {
+    handleCancel();
+  };
   const total = useMemo(() => {
     const response = carts.reduce((next, curr) => {
       return next + parseInt(curr?.price) * curr?.qty;
@@ -67,13 +74,33 @@ export const MenuDrawer = ({
                 <CartMenuCard {...item} key={item.id} setCarts={setCarts} />
               ))}
             </div>
-            <div className="mt-8 w-full">
-              <Button
-                onClick={handleCancel}
-                label="Proceed"
-                styles="w-full rounded-lg"
-              />
-            </div>
+            {fromEmployee && (
+              <Form
+                name="login"
+                requiredMark={false}
+                layout="vertical"
+                className="mt-4"
+                onFinish={onFinish}
+              >
+                <TextInput name="name" {...fieldSet.name} />
+                <TextInput name="email" {...fieldSet.email} />
+                <TextInput name="phone" {...fieldSet.phone} />
+
+                <Form.Item className="mt-10">
+                  <Button label="Proceed" />
+                </Form.Item>
+              </Form>
+            )}
+
+            {!fromEmployee && (
+              <div className="mt-10 w-full ">
+                <Button
+                  onClick={handleCancel}
+                  label="Proceed"
+                  styles="w-full rounded-lg"
+                />
+              </div>
+            )}
           </>
         ) : (
           <div className="flex flex-col items-center">

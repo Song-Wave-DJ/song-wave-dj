@@ -1,29 +1,38 @@
-import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components";
+import Aos from "aos";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export const RequestedMenu = () => {
-  const navigation = useNavigate();
-
-  const gotoMenu = () => {
-    navigation("/menu");
-  };
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      Aos.init({
+        duration: 1000,
+        offset: 100,
+      });
+    });
+  }, []);
   return (
-    <div className="py-10 px-8 bg-purpal ">
-      <div className="flex justify-center flex-wrap gap-8 relative items-center">
-        {/* left */}
-        <div className="">
-          <img
-            className="object-cover"
-            src="https://static.wixstatic.com/media/c142e99712d4bb42acc2632cc16bb5bd.jpg/v1/crop/x_461,y_0,w_850,h_998/fill/w_575,h_675,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/RockinDJ.jpg"
-            alt=""
-          />
-        </div>
-        {/* right */}
-        <div className="flex flex-col gap-4 absolute sm:static transition p-4">
-          <h1 className="text-white text-5xl text-wrap font-bold">
-            Request Your Menu
-          </h1>
-          <Button label="Request for Menu" onClick={gotoMenu} />
+    <div
+      className="flex relative  flex-col justify-center  h-screen"
+      style={{
+        backgroundImage: `url("https://plus.unsplash.com/premium_photo-1674106347866-8282d8c19f84?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80")`,
+        backgroundSize: "cover",
+      }}
+    >
+      <div className=" bg-[#76697a90] h-screen p-4 grid content-center">
+        <h1
+          data-aos="zoom-in"
+          className="text-4xl font-bold text-white text-center"
+        >
+          Don't Play With Fire, Play With Taste.
+        </h1>
+        <div className="flex mt-20 bg-[#000] w-full md:w-1/2 m-auto items-center justify-center">
+          <Link
+            to="/category"
+            className="rounded-md  p-4 flex cursor-pointer flex-col items-center"
+          >
+            <p className="text-white text-2xl font-bold">Order Food</p>
+          </Link>
         </div>
       </div>
     </div>
