@@ -28,7 +28,7 @@ const PaymentType = [
   },
 ];
 
-export const Menu = () => {
+export const Menu = ({ fromEmployee = false }) => {
   const {
     selectedMethod,
     onChooseMethod,
@@ -220,6 +220,7 @@ export const Menu = () => {
         carts={carts}
         setCarts={setCarts}
         onPlacedOrder={onPlacedOrder}
+        fromEmployee={fromEmployee}
       />
 
       <ModalComp open={isPaynow} handleCancel={onOpenPayment}>

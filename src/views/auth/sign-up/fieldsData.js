@@ -3,6 +3,7 @@ export const fieldSet = {
     className: "!mb-4",
     inputClassName: "py-2",
     label: "Full Name",
+    suffix: false,
     labelCol: {
       className: "child:!text-xxs font-sans",
     },

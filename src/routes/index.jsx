@@ -44,6 +44,7 @@ import {
   ProtectedEmployeeRoute,
   ProtectedMangaerRoute,
 } from "../protected-route";
+import { OrderFood, OrderMenu } from "../views/manager";
 
 const router = createBrowserRouter([
   {
@@ -297,8 +298,16 @@ const router = createBrowserRouter([
         element: <Billings isEmployee />,
       },
       {
+        path: "/employee/food-order",
+        element: <OrderFood isEmployee />,
+      },
+      {
         path: "/employee/billings/:id",
         element: <TableBillings isEmployee />,
+      },
+      {
+        path: "/employee/menu",
+        element: <OrderMenu isEmployee />,
       },
     ],
     errorElement: <NotFound />,
