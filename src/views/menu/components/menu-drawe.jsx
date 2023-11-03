@@ -8,7 +8,7 @@ import { CartMenuCard } from "./cart-menu";
 import { OrderSummary } from "./order-summary";
 import { Form } from "antd";
 import { TextInput } from "../../../components";
-import { fieldSet } from "../../auth/sign-up/fieldsData";
+import { orderFieldSet } from "../../auth/sign-up/fieldsData";
 
 export const MenuDrawer = ({
   onClose,
@@ -82,10 +82,11 @@ export const MenuDrawer = ({
                 className="mt-4"
                 onFinish={onFinish}
               >
-                <TextInput name="name" {...fieldSet.name} />
-                <TextInput name="email" {...fieldSet.email} />
-                <TextInput name="phone" {...fieldSet.phone} />
-
+                <TextInput name="name" {...orderFieldSet.name} />
+                <TextInput name="email" {...orderFieldSet.email} />
+                <TextInput name="phone" {...orderFieldSet.phone} />
+                <TextInput name="restaurantId" {...orderFieldSet.restaurant} />
+                <TextInput name="tableId" {...orderFieldSet.tableNo} />
                 <Form.Item className="mt-10">
                   <Button label="Proceed" />
                 </Form.Item>

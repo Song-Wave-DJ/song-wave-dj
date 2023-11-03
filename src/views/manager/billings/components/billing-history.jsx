@@ -100,6 +100,11 @@ export const BillingHistory = ({ isEmployee }) => {
       key: "price",
     },
     {
+      title: "Payment Type",
+      dataIndex: "paymentType",
+      key: "paymentType",
+    },
+    {
       title: "Date & Time",
       dataIndex: "createdAt",
       key: "createdAt",
