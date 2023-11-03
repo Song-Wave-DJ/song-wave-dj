@@ -20,6 +20,7 @@ const dataSource = [
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Accepted",
+    paymentType: "Cash",
   },
   {
     name: "John Deo",
@@ -27,6 +28,7 @@ const dataSource = [
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Accepted",
+    paymentType: "Card",
   },
   {
     name: "John Deo",
@@ -34,6 +36,7 @@ const dataSource = [
     price: 1230,
     createdAt: "12/12/2023",
     stauts: "Rejected",
+    paymentType: "UPI",
   },
 ];
 
@@ -79,6 +82,11 @@ export const WaiterOrder = () => {
       title: "Total Price",
       dataIndex: "price",
       key: "price",
+    },
+    {
+      title: "Payment Type",
+      dataIndex: "paymentType",
+      key: "paymentType",
     },
     {
       title: "Date",

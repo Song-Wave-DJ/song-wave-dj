@@ -44,9 +44,15 @@ export const AddDashbardMenu = ({
       >
         <div className="h-[66vh] overflow-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-1 md:gap-4 my-6">
           <TextInput {...fieldSet.name} />
+          <TextInput {...fieldSet.categoryId} />
+
           <TextInput {...fieldSet.dish} />
+          <TextInput {...fieldSet.dishId} />
+
           <TextInput {...fieldSet.price} />
           <TextInput {...fieldSet.discount} />
+          <TextInput {...fieldSet.thumbnail} />
+
           <TextDescription {...fieldSet.desciption} />
 
           <Form.Item {...fieldSet.type} className="!mb-0">
