@@ -1,5 +1,6 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect, useMemo, useState } from "react";
-import { Title, Button } from "@/components";
+import { Title, Button } from "../../../../../components";
 import { message } from "antd";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -120,7 +121,7 @@ export const AddPolls = () => {
             <Button
               isLoading={false}
               label="Cancel"
-              styles="rounded-lg !bg-danger"
+              bg="rounded-lg !bg-danger"
             />
           </Link>
           <Button

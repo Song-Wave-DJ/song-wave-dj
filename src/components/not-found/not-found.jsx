@@ -1,4 +1,4 @@
-import { NotFoundIcon } from "@/assets";
+import { NotFoundIcon } from "../../assets";
 import Button from "../button";
 import { useNavigate } from "react-router-dom";
 

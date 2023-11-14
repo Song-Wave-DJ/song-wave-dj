@@ -4,7 +4,7 @@ import {
   IconButton,
   Searching,
   TableComponent,
-} from "@/components";
+} from "../../components";
 import { useState } from "react";
 import { DeleteIcon, EditIcon } from "../../assets";
 import { RenderColor } from "../admin/constanst";

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { RadioButton, Searching } from "@/components";
+import { RadioButton, Searching } from "../../../components";
 import { ShoppingCartOutlined } from "@ant-design/icons";
 import { ChefIcon } from "../../../assets";
 import { Link } from "react-router-dom";

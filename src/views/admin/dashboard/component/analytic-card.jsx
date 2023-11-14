@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Title as TextTitle } from "@/components";
+import { Title as TextTitle } from "../../../../components";
 import ProgressLine from "./progresss-line";
 
 export const AnalyticCard = ({ label, total, color, icon, percentage }) => {

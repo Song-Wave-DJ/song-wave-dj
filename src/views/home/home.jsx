@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BackgroundIcon } from "../../assets";
-import { Button, TextInput } from "@/components";
+import { Button, TextInput } from "../../components";
 import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
 import "./style.css";

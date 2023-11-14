@@ -1,4 +1,4 @@
-import { TableComponent } from "@/components";
+import { TableComponent } from "../../../components";
 import { RenderColor } from "../../admin/constanst";
 import { Tooltip } from "antd";
 import { Link, useParams } from "react-router-dom";

@@ -1,11 +1,11 @@
 import { useRef, useState } from "react";
-import { IconButton, TableComponent } from "@/components";
-import ModalComp from "@/components/modal";
+import { IconButton, TableComponent } from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
 import { Tooltip } from "antd";
 import { useReactToPrint } from "react-to-print";
-import { Button } from "@/components";
+import { Button } from "../../../components";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../../../constants";
 import { DateRange, Searching } from "../../../components";

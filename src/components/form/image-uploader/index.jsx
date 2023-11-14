@@ -1,7 +1,7 @@
 import React from "react";
 import { Upload } from "antd";
 import Button from "../../button";
-import { ImageIcon } from "@/assets";
+import { ImageIcon } from "../../../assets";
 
 const ImageUploader = ({ disabled = false, onChange, value }) => {
   const props = {

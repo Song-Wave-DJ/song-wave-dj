@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect, useState } from "react";
 import {
   Searching,
@@ -7,11 +8,11 @@ import {
   Title,
   TextInput,
   TextPassword,
-} from "@/components";
-import ModalComp from "@/components/modal";
+} from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
-import { DeleteIcon } from "@/assets";
+import { DeleteIcon } from "../../../assets";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
 import { getMethod, postMethod } from "../../../services";
@@ -219,9 +220,9 @@ export const AdminManagers = () => {
                   htmlType="button"
                   onClick={handleCancel}
                   label="Cancel"
-                  styles="!bg-danger flex-[.5]"
+                  bg="!bg-danger"
                 />
-                <Button label="Add" styles="flex-[.5]" />
+                <Button label="Add" />
               </div>
             </Form.Item>
           </Form>

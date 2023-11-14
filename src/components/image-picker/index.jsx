@@ -1,6 +1,6 @@
 import { Upload } from "antd";
 import React, { useState } from "react";
-import { EditIcon } from "@/assets";
+import { EditIcon } from "../../assets";
 
 const ImagePicker = ({ value, onChange }) => {
   const [inputValue, setInputValue] = useState(value);

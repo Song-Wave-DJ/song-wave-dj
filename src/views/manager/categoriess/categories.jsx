@@ -26,7 +26,7 @@ export const DashboardCategories = () => {
 
   const onOk = (payload) => {};
 
-  const onConfirm = () => onDelete();
+  const onConfirm = () => null;
 
   const handleDelete = () => () => setDeleteId("");
 

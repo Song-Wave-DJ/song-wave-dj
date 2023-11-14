@@ -1,4 +1,4 @@
-import ModalComp from "@/components/modal";
+import ModalComp from "../../../../components/modal";
 import { Summary } from "../../../menu/components/summary";
 
 const Carts = [

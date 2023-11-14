@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { Summary } from "./summary";
-import { Button } from "@/components";
+import { Button } from "../../../components";
 
 export const OrderSummary = ({
   carts = [],

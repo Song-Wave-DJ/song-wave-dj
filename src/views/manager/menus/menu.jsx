@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useEffect, useState } from "react";
 
 import {
@@ -222,7 +223,7 @@ export const Menus = () => {
           <Button
             isLoading={false}
             label="Add Menu"
-            styles="rounded-lg "
+            styles="rounded-lg w-full "
             onClick={onAddMenu}
           />
           <Searching onChange={onChange} styles="py-2" />
@@ -284,7 +285,7 @@ export const Menus = () => {
             <div className="grid grid-cols-1 mt-4  md:grid-cols-2 lg:grid-cols-2 gap-6">
               <Button
                 label="Cancel"
-                styles="text-x text-center !bg-danger"
+                bg="bg-danger"
                 htmlType="button"
                 onClick={() => setIsTaxOpen(false)}
               />

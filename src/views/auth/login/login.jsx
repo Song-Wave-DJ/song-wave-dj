@@ -1,4 +1,4 @@
-import { Button, TextInput, TextPassword, Title } from "@/components";
+import { Button, TextInput, TextPassword, Title } from "../../../components";
 import { Form, message } from "antd";
 import { fieldSet } from "./fieldsData";
 import { Link, useNavigate } from "react-router-dom";
@@ -35,7 +35,7 @@ export const Login = () => {
   };
 
   return (
-    <main className="h-screen flex px-10">
+    <main className="mt-20 flex px-10">
       <div className=" shadow-lg m-auto sm:w-[500px] w-full p-4">
         <p className="font-bold text-lg">Hey there,</p>
         <Title label="Sign In">

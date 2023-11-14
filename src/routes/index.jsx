@@ -35,7 +35,7 @@ import {
   AdminBillingHistory,
   Restaurant,
   MusicHistory,
-} from "@/views";
+} from "../../src/views";
 import { DJUser } from "../views/dj-user";
 import { NotFound } from "../components";
 import {
@@ -45,6 +45,7 @@ import {
   ProtectedMangaerRoute,
 } from "../protected-route";
 import { OrderFood, OrderMenu } from "../views/manager";
+import { ParallaxFour } from "../parallax/parallax-4/Parallax";
 
 const router = createBrowserRouter([
   {
@@ -53,7 +54,15 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: <ParallaxFour />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/sign-up",
+        element: <SignUp />,
       },
     ],
     errorElement: <NotFound />,
@@ -122,16 +131,6 @@ const router = createBrowserRouter([
         element: <Communities />,
       },
     ],
-    errorElement: <NotFound />,
-  },
-  {
-    path: "login",
-    element: <Login />,
-    errorElement: <NotFound />,
-  },
-  {
-    path: "sign-up",
-    element: <SignUp />,
     errorElement: <NotFound />,
   },
 

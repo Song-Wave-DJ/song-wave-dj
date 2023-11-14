@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 export const MusicData = [
   {
     id: self.crypto.randomUUID(),

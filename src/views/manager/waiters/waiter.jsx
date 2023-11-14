@@ -7,11 +7,11 @@ import {
   Title,
   TextInput,
   TextPassword,
-} from "@/components";
-import ModalComp from "@/components/modal";
+} from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Form, Tooltip } from "antd";
 import { fieldSet } from "./fieldsData";
-import { DeleteIcon } from "@/assets";
+import { DeleteIcon } from "../../../assets";
 import { Link } from "react-router-dom";
 import { RightOutlined } from "@ant-design/icons";
 import { getMethod, postMethod } from "../../../services";
@@ -234,9 +234,9 @@ export const Waiters = () => {
                   htmlType="button"
                   onClick={handleCancel}
                   label="Cancel"
-                  styles="!bg-danger flex-[.5]"
+                  bg="!bg-danger"
                 />
-                <Button label="Add" isLoading={isLoading} styles="flex-[.5]" />
+                <Button label="Add" isLoading={isLoading} />
               </div>
             </Form.Item>
           </Form>

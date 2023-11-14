@@ -1,6 +1,6 @@
-import { WalletIcon } from "@/assets/images";
-import { Button } from "@/components";
-import ModalComp from "@/components/modal";
+import { WalletIcon } from "../../../../assets/images";
+import { Button } from "../../../../components";
+import ModalComp from "../../../../components/modal";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { QRCode, Space, Tooltip } from "antd";
 import { useCallback, useMemo, useState } from "react";

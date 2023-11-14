@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { PrintBill } from "./print-bill";
-import { Drawer } from "@/components";
+import { Drawer } from "../../../../components";
 
 export const BilllingAction = ({
   onViewBillings,

@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Title, Button } from "@/components";
+import { Title, Button } from "../../components";
 import { MusicCard } from "./components/music-card";
 import { MusicData } from "./constants";
 import { useNavigate } from "react-router-dom";
@@ -65,7 +65,7 @@ export const ThreeHours = () => {
             htmlType="button"
             onClick={onSubmitMusicReq}
             label="Request"
-            styles="flex-[.2] border-none  !bg-[#242424] "
+            styles=""
           />
         </div>
         {/* top music */}

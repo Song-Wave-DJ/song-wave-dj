@@ -27,7 +27,7 @@ import HandIcon from "./hand.png";
 import RequestIcon from "./request.png";
 import FeedbackIcon from "./feedback.png";
 import UserIcon from "./user.png";
-import Checkbox from "./checkbox.png";
+import Checkbox from "./checkBox.png";
 import CallingIcon from "./calling.png";
 import BackgroundIcon from "./bg.jpg";
 import DiskIcon from "./disk.jpg";

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Searching, TableComponent, Confirmation } from "@/components";
-import { DeleteIcon } from "@/assets";
+import { Searching, TableComponent, Confirmation } from "../../../components";
+import { DeleteIcon } from "../../../assets";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { Tooltip } from "antd";

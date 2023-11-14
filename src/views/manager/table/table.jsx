@@ -1,4 +1,4 @@
-import { EmptyIcon, PrinterIcon } from "@/assets";
+import { EmptyIcon, PrinterIcon } from "../../../assets";
 import { Button, TextInput, Title } from "../../../components";
 import { Form, QRCode, Space, Tooltip } from "antd";
 import { useEffect, useRef, useState } from "react";
@@ -148,7 +148,7 @@ export const Table = () => {
               onClick={() => setIsModalOpen(false)}
               label="Cancel"
               htmlType="button"
-              styles="!bg-danger rounded-lg w-full !mt-4"
+              bg="!bg-danger rounded-lg w-full !mt-4"
             />
             <Button label="Save" styles="rounded-lg w-full !mt-4" />
           </div>

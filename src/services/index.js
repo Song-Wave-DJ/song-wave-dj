@@ -58,7 +58,7 @@ export const getDelete = async (endpoint, data) => {
     const resp = await axios(URL + endpoint, {
       headers: {
         Accept: "application/json",
-        Authorization: `Beraer ${token}`,
+        Authorization: `Beraer ${null}`,
       },
       method: "DELETE",
       data,

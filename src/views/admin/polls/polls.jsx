@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Searching, TableComponent, Confirmation } from "@/components";
-import ModalComp from "@/components/modal";
+import { Searching, TableComponent, Confirmation } from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
 

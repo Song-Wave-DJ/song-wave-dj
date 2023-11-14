@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Searching, TableComponent, Confirmation } from "@/components";
-import ModalComp from "@/components/modal";
+import { Searching, TableComponent, Confirmation } from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Button } from "../../../components";
 import { Link } from "react-router-dom";
 
@@ -135,7 +135,7 @@ export const ManagerPolls = () => {
             <Button
               isLoading={false}
               label="Add Poll"
-              styles="rounded-lg hover:"
+              styles="rounded-lg w-full!"
             />
           </Link>
           <Searching onChange={onChange} styles="py-2" />

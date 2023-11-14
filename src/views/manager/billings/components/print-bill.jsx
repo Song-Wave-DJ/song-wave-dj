@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
 import { Summary } from "../../../menu/components/summary";
 import { useState } from "react";
-import ModalComp from "@/components/modal";
-import { Button } from "@/components";
+import ModalComp from "../../../../components/modal";
+import { Button } from "../../../../components";
 
 const Carts = [
   {

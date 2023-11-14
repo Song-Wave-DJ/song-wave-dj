@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Heading, Button } from "..";
-import { WarningIcon } from "@/assets";
+import { WarningIcon } from "../../assets";
 
 const Confirmation = ({
   open,
@@ -17,18 +17,17 @@ const Confirmation = ({
           <Heading label="Are you sure?" styles="text-center">
             {children}
           </Heading>
-          <div className="flex justify-center my-2 w-full">
+          <div className="flex justify-center gap-4 mt-6 w-full">
             <Button
               isLoading={false}
-              styles="!bg-red text-white rounded  flex-[.2] hover:opacity-30 mx-2 p-3 border-2 text-[#000] my-0"
               htmlType="button"
               label="Cancel"
+              bg="bg-danger"
               onClick={handleOpen}
             />
             <Button
               isLoading={isMutating}
               label="Yes, Sure"
-              styles="bg-[#3CB5E5] flex-[.2] hover:opacity-30 mx-2 p-3 my-0"
               htmlType="button"
               onClick={onConfirm}
             />

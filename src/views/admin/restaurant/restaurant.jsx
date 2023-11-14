@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import { useState } from "react";
 import {
   Searching,
@@ -6,11 +7,11 @@ import {
   Title,
   TextInput,
   TextPassword,
-} from "@/components";
-import ModalComp from "@/components/modal";
+} from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Form } from "antd";
 import { fieldSet } from "./fieldsData";
-import { DeleteIcon, EditIcon } from "@/assets";
+import { DeleteIcon, EditIcon } from "../../../assets";
 
 const dataSource = [
   {
@@ -236,9 +237,9 @@ export const Restaurant = () => {
                   htmlType="button"
                   onClick={handleCancel}
                   label="Cancel"
-                  styles="!bg-danger"
+                  bg="!bg-danger"
                 />
-                <Button label="Add" styles="flex-[.1]" />
+                <Button label="Add" />
               </div>
             </div>
           </Form>

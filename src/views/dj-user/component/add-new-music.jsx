@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
-import ModalComp from "@/components/modal";
+import ModalComp from "../../../components/modal";
 import { Form } from "antd";
-import { Button, Title, ImageUploader, TextInput } from "@/components";
+import { Button, Title, ImageUploader, TextInput } from "../../../components";
 import { fieldSet } from "./fieldsData";
 
 export const AddNewMusic = ({ isAdd, isSetAdd, editData, setEditData }) => {
@@ -38,15 +38,11 @@ export const AddNewMusic = ({ isAdd, isSetAdd, editData, setEditData }) => {
             <Button
               isLoading={false}
               label="Cancel"
-              styles="text-x text-center py-2 md:py-5 flex-1 !bg-danger"
+              bg="!bg-danger"
               htmlType="button"
               onClick={handleCancel}
             />
-            <Button
-              isLoading={false}
-              label={!editData ? "Add" : "Update"}
-              styles="flex-1 py-2 md:py-5"
-            />
+            <Button isLoading={false} label={!editData ? "Add" : "Update"} />
           </div>
         </Form>
       </>

@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { Searching, Button } from "@/components";
+import { Searching, Button } from "../../../../components";
 import { useNavigate } from "react-router-dom";
 import { DateRange } from "../../../../components";
 

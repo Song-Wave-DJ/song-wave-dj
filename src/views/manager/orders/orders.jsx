@@ -4,8 +4,8 @@ import {
   Searching,
   TableComponent,
   Confirmation,
-} from "@/components";
-import ModalComp from "@/components/modal";
+} from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../../admin/constanst";
 const Carts = [

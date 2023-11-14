@@ -1,5 +1,5 @@
-import { EmptyIcon } from "@/assets";
-import { FoodLoader } from "@/assets/images";
+import { EmptyIcon } from "../../assets";
+import { FoodLoader } from "../../assets/images";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import {

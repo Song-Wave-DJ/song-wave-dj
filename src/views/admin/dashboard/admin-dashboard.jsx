@@ -1,4 +1,4 @@
-import { Title as TextTitle } from "@/components";
+import { Title as TextTitle } from "../../../components";
 import { CompersionChart } from "./component/compersion-bar";
 import { AnalyticUser } from "./component/analytic-user";
 import { FeedbackChart } from "./component";

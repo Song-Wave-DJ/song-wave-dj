@@ -1,29 +1,41 @@
 /* eslint-disable react/prop-types */
-import { Button as AndButton } from "antd";
-import { PlusOutlined } from "@ant-design/icons";
-
+import { useEffect } from "react";
+import "./style.scss";
 const Button = ({
   label,
   onClick,
-  htmlType = "submit",
-  isLoading,
+  isLoading = false,
   styles = "w-full",
-  icon = false,
-  lableStyles = "",
   disabled = false,
+  bg = "",
 }) => {
+  useEffect(() => {
+    var animateButton = function (e) {
+      e.preventDefault();
+      //reset animation
+      e.target.classList.remove("animate");
+
+      e.target.classList.add("animate");
+      setTimeout(function () {
+        e.target.classList.remove("animate");
+      }, 700);
+    };
+
+    var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+    for (var i = 0; i < bubblyButtons.length; i++) {
+      bubblyButtons[i].addEventListener("click", animateButton, false);
+    }
+  }, []);
   return (
-    <AndButton
-      loading={isLoading}
-      disabled={disabled}
-      htmlType={htmlType}
-      onClick={onClick}
-      className={`bg-primary flex justify-center font-sans items-center p-5 rounded-lg 
-      hover:opacity-60  hover:transition-all ${styles}`}
-    >
-      {icon && <PlusOutlined />}
-      <p className={`text-lg text-white ${lableStyles}`}>{label}</p>
-    </AndButton>
+    <div onClick={onClick} className={styles}>
+      <button
+        disabled={disabled}
+        className={`bubbly-button text-xs w-full ${bg}`}
+      >
+        {!isLoading ? label : "Loading.."}
+      </button>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-import { EmptyIcon } from "@/assets";
-import { Button } from "@/components";
-import DrawerComp from "@/components/drawer";
-import ModalComp from "@/components/modal";
+import { EmptyIcon } from "../../../assets";
+import { Button } from "../../../components";
+import DrawerComp from "../../../components/drawer";
+import ModalComp from "../../../components/modal";
 import { useEffect, useMemo, useState } from "react";
 import { CartMenuCard } from "./cart-menu";
 import { OrderSummary } from "./order-summary";

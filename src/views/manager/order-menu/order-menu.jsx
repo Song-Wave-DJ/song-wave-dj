@@ -1,4 +1,4 @@
-import { Menu } from "@/views";
+import { Menu } from "../../../views";
 export const OrderMenu = () => {
   return (
     <>

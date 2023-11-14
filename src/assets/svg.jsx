@@ -151,7 +151,7 @@ export const OrderIcon = ({ color }) => {
   );
 };
 
-export const CategoryIcon = ({ color }) => {
+export const CategoryIcons = ({ color }) => {
   return (
     <svg width="19" height="13.258" viewBox="0 0 19 13.258">
       <g
@@ -199,7 +199,7 @@ export const CategoryIcon = ({ color }) => {
     </svg>
   );
 };
-export const MenuIcon = ({ color }) => {
+export const MenuIcons = ({ color }) => {
   return (
     <svg width="13" height="19" viewBox="0 0 13 19">
       <g id="menu" transform="translate(0)">

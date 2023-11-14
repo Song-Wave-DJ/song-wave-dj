@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import ModalComp from "@/components/modal";
-import { Title, Button, TextInput } from "@/components";
+import ModalComp from "../../../../components/modal";
+import { Title, Button, TextInput } from "../../../../components";
 import { Form } from "antd";
 
 const FieldData = {

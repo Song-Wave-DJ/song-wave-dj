@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { EmptyIcon } from "@/assets";
+import { EmptyIcon } from "../../../../assets";
 import { CallingIcon } from "../../../../assets/images";
 
 export const LiveBilling = ({ data = [], onClickBottomDrawer }) => {

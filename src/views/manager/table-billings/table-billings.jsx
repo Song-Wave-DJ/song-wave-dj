@@ -4,8 +4,8 @@ import {
   Searching,
   TableComponent,
   Confirmation,
-} from "@/components";
-import ModalComp from "@/components/modal";
+} from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Summary } from "../../menu/components/summary";
 import { RenderColor } from "../../admin/constanst";
 import { Tooltip } from "antd";
@@ -13,7 +13,7 @@ import { Link, useParams } from "react-router-dom";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useMemo } from "react";
 import { DateRange } from "../../../components";
-import { Button } from "@/components";
+import { Button } from "../../../components";
 import { useReactToPrint } from "react-to-print";
 
 const Carts = [

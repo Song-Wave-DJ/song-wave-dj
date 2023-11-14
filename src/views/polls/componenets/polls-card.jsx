@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Checkbox } from "../../../assets";
+import Checkbox from "../../../assets/images/checkBox.png";
 import ProgressBars from "./progresh-bar";
 import { Progressdata } from "./progress-data";
 

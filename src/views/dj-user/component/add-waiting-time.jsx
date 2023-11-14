@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
-import { Title, Button } from "@/components";
-import ModalComp from "@/components/modal";
+import { Title, Button } from "../../../components";
+import ModalComp from "../../../components/modal";
 import { Form, TimePicker } from "antd";
 export const AddWaitingTime = ({
   isModalOpen,

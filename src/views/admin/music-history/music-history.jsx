@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Searching, TableComponent } from "@/components";
+import { Searching, TableComponent } from "../../../components";
 import { RenderColor } from "../constanst";
 import { Tooltip } from "antd";
 import { Link, useLocation } from "react-router-dom";

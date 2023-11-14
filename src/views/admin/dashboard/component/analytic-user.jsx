@@ -7,8 +7,8 @@ import {
   OrderIconss,
   FeedbackIcon,
   UserIcon,
-} from "@/assets";
-import { Title as TextTitle } from "@/components";
+} from "../../../../assets";
+import { Title as TextTitle } from "../../../../components";
 
 const LabelData = [
   {

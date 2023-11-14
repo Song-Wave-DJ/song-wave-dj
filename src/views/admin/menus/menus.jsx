@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Searching, TableComponent, Confirmation } from "@/components";
-import { DeleteIcon } from "@/assets";
+import { Searching, TableComponent, Confirmation } from "../../../components";
+import { DeleteIcon } from "../../../assets";
 import { RenderColor } from "../constanst";
 import ViewMenu from "../../manager/menus/view-menu";
 import { ViewIcon } from "../../../assets";
