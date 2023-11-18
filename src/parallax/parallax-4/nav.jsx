@@ -13,23 +13,19 @@ export const Naviagtion = () => {
 
   return (
     <div className="pb-2">
-      {/* <Link to="/">
-        <h1 className="text-white text-3xl text-center py-2">Song Wave</h1>
-      </Link> */}
-      {/* Naviagtion */}
       <div className="sm:hidden block">
-        <ul className="flex justify-center py-2 gap-6">
+        <ul className="flex justify-center pt-4 py-2 gap-6">
           {MobileNavigation.map((item) => (
-            <Link to={item.path} key={item.id} className="text-white text-xs">
+            <Link to={item.path} key={item.id} className="text-white text-2xl">
               {item.label}
             </Link>
           ))}
         </ul>
       </div>
-      <div className="sm:block hidden py-3">
-        <ul className="flex justify-center gap-6">
+      <div className="sm:block hidden">
+        <ul className="flex pt-10 justify-center gap-6">
           {Navigation.map((item) => (
-            <Link to={item.path} key={item.id} className="text-white text-xs">
+            <Link to={item.path} key={item.id} className="text-white text-2xl">
               {item.label}
             </Link>
           ))}

@@ -6,7 +6,7 @@ export const Navigation = [
   },
   {
     id: "music",
-    label: "3 hours",
+    label: "Three hours",
     path: "/three-hours",
   },
   {
@@ -20,9 +20,9 @@ export const Navigation = [
     path: "/polls",
   },
   {
-    id: "communities",
-    label: "Communities",
-    path: "/communities",
+    id: "login",
+    label: "Login",
+    path: "/login",
   },
 ];
 
@@ -34,7 +34,7 @@ export const MobileNavigation = [
   },
   {
     id: "music",
-    label: "3 hours",
+    label: "Three hours",
     path: "/three-hours",
   },
   {
