@@ -25,6 +25,7 @@ const ImagePicker = ({ value, onChange }) => {
         className="h-24 w-24 rounded-full object-cover "
         src={inputValue}
         loading="lazy"
+        alt=""
       />
       <div className="absolute bottom-3 right-1 bg-white p-1 rounded-full border-2 border-green">
         <EditIcon color="#00BC00" />

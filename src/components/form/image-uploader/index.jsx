@@ -40,11 +40,9 @@ const ImageUploader = ({ disabled = false, onChange, value }) => {
         <h2 className="text-xs font-semibold">Drag & Drop</h2>
         <p className="text-xs  text-[#ABABAB] text-center">file to upload</p>
         <p className="text-xs  text-[#ABABAB] text-center">or</p>
-        <Button
-          styles="bg-[#3CB5E5] hover:!bg-[#3CB5E5] py-4 my-2"
-          label="Browser"
-          htmlType="button"
-        />
+        <div className="bg-gray-300 px-3 rounded-lg text-sm font-semibold py-1">
+          Upload
+        </div>
       </div>
     </Upload.Dragger>
   );

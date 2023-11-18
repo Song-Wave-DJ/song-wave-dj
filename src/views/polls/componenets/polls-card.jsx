@@ -16,7 +16,7 @@ export const PollsCard = () => {
     <div className="flex justify-center flex-col">
       {Progressdata?.map((nestedArray, arrayIndex) => (
         <div
-          className="flex justify-center mb-2 rounded-md bg-white p-2  flex-wrap flex-col"
+          className="flex justify-center mb-2  border-b-2  bg-white p-2  flex-wrap flex-col"
           key={nestedArray.id}
         >
           <h1 className="text-lg font-semibold pl-1">

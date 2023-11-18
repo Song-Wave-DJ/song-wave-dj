@@ -11,7 +11,6 @@ const Button = ({
 }) => {
   useEffect(() => {
     let animateButton = function (e) {
-      e.preventDefault();
       //reset animation
       e.target.classList.remove("animate");
 
@@ -26,11 +25,12 @@ const Button = ({
       bubblyButtons[i].addEventListener("click", animateButton, false);
     }
   }, []);
+
   return (
     <div onClick={onClick} className={styles}>
       <button
         disabled={disabled}
-        className={`bubbly-button text-xs w-full ${bg}`}
+        className={`bubbly-button text-sm rounded-lg w-full ${bg}`}
       >
         {!isLoading ? label : "Loading.."}
       </button>
