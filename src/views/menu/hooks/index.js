@@ -8,7 +8,9 @@ export const useMenuOrder = () => {
   const [filterItem, setFilterItem] = useState("All");
 
   const cartData = useMemo(
-    () => JSON.parse(localStorage.getItem("items") ?? []),
+    () =>
+      localStorage.getItem("items") &&
+      JSON.parse(localStorage.getItem("items") ?? []),
     []
   );
 

@@ -1,12 +1,3 @@
-h2 {
-  font-size: 5vw;
-  font-weight: 500;
-  text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 32px;
-  text-shadow: 0 0 20px rgb(0 0 0 / 90%);
-}
-
 section {
   height: 100%;
   width: 100%;
@@ -21,8 +12,6 @@ section .inner {
   overflow-y: hidden;
 }
 section .bg {
-  display: grid;
-  place-items: center;
   position: absolute;
   height: 100%;
   width: 100%;

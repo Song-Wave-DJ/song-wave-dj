@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Outlet, createBrowserRouter } from "react-router-dom";
 import {
   Menu,
   Communities,
@@ -50,18 +50,32 @@ import { ParallaxFour } from "../parallax/parallax-4/Parallax";
 const router = createBrowserRouter([
   {
     path: "",
-    element: <Layout />,
+    element: <Outlet />,
     children: [
       {
         index: true,
         element: <ParallaxFour />,
       },
+    ],
+    errorElement: <NotFound />,
+  },
+  {
+    path: "login",
+    element: <Layout />,
+    children: [
       {
-        path: "/login",
+        index: true,
         element: <Login />,
       },
+    ],
+    errorElement: <NotFound />,
+  },
+  {
+    path: "/sign-up",
+    element: <Layout />,
+    children: [
       {
-        path: "/sign-up",
+        index: true,
         element: <SignUp />,
       },
     ],

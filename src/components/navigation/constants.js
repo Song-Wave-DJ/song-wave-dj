@@ -19,11 +19,11 @@ export const Navigation = [
     label: "Polls",
     path: "/polls",
   },
-  {
-    id: 5,
-    label: "Communities",
-    path: "/communities",
-  },
+  // {
+  //   id: 5,
+  //   label: "Communities",
+  //   path: "/communities",
+  // },
   {
     id: 6,
     label: "Login",

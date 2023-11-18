@@ -30,6 +30,7 @@ export const Login = () => {
   };
 
   const onFinish = (paylaod) => {
+    console.log(paylaod);
     setIsLoading(true);
     userLogin(paylaod);
   };
