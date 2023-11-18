@@ -153,23 +153,20 @@ export const Menu = ({ fromEmployee = false }) => {
 
   if (loaded) {
     return (
-      <div className="flex min-h-[80vh] justify-center items-center">
-        <img src={FoodLoader} className="mix-blend-darken object-contain" />
-      </div>
-    );
-  }
-
-  if (!categories?.length) {
-    return (
-      <div className="flex flex-col items-center">
-        <img className="w-40 object-contain" src={EmptyIcon} />
-        <p className="text-lg">No data available!</p>
+      <div className="flex mt-60 justify-center items-center">
+        <img
+          src={
+            "https://assets-v2.lottiefiles.com/a/05359890-1164-11ee-9f09-d76ef2ed5f8e/RGv5qDO9hu.gif"
+          }
+          alt=""
+          className="mix-blend-darken w-44 object-contain"
+        />
       </div>
     );
   }
 
   return (
-    <div className="py-2 px-4 ">
+    <div className="py-2 px-4 bg-[#171819] min-h-screen">
       {contextHolder}
       <div className="flex sm:w-[600px] w-full m-auto mt-2 flex-col flex-wrap items-center justify-center md:gap-4">
         <MenuHeader
@@ -182,6 +179,13 @@ export const Menu = ({ fromEmployee = false }) => {
           isPlacedOrder={isPlacedOrder}
           onOpenPayment={onOpenPayment}
         />
+
+        {!categories?.length && (
+          <div className="flex h-screen justify-center bg-[#171819] flex-col items-center">
+            <img className="w-40 object-contain" alt="" src={EmptyIcon} />
+            <p className="text-lg text-white">No data available!</p>
+          </div>
+        )}
         {/* Body */}
         {!isBar ? (
           categories.map((item, index) => (

@@ -89,7 +89,9 @@ export const MenuCard = ({
         <div className="flex gap-3 py-2" onClick={() => handleMlChoose(el)}>
           <div className="flex gap-1 cursor-pointer">
             <input type="radio" checked={checked} />
-            <span className="text-xs text-light font-sans">{el.ml}ml</span>
+            <span className="text-xs text-light text-[#E4C290] font-sans">
+              {el.ml}ml
+            </span>
           </div>
         </div>
       );
@@ -104,20 +106,22 @@ export const MenuCard = ({
           {renderIcon && (
             <img src={renderIcon} className="w-4 h-4 object-contain" />
           )}
-          <h3 className="text-sm font-sans capitalize">{title}</h3>
+          <h3 className="text-sm font-sans capitalize text-white">{title}</h3>
           <div className="flex items-center gap-2">
             {formDrink ? (
               prices.map((el, idx) => (
                 <div key={el.ml}>
                   {qunatity(el)}
-                  <p className="text-sm text-light font-sans">
+                  <p className="text-sm text-[#E4C290] text-light font-sans">
                     {idx === 0 ? <span>&#x20B9;</span> : ""}
                     {el.price} {idx !== prices.length - 1 ? "/" : ""}
                   </p>
                 </div>
               ))
             ) : (
-              <p className="text-sm text-light font-sans">&#x20B9;{price}</p>
+              <p className="text-sm text-light text-[#E4C290] font-sans">
+                &#x20B9;{price}
+              </p>
             )}
           </div>
         </div>

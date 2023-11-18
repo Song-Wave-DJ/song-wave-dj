@@ -45,7 +45,6 @@ import {
   ProtectedMangaerRoute,
 } from "../protected-route";
 import { OrderFood, OrderMenu } from "../views/manager";
-import { ParallaxFour } from "../parallax/parallax-4/Parallax";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +53,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ParallaxFour />,
+        element: <Home />,
       },
     ],
     errorElement: <NotFound />,
@@ -105,7 +104,7 @@ const router = createBrowserRouter([
   },
   {
     path: "menu",
-    element: <Layout />,
+    element: <Layout isDark />,
     children: [
       {
         index: true,
@@ -127,7 +126,7 @@ const router = createBrowserRouter([
   },
   {
     path: "category",
-    element: <Layout />,
+    element: <Layout isDark />,
     children: [
       {
         index: true,

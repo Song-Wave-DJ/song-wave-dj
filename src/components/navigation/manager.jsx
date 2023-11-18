@@ -48,19 +48,21 @@ export const ManagerNaviagtion = ({ isEmployee }) => {
         <DrawerComp width={300} showDrawer={openDrawer} open={isOpen}>
           <div className="">
             <ul className="flex flex-col  pl-6 gap-6">
-              {DashboardNavigation.map((item) => (
-                <Link
-                  onClick={openDrawer}
-                  to={item.path}
-                  key={item.id}
-                  className="text-xs"
-                  style={{
-                    color: pathname === item.path ? "#43D396" : "",
-                  }}
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {(!isEmployee ? DashboardNavigation : EmployeeNavigation).map(
+                (item) => (
+                  <Link
+                    onClick={openDrawer}
+                    to={item.path}
+                    key={item.id}
+                    className="text-l"
+                    style={{
+                      color: pathname === item.path ? "#43D396" : "",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                )
+              )}
             </ul>
           </div>
         </DrawerComp>

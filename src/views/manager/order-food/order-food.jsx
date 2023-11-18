@@ -46,16 +46,18 @@ export const OrderFood = () => {
   }, [navigation, restaurantId, tableId]);
 
   return (
-    <div className="sm:w-[600px] w-full m-auto  p-4">
-      <div className="flex flex-col items-center gap-6">
-        {JSONData.map((el) => (
-          <MenuCategoryCard
-            {...el}
-            key={el.id}
-            tableId={tableId}
-            resturantId={restaurantId}
-          />
-        ))}
+    <div className="bg-[#171819]">
+      <div className="sm:w-[600px] w-full m-auto  p-4">
+        <div className="flex flex-col items-center gap-6">
+          {JSONData.map((el) => (
+            <MenuCategoryCard
+              {...el}
+              key={el.id}
+              tableId={tableId}
+              resturantId={restaurantId}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { MobileNavigation, Navigation } from "./constants";
 import { Link } from "react-router-dom";
 import { MenuOutlined } from "@ant-design/icons";
-import DrawerComp from "../drawer";
+import { MobileNavigation, Navigation } from "../../constants";
+import DrawerComp from "../../components/drawer";
 
-export const Naviagtion = ({ isDark }) => {
+export const Naviagtion = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDrawer = () => {
@@ -12,36 +12,20 @@ export const Naviagtion = ({ isDark }) => {
   };
 
   return (
-    <div
-      className={`pb-2 border-white shadow-lg ${
-        isDark ? "bg-[#171819]" : "bg-white"
-      }`}
-    >
-      <Link to="/" className={`${isDark ? "text-white" : ""}`}>
-        <h1 className="text-3xl text-[#E4C290] text-center py-2">Song Wave</h1>
-      </Link>
-      {/* Naviagtion */}
+    <div className="pb-2">
       <div className="sm:hidden block">
-        <ul className="flex justify-center py-2 gap-6">
+        <ul className="flex justify-center pt-4 py-2 gap-6">
           {MobileNavigation.map((item) => (
-            <Link
-              to={item.path}
-              key={item.id}
-              className={`${isDark ? "text-white" : ""} text-sm`}
-            >
+            <Link to={item.path} key={item.id} className="text-white text-2xl">
               {item.label}
             </Link>
           ))}
         </ul>
       </div>
-      <div className="sm:block hidden py-3">
-        <ul className="flex justify-center gap-6">
+      <div className="sm:block hidden">
+        <ul className="flex pt-10 justify-center gap-6">
           {Navigation.map((item) => (
-            <Link
-              to={item.path}
-              key={item.id}
-              className={`${isDark ? "text-white" : ""} text-sm`}
-            >
+            <Link to={item.path} key={item.id} className="text-white text-2xl">
               {item.label}
             </Link>
           ))}
@@ -60,7 +44,7 @@ export const Naviagtion = ({ isDark }) => {
               <Link
                 to={item.path}
                 key={item.id}
-                className="text-sm"
+                className="text-xs"
                 onClick={openDrawer}
               >
                 {item.label}

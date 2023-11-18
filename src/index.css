@@ -29,3 +29,14 @@
   border-radius: 16px;
   border: 1px solid #fff;
 }
+
+.ant-collapse-content-box {
+  background: #171819 !important;
+  border-bottom-left-radius: 7px;
+  border-bottom-right-radius: 7px;
+}
+
+.ant-collapse-expand-icon,
+.anticon-shopping-cart {
+  color: #fff !important;
+}
