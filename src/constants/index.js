@@ -12,7 +12,7 @@ export const Navigation = [
   {
     id: "menu",
     label: "Menu",
-    path: "/menu",
+    path: "/category",
   },
   {
     id: "poll",
@@ -33,14 +33,14 @@ export const MobileNavigation = [
     path: "/",
   },
   {
+    id: "menu",
+    label: "Menu",
+    path: "/category",
+  },
+  {
     id: "music",
     label: "Three hours",
     path: "/three-hours",
-  },
-  {
-    id: "menu",
-    label: "Menu",
-    path: "/menu",
   },
 ];
 

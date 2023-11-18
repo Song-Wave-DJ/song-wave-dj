@@ -5,10 +5,11 @@ export const MenuCategoryCard = ({ name, imageUrl, type }) => {
   return (
     <Link
       to={`/employee/menu?category=${type}`}
-      className="shadow-lg min-h-[280px] w-full md:w-72"
+      className="shadow-lg bg-[#fff] min-h-[280px] w-full md:w-72"
     >
       <div className="h-56 w-full">
         <img
+          alt=""
           loading="lazy"
           className="bg-contain rounded-t h-full w-full bg-no-repeat"
           src={imageUrl}

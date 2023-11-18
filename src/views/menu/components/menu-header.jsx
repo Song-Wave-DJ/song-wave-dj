@@ -15,13 +15,13 @@ export const MenuHeader = ({
   onOpenPayment,
 }) => {
   return (
-    <div className="bg-white z-10 w-full sticky top-0 items-center">
+    <div className="bg-[#171819] z-10 w-full sticky top-0 items-center">
       {/* Running order */}
       {isPlacedOrder && (
-        <div className="flex items-center justify-between bg-white z-10 gap-4 p-2 w-full border rounded-lg ">
+        <div className="flex items-center justify-between  z-10 gap-4 p-2 w-full border rounded-lg ">
           <div className="flex gap-3 items-center">
             <img src={ChefIcon} alt="" />
-            <p className="text-lg">Your food is being prepaired</p>
+            <p className="text-lg text-white">Your food is being prepaired</p>
           </div>
           <Link to="/order-history/234" className="flex gap-2">
             <div className="text-right whitespace-nowrap text-white cursor-pointer px-2 py-1 rounded-full bg-primary">
@@ -37,7 +37,15 @@ export const MenuHeader = ({
         </div>
       )}
       {/* Search */}
-      <div className="flex my-4 bg-white items-center justify-between gap-2">
+      <div className="border  border-none flex items-center  p-2 flex-1 bg-[#242424] rounded-lg">
+        <input
+          type="text"
+          className="bg-[#242424] w-full text-white outline-none"
+          placeholder="Search food hear..."
+          onChange={onChangeSearch}
+        />
+      </div>
+      <div className="flex my-4 items-center justify-between gap-2">
         {!isBar ? (
           <RadioButton
             OPTIONS={["All", "Veg", "Non-Veg"]}
@@ -47,10 +55,12 @@ export const MenuHeader = ({
         ) : (
           <div className="flex gap-2 items-center">
             <input type="radio" checked />
-            <p className="text-lg md:w-60 w-20 font-semibold">Bar</p>
+            <p className="text-lg md:w-60 w-20 text-[#E4C290] font-semibold">
+              Bar
+            </p>
           </div>
         )}
-        <Searching styles="py-2  flex-1" onChange={onChangeSearch} />
+
         <div
           onClick={onClose}
           className="text-2xl cursor-pointer border flex relative justify-center w-10 h-10 p-2 rounded-full"

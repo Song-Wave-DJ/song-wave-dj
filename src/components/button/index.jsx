@@ -30,7 +30,7 @@ const Button = ({
     <div onClick={onClick} className={styles}>
       <button
         disabled={disabled}
-        className={`bubbly-button text-sm rounded-lg w-full ${bg}`}
+        className={`bubbly-button  text-sm rounded-lg w-full ${bg}`}
       >
         {!isLoading ? label : "Loading.."}
       </button>

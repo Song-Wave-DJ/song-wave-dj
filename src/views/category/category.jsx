@@ -1,6 +1,6 @@
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { CategoryCard } from "./component/category-card";
-import { useEffect, useLayoutEffect, useMemo } from "react";
+import { useLayoutEffect } from "react";
 
 const JSONData = [
   {
@@ -46,16 +46,18 @@ export const Category = () => {
   }, [navigation, restaurantId, tableId]);
 
   return (
-    <div className="sm:w-[600px] w-full m-auto  p-4">
-      <div className="flex flex-col items-center gap-6">
-        {JSONData.map((el) => (
-          <CategoryCard
-            {...el}
-            key={el.id}
-            tableId={tableId}
-            resturantId={restaurantId}
-          />
-        ))}
+    <div className="bg-[#171819]">
+      <div className="sm:w-[600px]  w-full m-auto  p-4">
+        <div className="flex flex-col items-center gap-6">
+          {JSONData.map((el) => (
+            <CategoryCard
+              {...el}
+              key={el.id}
+              tableId={tableId}
+              resturantId={restaurantId}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
