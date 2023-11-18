@@ -16,7 +16,7 @@ module.exports = {
         app: {
           DEFAULT: "#3CB5E5",
         },
-        danger: "#FF4B4B",
+        danger: "#FF0000",
         pending: "#f8d75dc1",
         primary: {
           DEFAULT: "#43D396",
