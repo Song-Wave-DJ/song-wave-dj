@@ -14,12 +14,9 @@ export const Naviagtion = ({ isDark }) => {
   return (
     <div
       className={`pb-2 border-white shadow-lg ${
-        isDark ? "bg-[#171819]" : "bg-white"
+        isDark ? "bg-[#000]" : "bg-white"
       }`}
     >
-      <Link to="/" className={`${isDark ? "text-white" : ""}`}>
-        <h1 className="text-3xl text-[#E4C290] text-center py-2">Song Wave</h1>
-      </Link>
       {/* Naviagtion */}
       <div className="sm:hidden block">
         <ul className="flex justify-center py-2 gap-6">
@@ -48,7 +45,7 @@ export const Naviagtion = ({ isDark }) => {
         </ul>
       </div>
       <div
-        className="sm:hidden block humburger--menu absolute top-5 right-2"
+        className="sm:hidden block humburger--menu absolute top-3 right-2"
         onClick={openDrawer}
       >
         <MenuOutlined />

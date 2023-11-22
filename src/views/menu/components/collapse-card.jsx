@@ -26,7 +26,7 @@ export const CollapseCard = ({
             </div>
           ),
           children: (
-            <div className="flex m-auto flex-col rounded-lg bg-[#171819] flex-wrap gap-4 relative mt-4 items-center justify-center md:gap-4">
+            <div className="flex m-auto flex-col rounded-lg bg-[#000] flex-wrap gap-4 relative mt-4 items-center justify-center md:gap-4">
               {menus?.map((item) => (
                 <MenuCard
                   carts={carts}

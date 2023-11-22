@@ -15,10 +15,10 @@ export const MenuHeader = ({
   onOpenPayment,
 }) => {
   return (
-    <div className="bg-[#171819] z-10 w-full sticky top-0 items-center">
+    <div className="bg-[#000] z-10 w-full sticky top-0 items-center">
       {/* Running order */}
       {isPlacedOrder && (
-        <div className="flex items-center justify-between  z-10 gap-4 p-2 w-full border rounded-lg ">
+        <div className="flex mb-4 items-center justify-between  z-10 gap-4 p-2 w-full border rounded-lg ">
           <div className="flex gap-3 items-center">
             <img src={ChefIcon} alt="" />
             <p className="text-lg text-white">Your food is being prepaired</p>
