@@ -16,21 +16,19 @@ export const MusicCard = ({
     [reqMusics, id]
   );
   return (
-    <div className="flex justify-between mb-4 w-full border-b border-gray-500 items-start">
-      <div className="flex gap-3 mb-4">
-        <div className="w-28 h-18 rounded-md">
+    <div className="flex justify-between mb-2 w-full  border-gray-500 items-start">
+      <div className="flex gap-3 mb-2">
+        <div className="w-28 h-16 rounded-md">
           <img
             src={thumbnail}
             className="object-cover rounded-md h-full w-full"
+            alt=""
           />
         </div>
         <div>
           <h3 className="text-xs text-white">{title}</h3>
           <p className="text-gray-200 text-[12px]">{artist}</p>
-          <p className="text-gray-200 text-[12px] ">
-            <FieldTimeOutlined />
-            <span className="px-1"> {duration}</span>
-          </p>
+
           <p className="text-gray-200 text-[12px]">Reqeust Time: {duration}</p>
         </div>
       </div>

@@ -166,7 +166,7 @@ export const Menu = ({ fromEmployee = false }) => {
   }
 
   return (
-    <div className="py-2 px-4 bg-[#171819] min-h-screen">
+    <div className="py-2 px-4 bg-[#000] min-h-screen">
       {contextHolder}
       <div className="flex sm:w-[600px] w-full m-auto mt-2 flex-col flex-wrap items-center justify-center md:gap-4">
         <MenuHeader

@@ -93,7 +93,7 @@ const router = createBrowserRouter([
   },
   {
     path: "three-hours",
-    element: <Layout />,
+    element: <Layout isDark />,
     children: [
       {
         index: true,

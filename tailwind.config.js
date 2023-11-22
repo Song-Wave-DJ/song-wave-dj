@@ -14,7 +14,7 @@ module.exports = {
         yellow: { DEFAULT: "#FFA200", light: "#FFA20033" },
         bloodRed: { DEFAULT: "#CF0000" },
         app: {
-          DEFAULT: "#3CB5E5",
+          DEFAULT: "#B59410",
         },
         danger: "#FF0000",
         pending: "#f8d75dc1",

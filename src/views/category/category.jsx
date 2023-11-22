@@ -46,7 +46,7 @@ export const Category = () => {
   }, [navigation, restaurantId, tableId]);
 
   return (
-    <div className="bg-[#171819]">
+    <div className="bg-[#000]">
       <div className="sm:w-[600px]  w-full m-auto  p-4">
         <div className="flex flex-col items-center gap-6">
           {JSONData.map((el) => (
