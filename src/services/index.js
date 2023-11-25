@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://damp-silence-67221.pktriot.net/api/";
+const URL = "https://damp-silence-67221.pktriot.net/api/";
 
 export const getMethod = async (endpoint) => {
   try {
@@ -33,7 +33,7 @@ export const postMethod = async (endpoint, data) => {
 
     const resp = await axios(URL + endpoint, {
       headers: {
-        Authorization: `Bearer ${token}`,
+        Authorization: `Bearer ${"gAAAAABlYLyYMES8e_6N2Q7iBWXILcrjCMQ-IKAR5bji3nijBfGnEn1oCQvZgLnU0jI0tp4RskFjr-OXteBhU2dWX5366ZjZTQ=="}`,
         "Content-Type": "application/json",
       },
       method: "POST",

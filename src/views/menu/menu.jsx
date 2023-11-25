@@ -1,7 +1,6 @@
 import { EmptyIcon } from "../../assets";
-import { FoodLoader } from "../../assets/images";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import {
   AddPaymentCard,
   CollapseCard,
@@ -37,7 +36,6 @@ export const Menu = ({ fromEmployee = false }) => {
     setNavigate,
     navigate,
     handlePayNow,
-    loaded,
     contextHolder,
     categories,
     isBar,
@@ -54,6 +52,7 @@ export const Menu = ({ fromEmployee = false }) => {
     handleAddCart,
     selectQuantity,
     open,
+    isLoading,
   } = useMenuOrder();
 
   const chooseBody = useMemo(
@@ -151,9 +150,9 @@ export const Menu = ({ fromEmployee = false }) => {
     }
   }, [chooseBody, handlePayNow, navigate, qrBody, setNavigate]);
 
-  if (loaded) {
+  if (isLoading) {
     return (
-      <div className="flex mt-60 justify-center items-center">
+      <div className="flex sm:w-[600px] w-full m-auto mt-60 justify-center items-center">
         <img
           src={
             "https://assets-v2.lottiefiles.com/a/05359890-1164-11ee-9f09-d76ef2ed5f8e/RGv5qDO9hu.gif"

@@ -57,6 +57,8 @@ export const MenuCard = ({
 
   const handleView = (id) => {
     const data = menus?.find((el) => el.id === id);
+
+    console.log({ data });
     setIsVisible(data);
   };
 

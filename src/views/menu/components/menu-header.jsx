@@ -15,7 +15,7 @@ export const MenuHeader = ({
   onOpenPayment,
 }) => {
   return (
-    <div className="bg-[#000] z-10 w-full sticky top-0 items-center">
+    <div className="bg-[#000] z-10 w-full sticky top-3 items-center">
       {/* Running order */}
       {isPlacedOrder && (
         <div className="flex mb-4 items-center justify-between  z-10 gap-4 p-2 w-full border rounded-lg ">

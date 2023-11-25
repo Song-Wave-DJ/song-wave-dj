@@ -2,10 +2,12 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { AllData, DrinksData, NonVegData, VegData } from "../constants";
 import { useLocation, useNavigate } from "react-router-dom";
 import useNotification from "antd/es/notification/useNotification";
+import { getMethod, postMethod } from "../../../services";
 
 const user = false;
 export const useMenuOrder = () => {
   const [filterItem, setFilterItem] = useState("All");
+  const [isLoading, setLoading] = useState(true);
 
   const cartData = useMemo(
     () =>
@@ -16,12 +18,9 @@ export const useMenuOrder = () => {
 
   const [carts, setCarts] = useState(cartData ?? []);
   const [open, setOpen] = useState(false);
-  const [loaded, setLoaded] = useState(true);
-  const [categories, setCotegories] = useState(AllData);
+  const [categories, setCotegories] = useState([]);
   const [isPaynow, setIsPaynow] = useState(false);
   const [isPlacedOrder, setIsPlacedOrder] = useState(false);
-
-  console.log(categories);
   const [navigate, setNavigate] = useState("PaymentChoose");
   const [selectedMethod, setSelectedMethod] = useState("QR");
   const navigation = useNavigate();
@@ -41,6 +40,39 @@ export const useMenuOrder = () => {
 
   // Restaunt Id we need to send this id inot menus APIS so that we diff the restaunt. menus accordinly
   console.log(restaurntId);
+
+  const getMenu = async () => {
+    const resp = await getMethod(
+      "get_menu_user?restaurantId=O9aJGW2gwked&tableId=101"
+    );
+    if (resp.data) {
+      const { menus } = resp.data ?? {};
+      function formatData(inputData) {
+        const formattedData = Object.keys(inputData ?? {}).map((key, index) => {
+          return {
+            id: index + 1, // Assuming you want to assign unique IDs
+            title: key,
+            menus: inputData[key].map((item) => ({
+              id: item.id,
+              title: item.menu_name,
+              price: item.price,
+              type: item.type,
+              url: item.url,
+              description: item.description,
+            })),
+          };
+        });
+        return formattedData;
+      }
+      const outputData = formatData(menus);
+      setCotegories(outputData ?? []);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    getMenu();
+  }, []);
 
   const isBar = useMemo(() => categoryType === "bar", [categoryType]);
   const { contextHolder } = useNotification();
@@ -68,7 +100,7 @@ export const useMenuOrder = () => {
         return serachData;
       });
     } else {
-      setCotegories(AllData);
+      setCotegories(categories);
     }
   };
 
@@ -106,13 +138,16 @@ export const useMenuOrder = () => {
   const onChangeVegNonVeg = (event) => {
     const { value } = event.target;
     setFilterItem(value);
-    if (value?.toLowerCase() === "non-veg") {
-      setCotegories(NonVegData);
-    } else if (value?.toLowerCase() === "veg") {
-      setCotegories(VegData);
-    } else {
-      setCotegories(AllData);
-    }
+
+    // setCotegories(AllData);
+
+    // if (value?.toLowerCase() === "non-veg") {
+    //   setCotegories(NonVegData);
+    // } else if (value?.toLowerCase() === "veg") {
+    //   setCotegories(VegData);
+    // } else {
+    //   setCotegories(AllData);
+    // }
   };
 
   const onPlacedOrder = async () => {
@@ -121,6 +156,14 @@ export const useMenuOrder = () => {
     //   description: "Your placed successfully!",
     //   type: "success",
     // });
+
+    const paylaod = carts.map((el) => ({ id: el.id, qty: el.qty }));
+    const resp = await postMethod(
+      "make_order?restaurantId=O9aJGW2gwked&tableId=101",
+      paylaod
+    );
+
+    console.log({ resp });
 
     // check if user exist
     if (user) {
@@ -181,9 +224,6 @@ export const useMenuOrder = () => {
   // Effect
   useEffect(() => {
     window.scrollTo(0, 0);
-    setTimeout(() => {
-      setLoaded(false);
-    }, 2000);
   }, []);
 
   return {
@@ -194,7 +234,6 @@ export const useMenuOrder = () => {
     setNavigate,
     navigate,
     handlePayNow,
-    loaded,
     contextHolder,
     categories,
     isBar,
@@ -211,5 +250,6 @@ export const useMenuOrder = () => {
     handleAddCart,
     selectQuantity,
     open,
+    isLoading,
   };
 };
